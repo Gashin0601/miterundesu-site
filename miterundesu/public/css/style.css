@@ -1,67 +1,878 @@
-/* CSS Variables - Color Palette */
+/* ========================================
+   CSS Variables - Color Palette
+   ======================================== */
 :root {
   --main-green: #438247;
   --theater-orange: #E97B2A;
   --bg-light-green: rgba(67, 130, 71, 0.05);
+  --bg-light-orange: rgba(233, 123, 42, 0.05);
   --text-dark: #333333;
   --text-light: #666666;
   --border-color: #E0E0E0;
+  --white: #FFFFFF;
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 40px;
+  --spacing-xl: 64px;
+  --max-width: 1200px;
+  --transition: all 0.3s ease;
 }
 
-/* Reset */
+/* ========================================
+   Reset & Base Styles
+   ======================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Base */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "游ゴシック体", YuGothic, "Yu Gothic Medium", Meiryo, sans-serif;
-  line-height: 1.6;
+  line-height: 1.7;
   color: var(--text-dark);
-  background-color: #fff;
+  background-color: var(--white);
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Container */
-#app {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+/* ========================================
+   Typography
+   ======================================== */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: var(--spacing-sm);
 }
 
-/* Typography */
-h1 {
-  font-size: 2.5rem;
-  color: var(--main-green);
-  margin-bottom: 1rem;
-  font-weight: bold;
+h2 {
+  font-size: 2rem;
+  color: var(--text-dark);
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: var(--text-dark);
+}
+
+h4 {
+  font-size: 1.25rem;
+  color: var(--text-dark);
 }
 
 p {
   font-size: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-light);
 }
 
 a {
   color: var(--main-green);
   text-decoration: none;
-  transition: opacity 0.3s ease;
+  transition: var(--transition);
 }
 
 a:hover {
   opacity: 0.7;
 }
 
-/* Responsive */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ========================================
+   Container & Section Utilities
+   ======================================== */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.section {
+  padding: var(--spacing-xl) 0;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.4;
+}
+
+/* ========================================
+   Buttons
+   ======================================== */
+.btn-primary,
+.btn-secondary {
+  display: inline-block;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: var(--main-green);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background-color: rgba(67, 130, 71, 0.9);
+  opacity: 1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(67, 130, 71, 0.3);
+}
+
+.btn-secondary {
+  background-color: var(--white);
+  color: var(--main-green);
+  border: 2px solid var(--main-green);
+}
+
+.btn-secondary:hover {
+  background-color: var(--main-green);
+  color: var(--white);
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.btn-appstore {
+  display: inline-block;
+  margin-top: var(--spacing-md);
+}
+
+.btn-appstore img {
+  height: 50px;
+  width: auto;
+}
+
+/* ========================================
+   1. Header
+   ======================================== */
+.header {
+  position: sticky;
+  top: 0;
+  background-color: var(--white);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+  padding: var(--spacing-sm) 0;
+}
+
+.header-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo img {
+  height: 40px;
+  width: auto;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.hamburger-menu span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--main-green);
+  transition: var(--transition);
+  border-radius: 2px;
+}
+
+.hamburger-menu:hover span {
+  background-color: rgba(67, 130, 71, 0.7);
+}
+
+/* Navigation Menu */
+.nav-menu {
+  display: block;
+}
+
+.nav-menu ul {
+  list-style: none;
+  display: flex;
+  gap: var(--spacing-lg);
+  align-items: center;
+}
+
+.nav-menu li {
+  display: inline-block;
+}
+
+.nav-menu a {
+  color: var(--text-dark);
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: var(--transition);
+}
+
+.nav-menu a:hover {
+  background-color: var(--bg-light-green);
+  color: var(--main-green);
+  opacity: 1;
+}
+
+/* ========================================
+   2. Hero Section
+   ======================================== */
+.hero {
+  background: linear-gradient(135deg, var(--main-green) 0%, rgba(67, 130, 71, 0.8) 100%);
+  color: var(--white);
+  padding: var(--spacing-xl) 0;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-visual {
+  margin-bottom: var(--spacing-lg);
+  width: 100%;
+  max-width: 600px;
+}
+
+.hero-illustration {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: var(--spacing-xl);
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-placeholder {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.hero-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.app-icon {
+  width: 120px;
+  height: 120px;
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================================
+   3. Description Section
+   ======================================== */
+.section-description {
+  background-color: var(--white);
+}
+
+.description-text {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.description-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: var(--spacing-md);
+}
+
+/* ========================================
+   4. Use Cases Section
+   ======================================== */
+.section-usecases {
+  background-color: var(--bg-light-green);
+}
+
+.user-icons {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  flex-wrap: wrap;
+}
+
+.user-icon {
+  width: 100px;
+  height: 100px;
+  background-color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.user-icon img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.usecases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+.usecase-card {
+  background-color: var(--white);
+  border-radius: 12px;
+  padding: var(--spacing-lg);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.usecase-card h3 {
+  color: var(--main-green);
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+}
+
+.usecase-item {
+  margin-bottom: var(--spacing-lg);
+}
+
+.usecase-item:last-child {
+  margin-bottom: 0;
+}
+
+.usecase-item h4 {
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-dark);
+}
+
+.usecase-item p {
+  font-size: 0.95rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.usecase-item img {
+  width: 100%;
+  border-radius: 8px;
+  margin-top: var(--spacing-sm);
+}
+
+/* ========================================
+   5. Stores Section
+   ======================================== */
+.section-stores {
+  background-color: var(--white);
+}
+
+.store-posters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.poster-item {
+  text-align: center;
+}
+
+.poster-item img {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto var(--spacing-sm);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.poster-item p {
+  font-size: 0.9rem;
+  color: var(--text-light);
+}
+
+.store-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.color-guide {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: var(--bg-light-green);
+  padding: var(--spacing-lg);
+  border-radius: 12px;
+}
+
+.color-guide-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.color-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.color-badge.color-green {
+  background-color: var(--main-green);
+}
+
+.color-badge.color-orange {
+  background-color: var(--theater-orange);
+}
+
+.color-guide-item p {
+  margin: 0;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+/* ========================================
+   6. Press Section
+   ======================================== */
+.section-press {
+  background: linear-gradient(135deg, var(--bg-light-green) 0%, var(--white) 100%);
+  text-align: center;
+}
+
+.press-message {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--main-green);
+  margin-bottom: var(--spacing-lg);
+}
+
+.press-icon {
+  font-size: 4rem;
+  margin-bottom: var(--spacing-lg);
+}
+
+.press-description {
+  max-width: 700px;
+  margin: 0 auto var(--spacing-lg);
+}
+
+.press-description p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+/* ========================================
+   7. News Section
+   ======================================== */
+.section-news {
+  background-color: var(--white);
+  text-align: center;
+}
+
+.sns-icons {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.sns-link {
+  display: inline-block;
+  transition: var(--transition);
+}
+
+.sns-link img {
+  width: 60px;
+  height: 60px;
+  transition: var(--transition);
+}
+
+.sns-link:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* ========================================
+   8. Contact Section
+   ======================================== */
+.section-contact {
+  background-color: var(--bg-light-green);
+}
+
+.contact-description {
+  text-align: center;
+  font-size: 1.05rem;
+  margin-bottom: var(--spacing-xl);
+  color: var(--text-light);
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: var(--white);
+  padding: var(--spacing-lg);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.form-group {
+  margin-bottom: var(--spacing-md);
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+  color: var(--text-dark);
+}
+
+.required {
+  color: #E53935;
+  font-size: 0.85rem;
+  margin-left: 4px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: var(--transition);
+  background-color: var(--white);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--main-green);
+  box-shadow: 0 0 0 3px rgba(67, 130, 71, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-form button[type="submit"] {
+  width: 100%;
+  margin-top: var(--spacing-md);
+}
+
+.form-message {
+  max-width: 600px;
+  margin: var(--spacing-md) auto 0;
+  padding: var(--spacing-md);
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.form-message.success {
+  background-color: #E8F5E9;
+  color: #2E7D32;
+  border: 2px solid #66BB6A;
+}
+
+.form-message.error {
+  background-color: #FFEBEE;
+  color: #C62828;
+  border: 2px solid #EF5350;
+}
+
+/* ========================================
+   9. Footer
+   ======================================== */
+.footer {
+  background-color: var(--text-dark);
+  color: var(--white);
+  padding: var(--spacing-xl) 0 var(--spacing-md);
+}
+
+.footer-logo {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.footer-logo img {
+  height: 40px;
+  width: auto;
+  margin: 0 auto;
+  filter: brightness(0) invert(1);
+}
+
+.footer-nav {
+  margin-bottom: var(--spacing-lg);
+}
+
+.footer-nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+.footer-nav a {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.footer-nav a:hover {
+  color: var(--white);
+  opacity: 1;
+}
+
+.footer-sns {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.footer-sns a {
+  display: inline-block;
+  transition: var(--transition);
+}
+
+.footer-sns img {
+  width: 32px;
+  height: 32px;
+  filter: brightness(0) invert(1);
+  transition: var(--transition);
+}
+
+.footer-sns a:hover img {
+  opacity: 0.7;
+}
+
+.footer-copyright {
+  text-align: center;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-copyright p {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+/* ========================================
+   Responsive Design - Mobile First
+   ======================================== */
+
+/* Tablet: 768px and below */
 @media (max-width: 768px) {
-  h1 {
-    font-size: 2rem;
+  :root {
+    --spacing-lg: 32px;
+    --spacing-xl: 48px;
   }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  /* Header - Show hamburger menu */
+  .hamburger-menu {
+    display: flex;
+  }
+
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--white);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: var(--spacing-md);
+  }
+
+  .nav-menu.active {
+    display: block;
+  }
+
+  .nav-menu ul {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .nav-menu li {
+    display: block;
+    width: 100%;
+  }
+
+  .nav-menu a {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    text-align: center;
+  }
+
+  /* Hero adjustments */
+  .hero {
+    min-height: 60vh;
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  .app-icon {
+    width: 100px;
+    height: 100px;
+  }
+
+  /* Grid adjustments */
+  .usecases-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .store-posters {
+    grid-template-columns: 1fr;
+  }
+
+  .store-links {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .store-links .btn-secondary {
+    width: 100%;
+  }
+
+  /* Footer */
+  .footer-nav ul {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+}
+
+/* Mobile: 480px and below */
+@media (max-width: 480px) {
+  :root {
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .hero-illustration {
+    padding: var(--spacing-lg);
+    min-height: 200px;
+  }
+
+  .user-icons {
+    gap: var(--spacing-md);
+  }
+
+  .user-icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .user-icon img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+  }
+}
+
+/* ========================================
+   Animations & Transitions
+   ======================================== */
+
+/* Fade-in animation for scroll reveal */
+.fade-in-target {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in-target.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Loading animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  animation: spin 1s linear infinite;
+}
+
+/* Pulse animation for interactive elements */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
 }
