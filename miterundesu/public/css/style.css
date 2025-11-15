@@ -588,7 +588,7 @@ img {
 
 .usecases-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--spacing-lg);
   margin-top: var(--spacing-lg);
 }
@@ -598,6 +598,13 @@ img {
   border-radius: 12px;
   padding: var(--spacing-lg);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.usecase-card-full {
+  grid-column: 1 / -1;
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .usecase-card h3 {
