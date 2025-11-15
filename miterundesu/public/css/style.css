@@ -510,7 +510,7 @@ img {
     opacity: 0.4;
   }
   100% {
-    transform: translate(0, 0) scale(1) rotate(180deg);
+    transform: translate(0, 0) scale(1) rotate(0deg);
     opacity: 0.85;
   }
 }
@@ -525,7 +525,7 @@ img {
     opacity: 0.5;
   }
   100% {
-    transform: translate(0, 0) scale(1) rotate(180deg);
+    transform: translate(0, 0) scale(1) rotate(0deg);
     opacity: 0.95;
   }
 }
@@ -540,7 +540,7 @@ img {
     opacity: 0.5;
   }
   100% {
-    transform: translate(0, 0) scale(1) rotate(180deg);
+    transform: translate(0, 0) scale(1) rotate(0deg);
     opacity: 0.95;
   }
 }
@@ -555,7 +555,7 @@ img {
     opacity: 0.4;
   }
   100% {
-    transform: translate(0, 0) scale(1) rotate(180deg);
+    transform: translate(0, 0) scale(1) rotate(0deg);
     opacity: 0.85;
   }
 }
