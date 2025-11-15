@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#F5F5F5"/>
+
+  <!-- Floor -->
+  <rect x="0" y="260" width="400" height="40" fill="#CCC"/>
+
+  <!-- High shelf -->
+  <rect x="50" y="40" width="300" height="80" fill="#E0E0E0" stroke="#999" stroke-width="2"/>
+
+  <!-- Products on high shelf -->
+  <rect x="70" y="55" width="30" height="50" rx="3" fill="#FFB6C1" opacity="0.7"/>
+  <rect x="110" y="55" width="30" height="50" rx="3" fill="#87CEEB" opacity="0.7"/>
+  <rect x="150" y="55" width="30" height="50" rx="3" fill="#90EE90" opacity="0.7"/>
+  <rect x="190" y="55" width="30" height="50" rx="3" fill="#FFD700" opacity="0.7"/>
+  <rect x="230" y="55" width="30" height="50" rx="3" fill="#FF6347" opacity="0.7"/>
+  <rect x="270" y="55" width="30" height="50" rx="3" fill="#DDA0DD" opacity="0.7"/>
+  <rect x="310" y="55" width="30" height="50" rx="3" fill="#F0E68C" opacity="0.7"/>
+
+  <!-- Lower shelf (reachable) -->
+  <rect x="50" y="150" width="300" height="60" fill="#E0E0E0" stroke="#999" stroke-width="2"/>
+  <rect x="70" y="160" width="30" height="40" rx="3" fill="#DEB887" opacity="0.7"/>
+  <rect x="110" y="160" width="30" height="40" rx="3" fill="#98FB98" opacity="0.7"/>
+  <rect x="150" y="160" width="30" height="40" rx="3" fill="#FFE4B5" opacity="0.7"/>
+
+  <!-- Person in wheelchair -->
+  <!-- Wheelchair wheel -->
+  <circle cx="280" cy="240" r="20" fill="none" stroke="#666" stroke-width="3"/>
+  <line x1="260" y1="240" x2="300" y2="240" stroke="#666" stroke-width="1.5"/>
+  <line x1="280" y1="220" x2="280" y2="260" stroke="#666" stroke-width="1.5"/>
+
+  <!-- Small front wheel -->
+  <circle cx="310" cy="250" r="6" fill="none" stroke="#666" stroke-width="2"/>
+
+  <!-- Wheelchair frame -->
+  <path d="M 280 220 L 300 220 L 300 245" stroke="#666" stroke-width="2.5" fill="none"/>
+
+  <!-- Person head -->
+  <circle cx="275" cy="195" r="12" fill="#666"/>
+
+  <!-- Person body -->
+  <rect x="269" y="207" width="12" height="30" rx="2" fill="#666"/>
+
+  <!-- Arm raised with phone -->
+  <line x1="275" y1="210" x2="260" y2="170" stroke="#666" stroke-width="3"/>
+  <rect x="252" y="160" width="16" height="28" rx="3" fill="#333" stroke="#438247" stroke-width="2"/>
+
+  <!-- Signal lines from phone to high shelf -->
+  <path d="M 260 165 Q 200 130, 180 80" stroke="#438247" stroke-width="2" stroke-dasharray="5,5" opacity="0.7"/>
+
+  <!-- Arrow pointing up -->
+  <path d="M 265 180 L 265 150 M 260 155 L 265 150 L 270 155" stroke="#438247" stroke-width="2" opacity="0.7"/>
+
+  <!-- Text label -->
+  <text x="200" y="25" font-family="Arial, sans-serif" font-size="16" fill="#438247" text-anchor="middle" font-weight="bold">
+    車椅子で高い棚の商品を確認
+  </text>
+</svg>
