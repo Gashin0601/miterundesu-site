@@ -205,6 +205,29 @@ img {
   transition: var(--transition);
 }
 
+/* Header Right (App Store + Hamburger) */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.header-appstore {
+  display: inline-block;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.header-appstore:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.header-appstore img {
+  height: 32px;
+  width: auto;
+  display: block;
+}
+
 /* Hamburger Menu */
 .hamburger-menu {
   display: none;
@@ -422,41 +445,6 @@ img {
   }
 }
 
-/* Hero bottom section */
-.hero-bottom {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-md);
-  margin-top: var(--spacing-lg);
-}
-
-.app-icon {
-  width: 120px;
-  height: 120px;
-  border-radius: 24px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease;
-}
-
-.app-icon:hover {
-  transform: scale(1.05);
-}
-
-.btn-appstore {
-  display: inline-block;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.btn-appstore:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
-}
-
-.btn-appstore img {
-  height: 40px;
-  width: auto;
-}
 
 /* ========================================
    3. Description Section
@@ -974,6 +962,11 @@ img {
     text-align: center;
   }
 
+  /* Header adjustments */
+  .header-appstore img {
+    height: 28px;
+  }
+
   /* Hero adjustments */
   .hero {
     min-height: 60vh;
@@ -991,11 +984,6 @@ img {
   .building {
     width: 60px;
     height: 60px;
-  }
-
-  .app-icon {
-    width: 100px;
-    height: 100px;
   }
 
   /* Grid adjustments */
@@ -1033,6 +1021,15 @@ img {
 
   .section-title {
     font-size: 1.5rem;
+  }
+
+  /* Header adjustments */
+  .header-appstore img {
+    height: 24px;
+  }
+
+  .header-right {
+    gap: var(--spacing-sm);
   }
 
   .hero-illustration {
