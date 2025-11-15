@@ -8,6 +8,7 @@
   --bg-light-green: rgba(67, 130, 71, 0.05);
   --bg-light-orange: rgba(233, 123, 42, 0.05);
   --text-dark: #333333;
+  --dark-gray: #2C2C2C;
   --text-light: #666666;
   --border-color: #E0E0E0;
   --white: #FFFFFF;
@@ -230,7 +231,7 @@ img {
 
 /* Hamburger Menu */
 .hamburger-menu {
-  display: none;
+  display: flex;
   flex-direction: column;
   gap: 5px;
   background: none;
@@ -255,7 +256,7 @@ img {
   display: block;
   width: 25px;
   height: 3px;
-  background-color: var(--white);
+  background-color: var(--dark-gray);
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   border-radius: 2px;
   transform-origin: center;
@@ -275,7 +276,7 @@ img {
 }
 
 .hamburger-menu:hover span {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(44, 44, 44, 0.7);
 }
 
 /* Navigation Menu */
@@ -879,16 +880,13 @@ img {
   }
 
   /* Header - Show hamburger menu */
-  .hamburger-menu {
-    display: flex;
-  }
 
   .nav-menu {
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    background-color: var(--white);
+    background-color: var(--sub-green);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     padding: 0;
     max-height: 0;
@@ -907,7 +905,7 @@ img {
     opacity: 1;
     transform: translateY(0);
     padding: var(--spacing-md);
-    border-top: 2px solid var(--white);
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
   }
 
   .nav-menu ul {
