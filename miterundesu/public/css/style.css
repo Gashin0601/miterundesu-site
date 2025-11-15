@@ -173,11 +173,14 @@ img {
   z-index: 1000;
   padding: var(--spacing-sm) 0;
   transition: box-shadow 0.3s ease, padding 0.3s ease;
+}
+
+.header > * {
+  max-width: var(--max-width);
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: var(--max-width);
-  margin: 0 auto;
 }
 
 .header.scrolled {
