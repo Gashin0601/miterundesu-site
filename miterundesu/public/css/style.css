@@ -440,33 +440,33 @@ img {
   opacity: 1;
 }
 
-/* Building positions - circular arrangement */
-.building-top-left {
-  top: 10%;
-  left: 5%;
+/* Building positions - arch formation above hand */
+.building-left {
+  top: 8%;
+  left: 10%;
   animation: float-building 4s ease-in-out infinite;
   animation-delay: 0s;
 }
 
-.building-top-right {
-  top: 10%;
-  right: 5%;
+.building-center-left {
+  top: 0%;
+  left: 35%;
+  animation: float-building 4s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+.building-center-right {
+  top: 0%;
+  right: 35%;
   animation: float-building 4s ease-in-out infinite;
   animation-delay: 1s;
 }
 
-.building-bottom-left {
-  bottom: 10%;
-  left: 5%;
+.building-right {
+  top: 8%;
+  right: 10%;
   animation: float-building 4s ease-in-out infinite;
-  animation-delay: 2s;
-}
-
-.building-bottom-right {
-  bottom: 10%;
-  right: 5%;
-  animation: float-building 4s ease-in-out infinite;
-  animation-delay: 3s;
+  animation-delay: 1.5s;
 }
 
 /* Animations */
@@ -1004,14 +1004,14 @@ img {
     height: 50px;
   }
 
-  .building-top-left,
-  .building-top-right {
-    top: 5%;
+  .building-left,
+  .building-right {
+    top: 10%;
   }
 
-  .building-bottom-left,
-  .building-bottom-right {
-    bottom: 5%;
+  .building-center-left,
+  .building-center-right {
+    top: 2%;
   }
 
   .app-icon {
