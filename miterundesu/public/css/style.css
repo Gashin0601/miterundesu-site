@@ -231,7 +231,7 @@ img {
 
 /* Hamburger Menu */
 .hamburger-menu {
-  display: flex;
+  display: none; /* Hidden on desktop */
   flex-direction: column;
   gap: 5px;
   background: none;
@@ -280,93 +280,55 @@ img {
 }
 
 /* Navigation Menu */
+/* Desktop: Show nav links horizontally */
 .nav-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background-color: var(--dark-gray);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  padding: 0;
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              opacity 0.3s ease,
-              transform 0.3s ease,
-              padding 0.3s ease;
-  border-top: 2px solid transparent;
-}
-
-.nav-menu.active {
-  max-height: 400px;
-  opacity: 1;
-  transform: translateY(0);
-  padding: var(--spacing-md);
-  border-top: 2px solid rgba(255, 255, 255, 0.2);
+  display: block;
 }
 
 .nav-menu ul {
   list-style: none;
   display: flex;
-  flex-direction: column;
-  gap: 0;
-  align-items: stretch;
+  flex-direction: row;
+  gap: var(--spacing-md);
+  align-items: center;
 }
 
 .nav-menu li {
-  display: block;
-  opacity: 0;
-  transform: translateX(-20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  width: 100%;
-}
-
-.nav-menu.active li {
-  animation: slideInMenuItem 0.3s ease forwards;
-}
-
-.nav-menu.active li:nth-child(1) {
-  animation-delay: 0.1s;
-}
-
-.nav-menu.active li:nth-child(2) {
-  animation-delay: 0.15s;
-}
-
-.nav-menu.active li:nth-child(3) {
-  animation-delay: 0.2s;
-}
-
-.nav-menu.active li:nth-child(4) {
-  animation-delay: 0.25s;
-}
-
-.nav-menu.active li:nth-child(5) {
-  animation-delay: 0.3s;
-}
-
-@keyframes slideInMenuItem {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  display: inline-block;
+  opacity: 1;
+  transform: none;
 }
 
 .nav-menu a {
   color: var(--white);
   font-weight: 500;
-  padding: 14px 16px;
+  padding: 10px 16px;
+  border-radius: 6px;
   transition: var(--transition);
-  display: block;
-  width: 100%;
-  text-align: center;
+  position: relative;
+  display: inline-block;
+}
+
+.nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 70%;
+  height: 2px;
+  background-color: var(--white);
+  transition: transform 0.3s ease;
+}
+
+.nav-menu a:hover::after {
+  transform: translateX(-50%) scaleX(1);
 }
 
 .nav-menu a:hover {
   background-color: rgba(255, 255, 255, 0.15);
   color: var(--white);
+  opacity: 1;
 }
 
 .nav-menu a:active {
@@ -996,6 +958,95 @@ img {
   /* Header adjustments */
   .header-appstore img {
     height: 28px;
+  }
+
+  /* Mobile: Show hamburger menu */
+  .hamburger-menu {
+    display: flex;
+  }
+
+  /* Mobile: Hamburger menu dropdown */
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--dark-gray);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s ease,
+                transform 0.3s ease,
+                padding 0.3s ease;
+    border-top: 2px solid transparent;
+  }
+
+  .nav-menu.active {
+    max-height: 400px;
+    opacity: 1;
+    transform: translateY(0);
+    padding: var(--spacing-md);
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .nav-menu ul {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .nav-menu li {
+    display: block;
+    opacity: 0;
+    transform: translateX(-20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+  }
+
+  .nav-menu.active li {
+    animation: slideInMenuItem 0.3s ease forwards;
+  }
+
+  .nav-menu.active li:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+
+  .nav-menu.active li:nth-child(2) {
+    animation-delay: 0.15s;
+  }
+
+  .nav-menu.active li:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+
+  .nav-menu.active li:nth-child(4) {
+    animation-delay: 0.25s;
+  }
+
+  .nav-menu.active li:nth-child(5) {
+    animation-delay: 0.3s;
+  }
+
+  @keyframes slideInMenuItem {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .nav-menu a {
+    display: block;
+    width: 100%;
+    padding: 14px 16px;
+    text-align: center;
+    border-radius: 0;
+  }
+
+  .nav-menu a::after {
+    display: none;
   }
 
   /* Hero adjustments */
