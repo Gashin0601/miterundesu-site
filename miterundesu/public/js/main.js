@@ -17,27 +17,8 @@ function initHamburgerMenu() {
         return;
     }
     hamburgerMenu.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        // Animate hamburger icon
-        const spans = hamburgerMenu.querySelectorAll('span');
-        if (navMenu.classList.contains('active')) {
-            // Transform to X
-            if (spans[0])
-                spans[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
-            if (spans[1])
-                spans[1].style.opacity = '0';
-            if (spans[2])
-                spans[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
-        }
-        else {
-            // Transform back to hamburger
-            if (spans[0])
-                spans[0].style.transform = 'none';
-            if (spans[1])
-                spans[1].style.opacity = '1';
-            if (spans[2])
-                spans[2].style.transform = 'none';
-        }
+        const isActive = navMenu.classList.toggle('active');
+        hamburgerMenu.classList.toggle('active', isActive);
     });
     // Close menu when clicking on a nav link
     const navLinks = navMenu.querySelectorAll('a');
@@ -45,14 +26,7 @@ function initHamburgerMenu() {
         link.addEventListener('click', () => {
             if (window.innerWidth <= 768) {
                 navMenu.classList.remove('active');
-                // Reset hamburger icon
-                const spans = hamburgerMenu.querySelectorAll('span');
-                if (spans[0])
-                    spans[0].style.transform = 'none';
-                if (spans[1])
-                    spans[1].style.opacity = '1';
-                if (spans[2])
-                    spans[2].style.transform = 'none';
+                hamburgerMenu.classList.remove('active');
             }
         });
     });
@@ -62,14 +36,7 @@ function initHamburgerMenu() {
         if (!hamburgerMenu.contains(target) && !navMenu.contains(target)) {
             if (navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
-                // Reset hamburger icon
-                const spans = hamburgerMenu.querySelectorAll('span');
-                if (spans[0])
-                    spans[0].style.transform = 'none';
-                if (spans[1])
-                    spans[1].style.opacity = '1';
-                if (spans[2])
-                    spans[2].style.transform = 'none';
+                hamburgerMenu.classList.remove('active');
             }
         }
     });
@@ -181,17 +148,17 @@ function initHeaderScrollEffect() {
     const header = document.querySelector('.header');
     if (!header)
         return;
-    const scrollThreshold = 10;
+    const scrollThreshold = 50;
     window.addEventListener('scroll', () => {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        // Add shadow when scrolled
+        // Add scrolled class when scrolled past threshold
         if (scrollTop > scrollThreshold) {
-            header.style.boxShadow = '0 2px 12px rgba(0, 0, 0, 0.1)';
+            header.classList.add('scrolled');
         }
         else {
-            header.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.05)';
+            header.classList.remove('scrolled');
         }
-    });
+    }, { passive: true });
 }
 // ========================================
 // Intersection Observer for Fade-in Animations
