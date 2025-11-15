@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ミテルンデス店舗導入のご案内。ポスターをダウンロードして掲示していただくだけで導入完了です。">
+    <title>店舗導入のお申し込み - ミテルンデス</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <div class="header-logo">
+                <a href="/">
+                    <img src="/images/logo/logo-long.svg" alt="ミテルンデス">
+                </a>
+            </div>
+            <div class="header-right">
+                <a href="https://apps.apple.com/jp/app/miterundesu/" class="header-appstore" target="_blank" rel="noopener">
+                    <img src="/images/app-store-badge-ja.svg" alt="App Storeからダウンロード">
+                </a>
+                <button class="hamburger-menu" id="hamburger-menu" aria-label="メニュー">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- ハンバーガーメニュー展開後 -->
+        <nav class="nav-menu" id="nav-menu">
+            <ul>
+                <li><a href="/#about">アプリについて</a></li>
+                <li><a href="/stores">店舗施設</a></li>
+                <li><a href="/press">メディアの方へ</a></li>
+                <li><a href="/#news">ニュース</a></li>
+                <li><a href="/#contact">お問い合わせ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 店舗導入申し込みセクション -->
+        <section class="section section-store-apply">
+            <div class="container">
+                <h1 class="page-title">店舗・施設の方へ<br>ミテルンデス導入のご案内</h1>
+
+                <!-- 導入説明 -->
+                <div class="apply-intro">
+                    <h2>プリントして店舗に貼るだけ</h2>
+                    <p>
+                        ミテルンデスは、弱視・老眼・車椅子の方が安心してご利用いただけるアプリです。<br>
+                        下記のポスターをダウンロードして、店舗内に掲示していただくだけで導入完了です。
+                    </p>
+                </div>
+
+                <!-- ポスターセクション -->
+                <div class="posters-grid">
+                    <!-- グリーンポスター -->
+                    <div class="poster-section green">
+                        <h3>通常モード用ポスター</h3>
+                        <p class="poster-subtitle">スーパー・コンビニ・日常的な店舗向け</p>
+
+                        <div class="poster-preview">
+                            <img src="/images/posters/poster-green-supermarket.jpg" alt="グリーンポスター">
+                        </div>
+
+                        <div class="poster-download">
+                            <a href="/pdfs/miterundesu-poster-green.pdf" class="btn-download green" download>
+                                グリーンポスターをダウンロード (PDF)
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- オレンジポスター -->
+                    <div class="poster-section orange">
+                        <h3>シアターモード用ポスター</h3>
+                        <p class="poster-subtitle">映画館・美術館・劇場向け</p>
+
+                        <div class="poster-preview">
+                            <img src="/images/posters/poster-orange-theater.jpg" alt="オレンジポスター">
+                        </div>
+
+                        <div class="poster-download">
+                            <a href="/pdfs/miterundesu-poster-orange.pdf" class="btn-download orange" download>
+                                オレンジポスターをダウンロード (PDF)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ご連絡フォーム -->
+                <div class="apply-form-section">
+                    <h3>導入いただける場合、可能であればご連絡ください</h3>
+                    <p class="form-intro">
+                        任意ですが、導入状況の把握や今後のサービス向上のため、<br>
+                        ご連絡いただけますと幸いです。
+                    </p>
+
+                    <form class="store-apply-form" id="store-apply-form">
+                        <div class="form-group">
+                            <label for="store-name">店舗・施設名 <span class="required">必須</span></label>
+                            <input type="text" id="store-name" name="store-name" required placeholder="例) ○○スーパー △△店">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="industry">業種 <span class="required">必須</span></label>
+                            <select id="industry" name="industry" required>
+                                <option value="">選択してください</option>
+                                <option value="supermarket">スーパー</option>
+                                <option value="convenience">コンビニ</option>
+                                <option value="theater">映画館</option>
+                                <option value="museum">美術館</option>
+                                <option value="cultural">博物館</option>
+                                <option value="other">その他</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group radio-group">
+                            <label>ポスター種類 <span class="required">必須</span></label>
+                            <div class="radio-options">
+                                <div class="radio-option">
+                                    <label>
+                                        <input type="radio" id="poster-green" name="poster-type" value="green" required>
+                                        グリーン（通常モード）
+                                    </label>
+                                </div>
+                                <div class="radio-option">
+                                    <label>
+                                        <input type="radio" id="poster-orange" name="poster-type" value="orange" required>
+                                        オレンジ（シアターモード）
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="location">所在地 <span class="optional">(任意)</span></label>
+                            <input type="text" id="location" name="location" placeholder="例) 東京都渋谷区...">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="store-email">メールアドレス <span class="optional">(任意)</span></label>
+                            <input type="email" id="store-email" name="store-email" placeholder="store@example.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="store-phone">電話番号 <span class="optional">(任意)</span></label>
+                            <input type="tel" id="store-phone" name="store-phone" placeholder="03-1234-5678">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="store-note">備考 <span class="optional">(任意)</span></label>
+                            <textarea id="store-note" name="store-note" rows="4" placeholder="ご質問やご要望などございましたらご記入ください"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-primary">送信する</button>
+                    </form>
+
+                    <div class="form-message" id="store-form-message" style="display: none;"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-logo">
+                <img src="/images/logo/logo-long.svg" alt="ミテルンデス">
+            </div>
+
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="/#about">アプリについて</a></li>
+                    <li><a href="/stores">店舗施設</a></li>
+                    <li><a href="/press">メディアの方へ</a></li>
+                    <li><a href="/#news">ニュース</a></li>
+                    <li><a href="/#contact">お問い合わせ</a></li>
+                    <li><a href="/privacy">プライバシーポリシー</a></li>
+                    <li><a href="/terms">利用規約</a></li>
+                </ul>
+            </nav>
+
+            <div class="footer-sns">
+                <a href="https://www.instagram.com/miterundesu_jp/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">
+                    <img src="/images/icons/instagram.svg" alt="Instagram">
+                </a>
+                <a href="https://x.com/miterundesu_jp?s=11" target="_blank" rel="noopener">
+                    <img src="/images/icons/x-twitter.svg" alt="X (Twitter)">
+                </a>
+            </div>
+
+            <div class="footer-copyright">
+                <p>&copy; 2024 miterundesu. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+    <script src="/js/store-apply.js"></script>
+</body>
+</html>

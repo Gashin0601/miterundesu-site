@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ミテルンデス対応施設・店舗一覧。弱視・老眼・車椅子の方が安心してご利用いただける店舗を募集中です。">
+    <title>対応施設・店舗一覧 - ミテルンデス</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <div class="header-logo">
+                <a href="/">
+                    <img src="/images/logo/logo-long.svg" alt="ミテルンデス">
+                </a>
+            </div>
+            <div class="header-right">
+                <a href="https://apps.apple.com/jp/app/miterundesu/" class="header-appstore" target="_blank" rel="noopener">
+                    <img src="/images/app-store-badge-ja.svg" alt="App Storeからダウンロード">
+                </a>
+                <button class="hamburger-menu" id="hamburger-menu" aria-label="メニュー">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- ハンバーガーメニュー展開後 -->
+        <nav class="nav-menu" id="nav-menu">
+            <ul>
+                <li><a href="/#about">アプリについて</a></li>
+                <li><a href="/stores">店舗施設</a></li>
+                <li><a href="/press">メディアの方へ</a></li>
+                <li><a href="/#news">ニュース</a></li>
+                <li><a href="/#contact">お問い合わせ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 店舗施設一覧セクション -->
+        <section class="section section-stores-list">
+            <div class="container">
+                <h1 class="page-title">ミテルンデス対応施設・店舗</h1>
+
+                <!-- 現在の状態 -->
+                <div class="empty-state">
+                    <div class="empty-state-icon">🏪</div>
+                    <h2 class="empty-state-title">まだ施設がありません</h2>
+                    <p class="empty-state-description">
+                        現在、ミテルンデスを導入いただいている店舗・施設の登録がございません。<br>
+                        導入いただける店舗様を募集しております。
+                    </p>
+                </div>
+
+                <!-- 店舗募集案内 -->
+                <div class="store-recruitment">
+                    <h3 class="recruitment-title">店舗・施設の方へ</h3>
+                    <p class="recruitment-description">
+                        ミテルンデスの導入をご検討いただける店舗様を募集しています。<br>
+                        ポスターをダウンロードして掲示していただくだけで導入完了です。<br>
+                        下記よりお申し込みください。
+                    </p>
+                    <div class="recruitment-cta">
+                        <a href="/stores/apply" class="btn-primary">店舗導入のお申し込み</a>
+                    </div>
+                </div>
+
+                <!-- 将来的な店舗リスト表示エリア -->
+                <div class="stores-list-placeholder" style="display: none;">
+                    <!-- 将来的にここに店舗リストが表示されます -->
+                    <div class="stores-grid">
+                        <!-- 店舗カードがここに表示される予定 -->
+                    </div>
+                </div>
+
+                <!-- 将来的な地図表示エリア -->
+                <div class="map-placeholder" style="display: none;">
+                    <!-- 将来的にここに地図が表示されます -->
+                    <div id="stores-map" class="stores-map"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-logo">
+                <img src="/images/logo/logo-long.svg" alt="ミテルンデス">
+            </div>
+
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="/#about">アプリについて</a></li>
+                    <li><a href="/stores">店舗施設</a></li>
+                    <li><a href="/press">メディアの方へ</a></li>
+                    <li><a href="/#news">ニュース</a></li>
+                    <li><a href="/#contact">お問い合わせ</a></li>
+                    <li><a href="/privacy">プライバシーポリシー</a></li>
+                    <li><a href="/terms">利用規約</a></li>
+                </ul>
+            </nav>
+
+            <div class="footer-sns">
+                <a href="https://www.instagram.com/miterundesu_jp/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">
+                    <img src="/images/icons/instagram.svg" alt="Instagram">
+                </a>
+                <a href="https://x.com/miterundesu_jp?s=11" target="_blank" rel="noopener">
+                    <img src="/images/icons/x-twitter.svg" alt="X (Twitter)">
+                </a>
+            </div>
+
+            <div class="footer-copyright">
+                <p>&copy; 2024 miterundesu. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
