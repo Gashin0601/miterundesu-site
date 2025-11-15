@@ -450,8 +450,10 @@ img {
 
 /* Building positions - arch formation above hand */
 .building-left {
-  top: 8%;
-  left: 10%;
+  top: 10%;
+  left: 15%;
+  width: 75px;
+  height: 75px;
   /* Entrance animation starting at 1.2s, then float */
   animation: building-enter-left 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.2s forwards,
              float-building 4s ease-in-out 2.2s infinite;
@@ -459,7 +461,9 @@ img {
 
 .building-center-left {
   top: 0%;
-  left: 35%;
+  left: 37%;
+  width: 85px;
+  height: 85px;
   /* Entrance animation starting at 1.35s, then float */
   animation: building-enter-center-left 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.35s forwards,
              float-building 4s ease-in-out 2.35s infinite;
@@ -467,15 +471,19 @@ img {
 
 .building-center-right {
   top: 0%;
-  right: 35%;
+  right: 37%;
+  width: 85px;
+  height: 85px;
   /* Entrance animation starting at 1.5s, then float */
   animation: building-enter-center-right 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.5s forwards,
              float-building 4s ease-in-out 2.5s infinite;
 }
 
 .building-right {
-  top: 8%;
-  right: 10%;
+  top: 10%;
+  right: 15%;
+  width: 75px;
+  height: 75px;
   /* Entrance animation starting at 1.65s, then float */
   animation: building-enter-right 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.65s forwards,
              float-building 4s ease-in-out 2.65s infinite;
@@ -523,11 +531,11 @@ img {
   }
   50% {
     transform: translate(100px, 50px) scale(1.1) rotate(90deg);
-    opacity: 0.5;
+    opacity: 0.4;
   }
   100% {
     transform: translate(0, 0) scale(1) rotate(180deg);
-    opacity: 0.9;
+    opacity: 0.85;
   }
 }
 
@@ -542,7 +550,7 @@ img {
   }
   100% {
     transform: translate(0, 0) scale(1) rotate(180deg);
-    opacity: 0.9;
+    opacity: 0.95;
   }
 }
 
@@ -557,7 +565,7 @@ img {
   }
   100% {
     transform: translate(0, 0) scale(1) rotate(180deg);
-    opacity: 0.9;
+    opacity: 0.95;
   }
 }
 
@@ -568,11 +576,11 @@ img {
   }
   50% {
     transform: translate(-100px, 50px) scale(1.1) rotate(90deg);
-    opacity: 0.5;
+    opacity: 0.4;
   }
   100% {
     transform: translate(0, 0) scale(1) rotate(180deg);
-    opacity: 0.9;
+    opacity: 0.85;
   }
 }
 
@@ -1095,11 +1103,15 @@ img {
   .building-left,
   .building-right {
     top: 10%;
+    width: 45px;
+    height: 45px;
   }
 
   .building-center-left,
   .building-center-right {
     top: 2%;
+    width: 55px;
+    height: 55px;
   }
 
   .app-icon {
