@@ -408,7 +408,12 @@ img {
 .hero-center {
   position: relative;
   z-index: 2;
-  animation: float 3s ease-in-out infinite;
+  /* Start hidden for entrance animation */
+  opacity: 0;
+  transform: scale(0.3) rotate(-10deg);
+  /* Initial entrance animation, then floating */
+  animation: hero-enter 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+             float 3s ease-in-out 1.5s infinite;
 }
 
 .hand-phone {
@@ -431,7 +436,10 @@ img {
   position: absolute;
   width: 80px;
   height: 80px;
-  opacity: 0.9;
+  /* Start hidden for entrance animation */
+  opacity: 0;
+  transform: scale(0);
+  /* Only apply hover transition after entrance */
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
@@ -444,29 +452,33 @@ img {
 .building-left {
   top: 8%;
   left: 10%;
-  animation: float-building 4s ease-in-out infinite;
-  animation-delay: 0s;
+  /* Entrance animation starting at 1.2s, then float */
+  animation: building-enter-left 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.2s forwards,
+             float-building 4s ease-in-out 2.2s infinite;
 }
 
 .building-center-left {
   top: 0%;
   left: 35%;
-  animation: float-building 4s ease-in-out infinite;
-  animation-delay: 0.5s;
+  /* Entrance animation starting at 1.35s, then float */
+  animation: building-enter-center-left 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.35s forwards,
+             float-building 4s ease-in-out 2.35s infinite;
 }
 
 .building-center-right {
   top: 0%;
   right: 35%;
-  animation: float-building 4s ease-in-out infinite;
-  animation-delay: 1s;
+  /* Entrance animation starting at 1.5s, then float */
+  animation: building-enter-center-right 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.5s forwards,
+             float-building 4s ease-in-out 2.5s infinite;
 }
 
 .building-right {
   top: 8%;
   right: 10%;
-  animation: float-building 4s ease-in-out infinite;
-  animation-delay: 1.5s;
+  /* Entrance animation starting at 1.65s, then float */
+  animation: building-enter-right 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.65s forwards,
+             float-building 4s ease-in-out 2.65s infinite;
 }
 
 /* Animations */
@@ -485,6 +497,82 @@ img {
   }
   50% {
     transform: translateY(-10px);
+  }
+}
+
+/* Entrance Animations */
+@keyframes hero-enter {
+  0% {
+    transform: scale(0.3) rotate(-10deg);
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Building entrance animations - emerge from center with rotation and scale */
+@keyframes building-enter-left {
+  0% {
+    transform: translate(200px, 100px) scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(100px, 50px) scale(1.1) rotate(90deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(0, 0) scale(1) rotate(180deg);
+    opacity: 0.9;
+  }
+}
+
+@keyframes building-enter-center-left {
+  0% {
+    transform: translate(100px, 100px) scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(50px, 50px) scale(1.1) rotate(90deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(0, 0) scale(1) rotate(180deg);
+    opacity: 0.9;
+  }
+}
+
+@keyframes building-enter-center-right {
+  0% {
+    transform: translate(-100px, 100px) scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50px, 50px) scale(1.1) rotate(90deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(0, 0) scale(1) rotate(180deg);
+    opacity: 0.9;
+  }
+}
+
+@keyframes building-enter-right {
+  0% {
+    transform: translate(-200px, 100px) scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-100px, 50px) scale(1.1) rotate(90deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(0, 0) scale(1) rotate(180deg);
+    opacity: 0.9;
   }
 }
 
