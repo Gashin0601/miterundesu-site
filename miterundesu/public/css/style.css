@@ -746,7 +746,68 @@ img {
    ======================================== */
 .section-news {
   background-color: var(--white);
+}
+
+.news-list {
+  max-width: 800px;
+  margin: 0 auto var(--spacing-xl);
+}
+
+.news-item {
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  border-bottom: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.news-item:hover {
+  background-color: var(--bg-light-green);
+}
+
+.news-item:last-child {
+  border-bottom: none;
+}
+
+.news-date {
+  flex-shrink: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--main-green);
+  min-width: 100px;
+}
+
+.news-title {
+  flex: 1;
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.news-title a {
+  color: var(--text-dark);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.news-title a:hover {
+  color: var(--main-green);
+  text-decoration: underline;
+}
+
+.news-sns-section {
   text-align: center;
+  padding: var(--spacing-xl);
+  background: linear-gradient(135deg, var(--bg-light-green) 0%, var(--white) 100%);
+  border-radius: 16px;
+}
+
+.sns-follow-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-md);
 }
 
 .sns-icons {
@@ -1583,6 +1644,22 @@ img {
 
   .store-links .btn-secondary {
     width: 100%;
+  }
+
+  /* News adjustments */
+  .news-item {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-md);
+  }
+
+  .news-date {
+    min-width: auto;
+    font-size: 0.85rem;
+  }
+
+  .news-title {
+    font-size: 1rem;
   }
 
   /* Footer */
