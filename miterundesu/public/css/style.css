@@ -187,6 +187,7 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .header-logo {
@@ -280,9 +281,13 @@ img {
 }
 
 /* Navigation Menu */
-/* Desktop: Show nav links horizontally */
+/* Desktop: Show nav links horizontally - centered in header */
 .nav-menu {
   display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .nav-menu ul {
@@ -291,6 +296,8 @@ img {
   flex-direction: row;
   gap: var(--spacing-md);
   align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-menu li {
