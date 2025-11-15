@@ -3,6 +3,7 @@
    ======================================== */
 :root {
   --main-green: #438247;
+  --sub-green: #57A65A;
   --theater-orange: #E97B2A;
   --bg-light-green: rgba(67, 130, 71, 0.05);
   --bg-light-orange: rgba(233, 123, 42, 0.05);
@@ -166,17 +167,15 @@ img {
 .header {
   position: sticky;
   top: 0;
-  background-color: var(--white);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  background-color: var(--sub-green);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   padding: var(--spacing-sm) 0;
   transition: box-shadow 0.3s ease, padding 0.3s ease;
-  backdrop-filter: blur(10px);
-  background-color: rgba(255, 255, 255, 0.98);
 }
 
 .header.scrolled {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   padding: 12px 0;
 }
 
@@ -222,7 +221,7 @@ img {
 }
 
 .hamburger-menu:hover {
-  background-color: var(--bg-light-green);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .hamburger-menu:active {
@@ -233,7 +232,7 @@ img {
   display: block;
   width: 25px;
   height: 3px;
-  background-color: var(--main-green);
+  background-color: var(--white);
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   border-radius: 2px;
   transform-origin: center;
@@ -253,7 +252,7 @@ img {
 }
 
 .hamburger-menu:hover span {
-  background-color: rgba(67, 130, 71, 0.8);
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 /* Navigation Menu */
@@ -273,7 +272,7 @@ img {
 }
 
 .nav-menu a {
-  color: var(--text-dark);
+  color: var(--white);
   font-weight: 500;
   padding: 10px 16px;
   border-radius: 6px;
@@ -290,7 +289,7 @@ img {
   transform: translateX(-50%) scaleX(0);
   width: 70%;
   height: 2px;
-  background-color: var(--main-green);
+  background-color: var(--white);
   transition: transform 0.3s ease;
 }
 
@@ -299,8 +298,8 @@ img {
 }
 
 .nav-menu a:hover {
-  background-color: var(--bg-light-green);
-  color: var(--main-green);
+  background-color: rgba(255, 255, 255, 0.15);
+  color: var(--white);
   opacity: 1;
 }
 
@@ -920,7 +919,7 @@ img {
     opacity: 1;
     transform: translateY(0);
     padding: var(--spacing-md);
-    border-top: 2px solid var(--main-green);
+    border-top: 2px solid var(--white);
   }
 
   .nav-menu ul {
