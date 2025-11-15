@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" fill="none">
+  <!-- Background -->
+  <rect width="400" height="600" fill="#438247"/>
+
+  <!-- White border -->
+  <rect x="20" y="20" width="360" height="560" fill="none" stroke="white" stroke-width="4"/>
+
+  <!-- App Icon Circle -->
+  <circle cx="200" cy="120" r="50" fill="white"/>
+  <text x="200" y="135" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#438247" text-anchor="middle">見</text>
+
+  <!-- App Name -->
+  <text x="200" y="210" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="white" text-anchor="middle">ミテルンデス</text>
+
+  <!-- Main Message -->
+  <text x="200" y="280" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle">このお店では</text>
+  <text x="200" y="315" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="white" text-anchor="middle">拡大して見るための</text>
+  <text x="200" y="350" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="white" text-anchor="middle">カメラアプリが</text>
+  <text x="200" y="385" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="white" text-anchor="middle">使えます</text>
+
+  <!-- Phone Icon -->
+  <rect x="160" y="420" width="80" height="120" rx="10" fill="none" stroke="white" stroke-width="3"/>
+  <circle cx="200" cy="525" r="8" fill="white"/>
+
+  <!-- Description -->
+  <text x="200" y="560" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">撮影禁止エリアでも安心してご利用いただけます</text>
+</svg>
