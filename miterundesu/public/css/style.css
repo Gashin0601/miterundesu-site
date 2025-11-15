@@ -841,6 +841,88 @@ img {
 }
 
 /* ========================================
+   News Detail Page
+   ======================================== */
+.section-news-detail {
+  background-color: var(--white);
+  min-height: 60vh;
+}
+
+.news-detail-header {
+  text-align: center;
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 2px solid var(--border-color);
+  margin-bottom: var(--spacing-xl);
+}
+
+.news-detail-date {
+  display: inline-block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--main-green);
+  margin-bottom: var(--spacing-md);
+}
+
+.news-detail-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.news-detail-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.news-detail-content p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-lg);
+}
+
+.news-detail-content h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--main-green);
+  margin-top: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--bg-light-green);
+}
+
+.news-detail-content ul {
+  margin-bottom: var(--spacing-lg);
+  padding-left: var(--spacing-lg);
+}
+
+.news-detail-content li {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-sm);
+}
+
+.news-detail-content a {
+  color: var(--main-green);
+  text-decoration: underline;
+  transition: var(--transition);
+}
+
+.news-detail-content a:hover {
+  color: #356835;
+}
+
+.news-detail-footer {
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-xl);
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+}
+
+/* ========================================
    8. Contact Section
    ======================================== */
 .section-contact {
