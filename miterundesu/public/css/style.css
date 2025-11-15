@@ -411,9 +411,8 @@ img {
   /* Start hidden for entrance animation */
   opacity: 0;
   transform: scale(0.3) rotate(-10deg);
-  /* Initial entrance animation, then floating */
-  animation: hero-enter 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
-             float 3s ease-in-out 1.5s infinite;
+  /* Initial entrance animation only */
+  animation: hero-enter 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .hand-phone {
@@ -454,9 +453,8 @@ img {
   left: 15%;
   width: 75px;
   height: 75px;
-  /* Entrance animation starting at 1.2s, then float */
-  animation: building-enter-left 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.2s forwards,
-             float-building 4s ease-in-out 2.2s infinite;
+  /* Entrance animation starting at 1.2s */
+  animation: building-enter-left 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.2s forwards;
 }
 
 .building-center-left {
@@ -464,9 +462,8 @@ img {
   left: 37%;
   width: 85px;
   height: 85px;
-  /* Entrance animation starting at 1.35s, then float */
-  animation: building-enter-center-left 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.35s forwards,
-             float-building 4s ease-in-out 2.35s infinite;
+  /* Entrance animation starting at 1.35s */
+  animation: building-enter-center-left 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.35s forwards;
 }
 
 .building-center-right {
@@ -474,9 +471,8 @@ img {
   right: 37%;
   width: 85px;
   height: 85px;
-  /* Entrance animation starting at 1.5s, then float */
-  animation: building-enter-center-right 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.5s forwards,
-             float-building 4s ease-in-out 2.5s infinite;
+  /* Entrance animation starting at 1.5s */
+  animation: building-enter-center-right 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.5s forwards;
 }
 
 .building-right {
@@ -484,28 +480,8 @@ img {
   right: 15%;
   width: 75px;
   height: 75px;
-  /* Entrance animation starting at 1.65s, then float */
-  animation: building-enter-right 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.65s forwards,
-             float-building 4s ease-in-out 2.65s infinite;
-}
-
-/* Animations */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
-}
-
-@keyframes float-building {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  /* Entrance animation starting at 1.65s */
+  animation: building-enter-right 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.65s forwards;
 }
 
 /* Entrance Animations */
