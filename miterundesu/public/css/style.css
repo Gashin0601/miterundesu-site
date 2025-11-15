@@ -638,6 +638,48 @@ img {
   margin-top: var(--spacing-sm);
 }
 
+.usecases-more {
+  text-align: center;
+  margin-top: var(--spacing-xl);
+  padding: var(--spacing-xl);
+}
+
+.usecases-more-icon {
+  margin-bottom: var(--spacing-md);
+}
+
+.plus-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--main-green);
+  border: 3px solid var(--main-green);
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.plus-icon:hover {
+  transform: rotate(90deg) scale(1.1);
+  background-color: var(--bg-light-green);
+}
+
+.usecases-more-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--main-green);
+  margin-bottom: var(--spacing-sm);
+}
+
+.usecases-more-description {
+  font-size: 1.05rem;
+  color: var(--text-light);
+  margin: 0;
+}
+
 /* ========================================
    5. Stores Section
    ======================================== */
