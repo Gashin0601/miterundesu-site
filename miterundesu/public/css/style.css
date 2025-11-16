@@ -877,11 +877,15 @@ img {
 .press-icon {
   font-size: 4rem;
   margin-bottom: var(--spacing-lg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .press-icon img {
   width: 80px;
   height: 80px;
+  display: block;
 }
 
 .press-description {
