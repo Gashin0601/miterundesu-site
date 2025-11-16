@@ -915,7 +915,7 @@ img {
   display: flex;
   gap: var(--spacing-md);
   padding: var(--spacing-lg);
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--main-green);
   transition: var(--transition);
 }
 
@@ -1125,7 +1125,7 @@ img {
 .form-group textarea {
   width: 100%;
   padding: 12px 16px;
-  border: 2px solid var(--border-color);
+  border: 2px solid var(--main-green);
   border-radius: 8px;
   font-size: 1rem;
   font-family: inherit;
