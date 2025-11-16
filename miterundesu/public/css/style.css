@@ -407,8 +407,11 @@ img {
 
 .building {
   position: absolute;
-  width: 80px;
-  height: 80px;
+  width: 62px;
+  height: 62px;
+  /* Center position as base */
+  top: 50%;
+  left: 50%;
   /* Start hidden for entrance animation */
   opacity: 0;
   transform: scale(0);
@@ -417,45 +420,39 @@ img {
 }
 
 .building:hover {
-  transform: scale(1.1);
-  opacity: 1;
+  /* Apply hover on top of final animation state */
+  filter: brightness(1.15);
 }
 
-/* Building positions - arch formation above hand */
-.building-left {
-  top: 10%;
-  left: 15%;
-  width: 75px;
-  height: 75px;
+/* Building positions - circular formation around phone
+   Using translate from center (50%, 50%) to position around the phone */
+
+.building-top-left {
+  /* Position: top-left, ~45deg angle from center */
+  transform: translate(-50%, -50%) translate(-180px, -140px) scale(0);
   /* Entrance animation starting at 1.2s */
-  animation: building-enter-left 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.2s forwards;
+  animation: building-enter-top-left 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.2s forwards;
 }
 
-.building-center-left {
-  top: 0%;
-  left: 37%;
-  width: 85px;
-  height: 85px;
+.building-top-right {
+  /* Position: top-right, ~45deg angle from center */
+  transform: translate(-50%, -50%) translate(180px, -140px) scale(0);
   /* Entrance animation starting at 1.35s */
-  animation: building-enter-center-left 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.35s forwards;
+  animation: building-enter-top-right 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.35s forwards;
 }
 
-.building-center-right {
-  top: 0%;
-  right: 37%;
-  width: 85px;
-  height: 85px;
+.building-bottom-left {
+  /* Position: bottom-left, ~45deg angle from center */
+  transform: translate(-50%, -50%) translate(-180px, 140px) scale(0);
   /* Entrance animation starting at 1.5s */
-  animation: building-enter-center-right 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.5s forwards;
+  animation: building-enter-bottom-left 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.5s forwards;
 }
 
-.building-right {
-  top: 10%;
-  right: 15%;
-  width: 75px;
-  height: 75px;
+.building-bottom-right {
+  /* Position: bottom-right, ~45deg angle from center */
+  transform: translate(-50%, -50%) translate(180px, 140px) scale(0);
   /* Entrance animation starting at 1.65s */
-  animation: building-enter-right 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.65s forwards;
+  animation: building-enter-bottom-right 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 1.65s forwards;
 }
 
 /* Entrance Animations */
@@ -474,63 +471,75 @@ img {
 }
 
 /* Building entrance animations - emerge from center with rotation and scale */
-@keyframes building-enter-left {
+@keyframes building-enter-top-left {
   0% {
-    transform: translate(200px, 100px) scale(0) rotate(0deg);
+    /* Start from center, with scale 0 */
+    transform: translate(-50%, -50%) translate(0, 0) scale(0) rotate(0deg);
     opacity: 0;
   }
   50% {
-    transform: translate(100px, 50px) scale(1.1) rotate(90deg);
-    opacity: 0.4;
-  }
-  100% {
-    transform: translate(0, 0) scale(1) rotate(0deg);
-    opacity: 0.85;
-  }
-}
-
-@keyframes building-enter-center-left {
-  0% {
-    transform: translate(100px, 100px) scale(0) rotate(0deg);
-    opacity: 0;
-  }
-  50% {
-    transform: translate(50px, 50px) scale(1.1) rotate(90deg);
+    /* Midpoint: halfway to final position, scale up with rotation */
+    transform: translate(-50%, -50%) translate(-90px, -70px) scale(1.15) rotate(90deg);
     opacity: 0.5;
   }
   100% {
-    transform: translate(0, 0) scale(1) rotate(0deg);
-    opacity: 0.95;
+    /* Final position: top-left */
+    transform: translate(-50%, -50%) translate(-180px, -140px) scale(1) rotate(0deg);
+    opacity: 0.9;
   }
 }
 
-@keyframes building-enter-center-right {
+@keyframes building-enter-top-right {
   0% {
-    transform: translate(-100px, 100px) scale(0) rotate(0deg);
+    /* Start from center, with scale 0 */
+    transform: translate(-50%, -50%) translate(0, 0) scale(0) rotate(0deg);
     opacity: 0;
   }
   50% {
-    transform: translate(-50px, 50px) scale(1.1) rotate(90deg);
+    /* Midpoint: halfway to final position, scale up with rotation */
+    transform: translate(-50%, -50%) translate(90px, -70px) scale(1.15) rotate(90deg);
     opacity: 0.5;
   }
   100% {
-    transform: translate(0, 0) scale(1) rotate(0deg);
-    opacity: 0.95;
+    /* Final position: top-right */
+    transform: translate(-50%, -50%) translate(180px, -140px) scale(1) rotate(0deg);
+    opacity: 0.9;
   }
 }
 
-@keyframes building-enter-right {
+@keyframes building-enter-bottom-left {
   0% {
-    transform: translate(-200px, 100px) scale(0) rotate(0deg);
+    /* Start from center, with scale 0 */
+    transform: translate(-50%, -50%) translate(0, 0) scale(0) rotate(0deg);
     opacity: 0;
   }
   50% {
-    transform: translate(-100px, 50px) scale(1.1) rotate(90deg);
-    opacity: 0.4;
+    /* Midpoint: halfway to final position, scale up with rotation */
+    transform: translate(-50%, -50%) translate(-90px, 70px) scale(1.15) rotate(90deg);
+    opacity: 0.5;
   }
   100% {
-    transform: translate(0, 0) scale(1) rotate(0deg);
-    opacity: 0.85;
+    /* Final position: bottom-left */
+    transform: translate(-50%, -50%) translate(-180px, 140px) scale(1) rotate(0deg);
+    opacity: 0.9;
+  }
+}
+
+@keyframes building-enter-bottom-right {
+  0% {
+    /* Start from center, with scale 0 */
+    transform: translate(-50%, -50%) translate(0, 0) scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    /* Midpoint: halfway to final position, scale up with rotation */
+    transform: translate(-50%, -50%) translate(90px, 70px) scale(1.15) rotate(90deg);
+    opacity: 0.5;
+  }
+  100% {
+    /* Final position: bottom-right */
+    transform: translate(-50%, -50%) translate(180px, 140px) scale(1) rotate(0deg);
+    opacity: 0.9;
   }
 }
 
@@ -540,6 +549,14 @@ img {
    ======================================== */
 .section-description {
   background-color: var(--white);
+}
+
+.section-description .section-title {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-bottom: var(--spacing-lg);
+  text-align: left;
+  color: var(--main-green);
 }
 
 .description-text {
