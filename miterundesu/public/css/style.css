@@ -689,6 +689,19 @@ img {
   margin-bottom: var(--spacing-md);
 }
 
+.usecases-more-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: var(--spacing-sm);
+}
+
+.usecases-more-description {
+  font-size: 1.05rem;
+  color: var(--white);
+  margin: 0;
+}
+
 .plus-icon {
   display: inline-flex;
   align-items: center;
@@ -706,19 +719,6 @@ img {
 .plus-icon:hover {
   transform: rotate(90deg) scale(1.1);
   background-color: rgba(255, 255, 255, 0.2);
-}
-
-.usecases-more-text {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--white);
-  margin-bottom: var(--spacing-sm);
-}
-
-.usecases-more-description {
-  font-size: 1.05rem;
-  color: var(--white);
-  margin: 0;
 }
 
 /* ========================================
