@@ -760,11 +760,19 @@ img {
   background-color: var(--white);
 }
 
+.store-content {
+  background-color: var(--sub-green);
+  padding: var(--spacing-xl);
+  border-radius: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
 .store-posters {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: var(--spacing-lg);
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: var(--spacing-lg);
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
@@ -772,7 +780,7 @@ img {
 
 .poster-item {
   text-align: center;
-  background-color: var(--sub-green);
+  background-color: var(--white);
   padding: var(--spacing-lg);
   border-radius: 12px;
 }
@@ -787,7 +795,15 @@ img {
 
 .poster-item p {
   font-size: 0.9rem;
-  color: var(--text-light);
+  font-weight: 600;
+}
+
+.poster-item-green p {
+  color: var(--main-green);
+}
+
+.poster-item-orange p {
+  color: var(--theater-orange);
 }
 
 .store-links {
@@ -795,7 +811,6 @@ img {
   flex-wrap: wrap;
   justify-content: center;
   gap: var(--spacing-md);
-  margin-bottom: var(--spacing-xl);
 }
 
 .color-guide {
