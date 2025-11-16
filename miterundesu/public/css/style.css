@@ -813,6 +813,18 @@ img {
   gap: var(--spacing-md);
 }
 
+.store-links .btn-secondary {
+  background-color: transparent;
+  color: var(--white);
+  border: 2px solid var(--white);
+}
+
+.store-links .btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  border-color: var(--white);
+}
+
 .color-guide {
   display: flex;
   flex-direction: column;
