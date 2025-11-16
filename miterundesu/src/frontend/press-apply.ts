@@ -18,22 +18,44 @@ function initPressApplyForm() {
     e.preventDefault();
 
     // Get form data
-    const formData = {
-      name: (document.getElementById('press-name') as HTMLInputElement).value,
-      mediaName: (document.getElementById('media-name') as HTMLInputElement).value,
-      position: (document.getElementById('position') as HTMLInputElement).value,
-      email: (document.getElementById('press-email') as HTMLInputElement).value,
-      phone: (document.getElementById('press-phone') as HTMLInputElement).value,
-      coverageContent: (document.getElementById('coverage-content') as HTMLTextAreaElement).value,
-      publishDate: (document.getElementById('publish-date') as HTMLInputElement).value,
-      pressDuration: (document.getElementById('press-duration') as HTMLSelectElement).value,
-      note: (document.getElementById('press-note') as HTMLTextAreaElement).value
-    };
+    const name = (document.getElementById('press-name') as HTMLInputElement).value;
+    const mediaName = (document.getElementById('media-name') as HTMLInputElement).value;
+    const position = (document.getElementById('position') as HTMLInputElement).value;
+    const email = (document.getElementById('press-email') as HTMLInputElement).value;
+    const phone = (document.getElementById('press-phone') as HTMLInputElement).value;
+    const coverageContent = (document.getElementById('coverage-content') as HTMLTextAreaElement).value;
+    const publishDate = (document.getElementById('publish-date') as HTMLInputElement).value;
+    const pressDuration = (document.getElementById('press-duration') as HTMLSelectElement).value;
+    const note = (document.getElementById('press-note') as HTMLTextAreaElement).value;
 
     // Validate required fields
-    if (!formData.name || !formData.mediaName || !formData.email || !formData.coverageContent || !formData.pressDuration) {
+    if (!name || !mediaName || !email || !coverageContent || !pressDuration) {
       showPressFormMessage('すべての必須項目を入力してください。', 'error');
       return;
+    }
+
+    // Map form data to API format
+    const formData = {
+      mediaName,
+      contactPerson: `${name}${position ? ` (${position})` : ''}`,
+      email,
+      phone,
+      coverageContent,
+      publicationDate: publishDate || undefined,
+      requiredPeriodStart: undefined, // Calculated from pressDuration
+      requiredPeriodEnd: undefined,   // Calculated from pressDuration
+      note
+    };
+
+    // Calculate period from pressDuration (e.g., "7days", "14days", "30days")
+    if (pressDuration) {
+      const days = parseInt(pressDuration.replace('days', ''));
+      const startDate = new Date();
+      const endDate = new Date();
+      endDate.setDate(endDate.getDate() + days);
+
+      formData.requiredPeriodStart = startDate.toISOString().split('T')[0];
+      formData.requiredPeriodEnd = endDate.toISOString().split('T')[0];
     }
 
     // Email validation
@@ -50,18 +72,23 @@ function initPressApplyForm() {
       submitButton.disabled = true;
       submitButton.textContent = '送信中...';
 
-      // TODO: Add API endpoint for form submission
-      // For now, simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Submit to API
+      const response = await fetch('/api/press-application', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
 
-      // Temporary: Log to console (will be replaced with actual API call)
-      console.log('Press apply form submitted:', formData);
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || '送信に失敗しました');
+      }
 
       // Show success message
-      showPressFormMessage(
-        'お申し込みありがとうございます！\n受付完了メールをお送りしました。\n2〜3営業日以内にプレスモードコードをメールにてお送りいたします。',
-        'success'
-      );
+      showPressFormMessage(result.message, 'success');
 
       // Reset form
       pressApplyForm.reset();

@@ -1,6 +1,7 @@
 import express, { Express, Request, Response, NextFunction } from 'express';
 import path from 'path';
 import dotenv from 'dotenv';
+import formsRouter from './api/forms';
 
 // Load environment variables
 dotenv.config();
@@ -22,6 +23,9 @@ app.use((_req: Request, res: Response, next: NextFunction) => {
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
+
+// API Routes
+app.use('/api', formsRouter);
 
 // Routes
 app.get('/', (_req: Request, res: Response) => {

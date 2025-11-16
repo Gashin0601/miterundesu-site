@@ -50,18 +50,23 @@ function initStoreApplyForm() {
       submitButton.disabled = true;
       submitButton.textContent = '送信中...';
 
-      // TODO: Add API endpoint for form submission
-      // For now, simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Submit to API
+      const response = await fetch('/api/store-application', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
 
-      // Temporary: Log to console (will be replaced with actual API call)
-      console.log('Store apply form submitted:', formData);
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || '送信に失敗しました');
+      }
 
       // Show success message
-      showStoreFormMessage(
-        'ご連絡ありがとうございます！\n受付完了メールをお送りしました。\n2〜3営業日以内に担当者よりご連絡させていただきます。',
-        'success'
-      );
+      showStoreFormMessage(result.message, 'success');
 
       // Reset form
       storeApplyForm.reset();
