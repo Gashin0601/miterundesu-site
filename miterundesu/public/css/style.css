@@ -772,7 +772,7 @@ img {
 
 .poster-item {
   text-align: center;
-  background-color: var(--bg-light-green);
+  background-color: var(--sub-green);
   padding: var(--spacing-lg);
   border-radius: 12px;
 }
