@@ -1150,6 +1150,17 @@ img {
   min-height: 120px;
 }
 
+.inquiry-help {
+  margin-top: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  background-color: var(--bg-light-green);
+  border-left: 3px solid var(--main-green);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
 .contact-form button[type="submit"] {
   width: 100%;
   margin-top: var(--spacing-md);
