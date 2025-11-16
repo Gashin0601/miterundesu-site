@@ -859,6 +859,14 @@ img {
   text-align: center;
 }
 
+.press-content {
+  background-color: #F5F5F5;
+  padding: var(--spacing-xl);
+  border-radius: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
 .press-message {
   font-size: 1.5rem;
   font-weight: 600;
