@@ -860,7 +860,7 @@ img {
 }
 
 .press-content {
-  background-color: #F5F5F5;
+  background-color: var(--dark-gray);
   padding: var(--spacing-xl);
   border-radius: 16px;
   max-width: 900px;
