@@ -879,6 +879,11 @@ img {
   margin-bottom: var(--spacing-lg);
 }
 
+.press-icon img {
+  width: 80px;
+  height: 80px;
+}
+
 .press-description {
   max-width: 700px;
   margin: 0 auto var(--spacing-lg);
