@@ -1763,7 +1763,8 @@ img {
 
   /* Header adjustments */
   .header {
-    position: relative;
+    position: sticky;
+    top: 0;
     display: block;
     max-width: none;
     padding: var(--spacing-sm) 0;
