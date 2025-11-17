@@ -242,6 +242,4 @@ if (document.readyState === 'loading') {
 else {
     init();
 }
-// Export for potential use in other modules
-export { init, showFormMessage };
 //# sourceMappingURL=main.js.map
