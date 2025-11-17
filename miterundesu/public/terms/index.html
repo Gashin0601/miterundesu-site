@@ -7,6 +7,14 @@
     <title>利用規約 | ミテルンデス</title>
     <link rel="stylesheet" href="/css/style.css">
     <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex: 1;
+        }
         .policy-container {
             max-width: 800px;
             margin: 0 auto;
@@ -77,6 +85,39 @@
     </style>
 </head>
 <body>
+    <!-- ヘッダー -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <div class="header-logo">
+                <a href="/">
+                    <img src="/images/logo/logo-long.svg" alt="ミテルンデス">
+                </a>
+            </div>
+            <div class="header-right">
+                <a href="https://apps.apple.com/jp/app/miterundesu/" class="header-appstore" target="_blank" rel="noopener">
+                    <img src="/images/app-store-badge-ja.svg" alt="App Storeからダウンロード">
+                </a>
+                <button class="hamburger-menu" id="hamburger-menu" aria-label="メニュー">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- ハンバーガーメニュー展開後 -->
+        <nav class="nav-menu" id="nav-menu">
+            <ul>
+                <li><a href="/#about">アプリについて</a></li>
+                <li><a href="/stores">店舗施設</a></li>
+                <li><a href="/press">メディアの方へ</a></li>
+                <li><a href="/#news">ニュース</a></li>
+                <li><a href="/#contact">お問い合わせ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
     <div class="policy-container">
         <h1 class="policy-title">利用規約</h1>
         <p class="policy-updated">最終更新日：2025年1月17日</p>
@@ -312,5 +353,42 @@
             <a href="/">← トップページに戻る</a>
         </div>
     </div>
+    </main>
+
+    <!-- フッター -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-logo">
+                <img src="/images/logo/logo-long.svg" alt="ミテルンデス">
+            </div>
+
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="/#about">アプリについて</a></li>
+                    <li><a href="/stores">店舗施設</a></li>
+                    <li><a href="/press">メディアの方へ</a></li>
+                    <li><a href="/#news">ニュース</a></li>
+                    <li><a href="/#contact">お問い合わせ</a></li>
+                    <li><a href="/privacy">プライバシーポリシー</a></li>
+                    <li><a href="/terms">利用規約</a></li>
+                </ul>
+            </nav>
+
+            <div class="footer-sns">
+                <a href="https://www.instagram.com/miterundesu_jp/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">
+                    <img src="/images/icons/instagram.svg" alt="Instagram">
+                </a>
+                <a href="https://x.com/miterundesu_jp?s=11" target="_blank" rel="noopener">
+                    <img src="/images/icons/x-twitter.svg" alt="X (Twitter)">
+                </a>
+            </div>
+
+            <div class="footer-copyright">
+                <p>&copy; 2024 miterundesu. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
 </body>
 </html>
