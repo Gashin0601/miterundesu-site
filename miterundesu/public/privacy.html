@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ミテルンデス - プライバシーポリシー">
+    <title>プライバシーポリシー | ミテルンデス</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .policy-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .policy-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--main-green);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .policy-updated {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 40px;
+        }
+        .policy-section {
+            margin-bottom: 40px;
+        }
+        .policy-section h2 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--main-green);
+        }
+        .policy-section h3 {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin: 24px 0 12px 0;
+        }
+        .policy-section p, .policy-section ul, .policy-section ol {
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+        .policy-section ul, .policy-section ol {
+            padding-left: 24px;
+        }
+        .policy-section li {
+            margin-bottom: 8px;
+        }
+        .highlight-box {
+            background-color: var(--bg-light-green);
+            border-left: 4px solid var(--main-green);
+            padding: 16px;
+            margin: 20px 0;
+        }
+        .back-link {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .back-link a {
+            color: var(--main-green);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="policy-container">
+        <h1 class="policy-title">プライバシーポリシー</h1>
+        <p class="policy-updated">最終更新日：2025年1月17日</p>
+
+        <div class="policy-section">
+            <h2>1. 基本方針</h2>
+            <p>ミテルンデス（以下「本アプリ」）は、ユーザーのプライバシーを最重要視し、必要最小限のデータのみを収集する設計となっています。本アプリは「見るため」のカメラアプリであり、撮影や録画を目的としていません。</p>
+
+            <div class="highlight-box">
+                <strong>重要なポイント：</strong>
+                <ul>
+                    <li>撮影した画像は10分後に自動的に削除されます</li>
+                    <li>すべてのデータは端末内にのみ保存され、クラウドにアップロードされません</li>
+                    <li>画像の共有、保存、スクリーンショットは技術的に防止されています</li>
+                    <li>ユーザー追跡や行動分析は一切行いません</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="policy-section">
+            <h2>2. 収集する情報</h2>
+
+            <h3>2.1 カメラ映像</h3>
+            <p>本アプリはカメラ機能を使用しますが、映像はリアルタイム処理のみに使用され、保存されません。一時的に撮影した画像のみが端末内に保存されます。</p>
+
+            <h3>2.2 撮影画像</h3>
+            <p>ユーザーが撮影ボタンを押した場合のみ、以下の処理が行われます：</p>
+            <ul>
+                <li>画像はJPEG形式で圧縮され、端末内のCoreDataに保存されます</li>
+                <li>画像には透かし（タイムスタンプとデバイスID）が埋め込まれます</li>
+                <li>画像は撮影時刻から<strong>正確に10分後</strong>に自動的に削除されます</li>
+                <li>アプリを再起動しても、10分の削除タイマーは継続されます</li>
+            </ul>
+
+            <h3>2.3 デバイス識別子</h3>
+            <p>以下の目的でのみ、デバイスのUUID（identifierForVendor）を使用します：</p>
+            <ul>
+                <li><strong>透かし機能：</strong>撮影画像に6文字の短縮IDを埋め込み、万が一画像が流出した場合に特定できるようにします</li>
+                <li><strong>プレスモード：</strong>報道関係者や開発者がプレスモードを申請する際の端末認証に使用します</li>
+            </ul>
+            <p>このUUIDは、アプリをアンインストールすると自動的にリセットされます。他のアプリや第三者と共有されることはありません。</p>
+
+            <h3>2.4 アプリ設定</h3>
+            <p>以下の設定情報がUserDefaults（端末内）に保存されます：</p>
+            <ul>
+                <li>最大ズーム倍率（デフォルト：100倍）</li>
+                <li>表示言語（日本語または英語）</li>
+                <li>シアターモードの有効/無効</li>
+                <li>プレスモードの有効/無効</li>
+                <li>カスタムスクロールメッセージ</li>
+                <li>チュートリアル完了フラグ</li>
+            </ul>
+
+            <h3>2.5 収集しない情報</h3>
+            <p>本アプリは以下の情報を一切収集しません：</p>
+            <ul>
+                <li>個人情報（氏名、メールアドレス、電話番号など）</li>
+                <li>位置情報</li>
+                <li>広告識別子（IDFA）</li>
+                <li>使用状況の分析データ</li>
+                <li>連絡先、カレンダー、その他の端末データ</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2>3. 情報の利用目的</h2>
+
+            <h3>3.1 カメラ映像</h3>
+            <p>リアルタイムで画面に表示し、拡大鏡機能を提供するためにのみ使用します。保存や送信は行いません。</p>
+
+            <h3>3.2 撮影画像</h3>
+            <p>ユーザーが一時的に画像を確認できるようにするため、最大10分間保存します。それ以外の用途には使用しません。</p>
+
+            <h3>3.3 デバイスID</h3>
+            <ul>
+                <li>透かしとして画像に埋め込み、流出時の特定に使用</li>
+                <li>プレスモードの端末認証に使用（オプション機能）</li>
+            </ul>
+
+            <h3>3.4 アプリ設定</h3>
+            <p>ユーザーの好みに合わせたアプリ体験を提供するために使用します。</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>4. 情報の保存場所と期間</h2>
+
+            <h3>4.1 ローカルストレージ（端末内）</h3>
+            <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+                <tr style="background-color: var(--bg-light-green);">
+                    <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">データ種類</th>
+                    <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">保存場所</th>
+                    <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">保存期間</th>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 12px;">撮影画像</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">CoreData</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">最大10分間</td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 12px;">デバイスID</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">UserDefaults</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">アプリアンインストールまで</td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 12px;">アプリ設定</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">UserDefaults</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">リセットまたはアンインストールまで</td>
+                </tr>
+            </table>
+
+            <h3>4.2 クラウドストレージ</h3>
+            <p><strong>本アプリはクラウドストレージを使用しません。</strong>すべてのデータは端末内にのみ保存されます。</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>5. 第三者への情報提供</h2>
+
+            <h3>5.1 Supabase（プレスモード認証のみ）</h3>
+            <p>プレスモード機能を利用する場合のみ、以下の情報がSupabaseサーバーに送信されます：</p>
+            <ul>
+                <li>デバイスID（UUID）</li>
+                <li>アクセスコード（ユーザーが入力）</li>
+            </ul>
+            <p><strong>送信目的：</strong>報道関係者や開発者の認証を行うため</p>
+            <p><strong>送信タイミング：</strong></p>
+            <ul>
+                <li>プレスモードの有効性チェック（アプリ起動時）</li>
+                <li>アクセスコード入力時</li>
+            </ul>
+            <p><strong>Supabaseのプライバシーポリシー：</strong><a href="https://supabase.com/privacy" target="_blank">https://supabase.com/privacy</a></p>
+
+            <h3>5.2 その他の第三者</h3>
+            <p>本アプリは以下のサービスを使用しません：</p>
+            <ul>
+                <li>広告ネットワーク</li>
+                <li>アナリティクスサービス（Google Analytics、Firebaseなど）</li>
+                <li>ソーシャルメディアSDK</li>
+                <li>クラッシュレポートサービス</li>
+                <li>その他のデータ収集サービス</li>
+            </ul>
+            <p><strong>画像データは一切外部に送信されません。</strong></p>
+        </div>
+
+        <div class="policy-section">
+            <h2>6. セキュリティ対策</h2>
+
+            <h3>6.1 スクリーンショット防止</h3>
+            <p>画像の不正な保存を防ぐため、以下の技術的対策を実施しています：</p>
+            <ul>
+                <li>セキュアテキスト入力フィールド技術による画面保護</li>
+                <li>スクリーンショット検知機能（検知時に画面を即座に非表示）</li>
+                <li>コンテキストメニュー無効化（長押し保存の防止）</li>
+            </ul>
+
+            <h3>6.2 画面録画検知</h3>
+            <p>画面録画を即座に検知し、以下の対策を実施します：</p>
+            <ul>
+                <li>0.1秒ごとの高頻度ポーリング監視</li>
+                <li>iOS 18+の最新検知API対応</li>
+                <li>検知時にカメラプレビューをぼかし処理</li>
+                <li>警告バナー表示</li>
+            </ul>
+
+            <h3>6.3 透かし（ウォーターマーク）</h3>
+            <p>すべての撮影画像には以下の情報が埋め込まれます：</p>
+            <ul>
+                <li>撮影日時（YYYY/MM/DD HH:mm形式）</li>
+                <li>デバイスID（6文字の短縮形式）</li>
+            </ul>
+            <p>この透かしは画像のピクセルデータに焼き付けられ、削除できません。</p>
+
+            <h3>6.4 自動削除機能</h3>
+            <p>撮影から10分経過すると、以下の処理が自動的に実行されます：</p>
+            <ul>
+                <li>メモリからの削除</li>
+                <li>CoreDataからの完全削除</li>
+                <li>復元不可能な状態にする</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2>7. ユーザーの権利</h2>
+
+            <h3>7.1 画像の削除</h3>
+            <p>ユーザーはいつでも以下の方法で画像を削除できます：</p>
+            <ul>
+                <li>ギャラリービューから個別に削除</li>
+                <li>10分待つと自動削除</li>
+                <li>設定リセットによる一括削除</li>
+            </ul>
+
+            <h3>7.2 設定のリセット</h3>
+            <p>設定画面から「設定をリセット」を選択することで、すべての設定をデフォルト値に戻すことができます。</p>
+
+            <h3>7.3 データの完全削除</h3>
+            <p>アプリをアンインストールすることで、すべてのローカルデータ（画像、設定、デバイスID）が完全に削除されます。</p>
+
+            <h3>7.4 プレスモードの無効化</h3>
+            <p>プレスモードはいつでも設定画面から無効化できます。</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>8. 特別な機能</h2>
+
+            <h3>8.1 シアターモード</h3>
+            <p>映画館や美術館など、静かな場所での使用を想定した機能です：</p>
+            <ul>
+                <li>撮影機能が完全に無効化されます</li>
+                <li>15秒間操作がないとUIが自動的に隠れます</li>
+                <li>画面タップで一時的にUIを表示できます</li>
+            </ul>
+
+            <h3>8.2 プレスモード</h3>
+            <p>報道関係者や開発者向けの特別モードです：</p>
+            <ul>
+                <li>スクリーンショットと画面録画の制限が解除されます</li>
+                <li>利用には事前申請と承認が必要です</li>
+                <li>デバイスIDとアクセスコードによる認証が必要です</li>
+                <li>有効期限が設定され、期限切れ後は自動的に無効化されます</li>
+                <li>運営側が遠隔で無効化することができます</li>
+            </ul>
+            <p><strong>プレスモードの申請：</strong>info@miterundesu.jp までお問い合わせください。</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>9. お子様のプライバシー</h2>
+            <p>本アプリは13歳未満のお子様を対象としていません。13歳未満のお子様の個人情報を故意に収集することはありません。</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>10. プライバシーポリシーの変更</h2>
+            <p>本プライバシーポリシーを変更する場合は、本ページで通知します。重要な変更がある場合は、アプリ内でも通知します。</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>11. お問い合わせ</h2>
+            <p>本プライバシーポリシーに関するご質問やご不明な点がございましたら、以下までお問い合わせください：</p>
+            <p><strong>メール：</strong>info@miterundesu.jp<br>
+            <strong>ウェブサイト：</strong><a href="https://miterundesu.jp">https://miterundesu.jp</a></p>
+        </div>
+
+        <div class="back-link">
+            <a href="/">← トップページに戻る</a>
+        </div>
+    </div>
+</body>
+</html>
