@@ -1760,9 +1760,11 @@ img {
 
   /* Header adjustments */
   .header {
+    position: relative;
     display: block;
     max-width: none;
     padding: var(--spacing-sm) 0;
+    overflow: visible;
   }
 
   .header-container {
@@ -1782,6 +1784,7 @@ img {
 
   /* Mobile: Hamburger menu dropdown */
   .nav-menu {
+    display: block;
     position: absolute;
     top: 100%;
     left: 0;
@@ -1792,17 +1795,21 @@ img {
     max-height: 0;
     overflow: hidden;
     opacity: 0;
+    visibility: hidden;
     transform: translateY(-10px);
     transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
                 opacity 0.3s ease,
                 transform 0.3s ease,
-                padding 0.3s ease;
+                padding 0.3s ease,
+                visibility 0.3s ease;
     border-top: 2px solid transparent;
+    z-index: 1001;
   }
 
   .nav-menu.active {
     max-height: 400px;
     opacity: 1;
+    visibility: visible;
     transform: translateY(0);
     padding: var(--spacing-md);
     border-top: 2px solid rgba(255, 255, 255, 0.2);

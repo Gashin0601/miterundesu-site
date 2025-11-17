@@ -29,7 +29,8 @@ function initHamburgerMenu(): void {
     return;
   }
 
-  hamburgerMenu.addEventListener('click', () => {
+  hamburgerMenu.addEventListener('click', (e: MouseEvent) => {
+    e.stopPropagation();
     const isActive = navMenu.classList.toggle('active');
     hamburgerMenu.classList.toggle('active', isActive);
   });
@@ -85,6 +86,46 @@ function initSmoothScrolling(): void {
         });
       }
     });
+  });
+}
+
+// ========================================
+// Inquiry Type Helper
+// ========================================
+function initInquiryTypeHelper(): void {
+  const inquiryType = document.getElementById('inquiry-type') as HTMLSelectElement | null;
+  const inquiryHelp = document.getElementById('inquiry-help');
+  const messageTextarea = document.getElementById('message') as HTMLTextAreaElement | null;
+
+  if (!inquiryType || !inquiryHelp || !messageTextarea) {
+    return;
+  }
+
+  const helpTexts: Record<string, string> = {
+    press: '取材・プレス関係のお問い合わせの場合は、専用のプレスモード申請ページをご用意しております。媒体名、取材内容、掲載予定日などをお知らせください。',
+    store: '店舗・施設への導入をご検討の場合は、専用の導入申し込みページをご用意しております。店舗名、所在地、導入予定時期などをお知らせください。',
+    usage: 'アプリの使い方に関する質問は、できるだけ具体的にお書きください。どの機能を使用中に問題が発生したか、エラーメッセージがあればその内容などをお知らせください。',
+    other: 'その他のお問い合わせについては、できるだけ詳しくお書きください。'
+  };
+
+  const placeholders: Record<string, string> = {
+    press: '媒体名：\n取材内容：\n掲載予定日：\nプレスモードが必要な理由：',
+    store: '店舗名：\n所在地：\n業種：\n導入予定時期：\n導入を検討されている理由：',
+    usage: '発生している問題：\n使用中の機能：\nエラーメッセージ（あれば）：\n端末情報（iOSバージョンなど）：',
+    other: 'お問い合わせ内容をご記入ください'
+  };
+
+  inquiryType.addEventListener('change', () => {
+    const selectedType = inquiryType.value;
+
+    if (selectedType && helpTexts[selectedType]) {
+      inquiryHelp.textContent = helpTexts[selectedType];
+      inquiryHelp.style.display = 'block';
+      messageTextarea.placeholder = placeholders[selectedType] || 'お問い合わせ内容をご記入ください';
+    } else {
+      inquiryHelp.style.display = 'none';
+      messageTextarea.placeholder = 'お問い合わせ内容をご記入ください';
+    }
   });
 }
 
@@ -233,6 +274,7 @@ function init(): void {
   // Initialize all interactive features
   initHamburgerMenu();
   initSmoothScrolling();
+  initInquiryTypeHelper();
   initContactForm();
   initHeaderScrollEffect();
   initScrollAnimations();
