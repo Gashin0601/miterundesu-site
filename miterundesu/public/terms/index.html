@@ -106,11 +106,31 @@
         </div>
 
         <!-- ハンバーガーメニュー展開後 -->
+        <!-- ハンバーガーメニュー展開後 -->
         <nav class="nav-menu" id="nav-menu">
             <ul>
                 <li><a href="/#about">アプリについて</a></li>
-                <li><a href="/stores">店舗施設</a></li>
-                <li><a href="/press">メディアの方へ</a></li>
+                <li class="menu-item-expandable">
+                    <button type="button">
+                        <span>店舗施設</span>
+                        <span class="expand-icon">▼</span>
+                    </button>
+                    <ul class="submenu">
+                        <li><a href="/#stores">概要を見る</a></li>
+                        <li><a href="/stores">店舗一覧</a></li>
+                        <li><a href="/stores/apply">導入申し込み</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-expandable">
+                    <button type="button">
+                        <span>メディアの方へ</span>
+                        <span class="expand-icon">▼</span>
+                    </button>
+                    <ul class="submenu">
+                        <li><a href="/#press">概要を見る</a></li>
+                        <li><a href="/press">詳細・申し込み</a></li>
+                    </ul>
+                </li>
                 <li><a href="/#news">ニュース</a></li>
                 <li><a href="/#contact">お問い合わせ</a></li>
             </ul>

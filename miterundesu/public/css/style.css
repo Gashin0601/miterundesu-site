@@ -377,6 +377,72 @@ img {
 }
 
 /* ========================================
+   1.5 Breadcrumb Navigation
+   ======================================== */
+.breadcrumb {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.breadcrumb-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.breadcrumb-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.breadcrumb-item a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumb-item a:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+  color: var(--white);
+  font-weight: 500;
+}
+
+.breadcrumb-separator {
+  color: rgba(255, 255, 255, 0.4);
+  user-select: none;
+}
+
+/* Hide breadcrumb on main page */
+body:not(.subpage) .breadcrumb {
+  display: none;
+}
+
+/* Subpage header styles - Show hamburger on desktop, hide nav menu */
+.subpage .nav-menu {
+  display: none !important;
+}
+
+.subpage .hamburger-menu {
+  display: flex !important;
+}
+
+/* ========================================
    2. Hero Section
    ======================================== */
 .hero {
@@ -1903,6 +1969,82 @@ img {
   .nav-menu a:hover {
     background-color: rgba(255, 255, 255, 0.1);
     transform: translateX(8px);
+  }
+
+  /* Expandable menu items */
+  .nav-menu .menu-item-expandable {
+    position: relative;
+  }
+
+  .nav-menu .menu-item-expandable > button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px 24px;
+    text-align: left;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    background: none;
+    border: none;
+    color: var(--white);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .nav-menu .menu-item-expandable > button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .nav-menu .menu-item-expandable .expand-icon {
+    transition: transform 0.3s ease;
+    font-size: 1.2rem;
+  }
+
+  .nav-menu .menu-item-expandable.expanded .expand-icon {
+    transform: rotate(180deg);
+  }
+
+  .nav-menu .submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s ease;
+    opacity: 0;
+    padding-left: 24px;
+  }
+
+  .nav-menu .menu-item-expandable.expanded .submenu {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 8px;
+  }
+
+  .nav-menu .submenu li {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    margin-bottom: 4px;
+  }
+
+  .nav-menu .submenu a {
+    font-size: 1.1rem;
+    font-weight: 400;
+    padding: 12px 20px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .nav-menu .submenu a:hover {
+    color: var(--white);
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .nav-menu .submenu a::before {
+    content: '→';
+    margin-right: 8px;
+    opacity: 0.5;
   }
 
   /* Hero adjustments */
