@@ -1916,7 +1916,11 @@ body:not(.subpage) .breadcrumb {
     transform: translateY(30px);
     border-bottom: none;
     width: 100%;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
+  }
+
+  .nav-menu li:last-child {
+    margin-bottom: 0;
   }
 
   .nav-menu.active li {
@@ -1993,6 +1997,7 @@ body:not(.subpage) .breadcrumb {
   /* Expandable menu items */
   .nav-menu .menu-item-expandable {
     position: relative;
+    margin-bottom: 12px;
   }
 
   .nav-menu .menu-item-expandable > button {
@@ -2011,15 +2016,36 @@ body:not(.subpage) .breadcrumb {
     color: var(--white);
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+  }
+
+  .nav-menu .menu-item-expandable > button::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) scaleX(0);
+    width: 4px;
+    height: 60%;
+    background-color: var(--main-green);
+    border-radius: 0 4px 4px 0;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: left;
   }
 
   .nav-menu .menu-item-expandable > button:hover {
     background-color: rgba(255, 255, 255, 0.1);
   }
 
+  .nav-menu .menu-item-expandable > button:hover::before {
+    transform: translateY(-50%) scaleX(1);
+  }
+
   .nav-menu .menu-item-expandable .expand-icon {
     transition: transform 0.3s ease;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    opacity: 0.7;
+    margin-left: 8px;
   }
 
   .nav-menu .menu-item-expandable.expanded .expand-icon {
@@ -2030,40 +2056,50 @@ body:not(.subpage) .breadcrumb {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.3s ease;
+                opacity 0.3s ease,
+                margin 0.3s ease;
     opacity: 0;
-    padding-left: 24px;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
   }
 
   .nav-menu .menu-item-expandable.expanded .submenu {
     max-height: 500px;
     opacity: 1;
-    margin-top: 8px;
+    margin-top: 12px;
+    padding: 8px 0;
   }
 
   .nav-menu .submenu li {
     opacity: 1;
     transform: none;
     animation: none;
-    margin-bottom: 4px;
+    margin-bottom: 0;
   }
 
   .nav-menu .submenu a {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 400;
-    padding: 12px 20px;
-    color: rgba(255, 255, 255, 0.8);
+    padding: 14px 24px 14px 36px;
+    color: rgba(255, 255, 255, 0.85);
+    border-radius: 8px;
+    margin: 0 8px;
+    display: block;
   }
 
   .nav-menu .submenu a:hover {
     color: var(--white);
-    background-color: rgba(255, 255, 255, 0.08);
+    background-color: rgba(255, 255, 255, 0.12);
+    transform: translateX(4px);
   }
 
   .nav-menu .submenu a::before {
     content: '→';
-    margin-right: 8px;
-    opacity: 0.5;
+    margin-right: 10px;
+    opacity: 0.6;
+    font-size: 0.9rem;
   }
 
   /* Hero adjustments */
