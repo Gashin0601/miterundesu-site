@@ -397,6 +397,18 @@ img {
   transform: scale(0.97);
 }
 
+/* Active menu item styling */
+.nav-menu a.active {
+  background-color: rgba(67, 130, 71, 0.2);
+  color: var(--white);
+  font-weight: 600;
+}
+
+.nav-menu a.active::after {
+  transform: translateX(-50%) scaleX(1);
+  background-color: var(--main-green);
+}
+
 /* ========================================
    1.5 Breadcrumb Navigation
    ======================================== */
@@ -1991,6 +2003,30 @@ body:not(.subpage) .breadcrumb {
 
   .nav-menu a:hover {
     background-color: rgba(255, 255, 255, 0.1);
+    transform: translateX(8px);
+  }
+
+  /* Active menu item - Mobile */
+  .nav-menu a.active {
+    background-color: rgba(67, 130, 71, 0.25);
+    color: var(--white);
+    font-weight: 700;
+  }
+
+  .nav-menu a.active::before {
+    transform: translateY(-50%) scaleX(1);
+    background-color: var(--main-green);
+    width: 5px;
+  }
+
+  .nav-menu .menu-item-expandable > button.active {
+    background-color: rgba(67, 130, 71, 0.15);
+    font-weight: 700;
+  }
+
+  .nav-menu .submenu a.active {
+    background-color: rgba(67, 130, 71, 0.3);
+    font-weight: 600;
     transform: translateX(8px);
   }
 

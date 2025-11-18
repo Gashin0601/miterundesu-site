@@ -266,6 +266,96 @@ function initScrollAnimations(): void {
 }
 
 // ========================================
+// Active Menu Item Highlighting
+// ========================================
+function initActiveMenu() {
+  const currentPath = window.location.pathname;
+  const currentHash = window.location.hash;
+
+  // Function to set active menu item
+  function setActiveMenuItem(selector: string) {
+    // Remove all active classes
+    document.querySelectorAll('.nav-menu a, .nav-menu button').forEach(item => {
+      item.classList.remove('active');
+    });
+
+    // Add active class to current item
+    const activeItem = document.querySelector(selector);
+    if (activeItem) {
+      activeItem.classList.add('active');
+
+      // If it's in a submenu, also mark the parent as active
+      const parentExpandable = activeItem.closest('.menu-item-expandable');
+      if (parentExpandable) {
+        const parentButton = parentExpandable.querySelector('button');
+        if (parentButton) {
+          parentButton.classList.add('active');
+          parentExpandable.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  // For subpages, highlight based on current path
+  if (currentPath !== '/') {
+    if (currentPath.startsWith('/press')) {
+      setActiveMenuItem('.nav-menu a[href="/press"], .nav-menu a[href="/#press"]');
+    } else if (currentPath.startsWith('/stores')) {
+      setActiveMenuItem('.nav-menu a[href="/stores"]');
+    } else if (currentPath.startsWith('/privacy')) {
+      setActiveMenuItem('.nav-menu a[href="/privacy"]');
+    } else if (currentPath.startsWith('/terms')) {
+      setActiveMenuItem('.nav-menu a[href="/terms"]');
+    } else if (currentPath.startsWith('/news')) {
+      setActiveMenuItem('.nav-menu a[href="/#news"]');
+    }
+    return;
+  }
+
+  // For main page, highlight based on scroll position and hash
+  const sections = document.querySelectorAll('section[id]');
+
+  // Initial highlight based on hash
+  if (currentHash) {
+    setActiveMenuItem(`.nav-menu a[href="${currentHash}"]`);
+  } else {
+    setActiveMenuItem('.nav-menu a[href="#about"]');
+  }
+
+  // Update on scroll
+  const observerOptions = {
+    threshold: 0.3,
+    rootMargin: '-20% 0px -60% 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const sectionId = entry.target.getAttribute('id');
+        if (sectionId) {
+          setActiveMenuItem(`.nav-menu a[href="#${sectionId}"]`);
+
+          // Update URL hash without scrolling
+          if (history.replaceState) {
+            history.replaceState(null, '', `#${sectionId}`);
+          }
+        }
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach(section => observer.observe(section));
+
+  // Update on hash change
+  window.addEventListener('hashchange', () => {
+    const newHash = window.location.hash;
+    if (newHash) {
+      setActiveMenuItem(`.nav-menu a[href="${newHash}"]`);
+    }
+  });
+}
+
+// ========================================
 // Initialize All Features
 // ========================================
 function init(): void {
@@ -280,6 +370,7 @@ function init(): void {
   initScrollAnimations();
   initExpandableMenu();
   initBreadcrumb();
+  initActiveMenu();
 
   console.log('✅ All features initialized');
 }
