@@ -274,6 +274,99 @@
                         <div id="inquiry-help" class="inquiry-help" style="display: none;"></div>
                     </div>
 
+                    <!-- プレス専用フィールド -->
+                    <div class="dynamic-fields press-fields" style="display: none;">
+                        <div class="form-group">
+                            <label for="media-name">媒体名 <span class="required">必須</span></label>
+                            <input type="text" id="media-name" name="media-name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="position">役職・部署 <span class="optional">任意</span></label>
+                            <input type="text" id="position" name="position">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="press-phone">電話番号 <span class="optional">任意</span></label>
+                            <input type="tel" id="press-phone" name="press-phone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="publish-date">掲載予定日 <span class="optional">任意</span></label>
+                            <input type="date" id="publish-date" name="publish-date">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="press-duration">プレスモード利用期間 <span class="required">必須</span></label>
+                            <select id="press-duration" name="press-duration">
+                                <option value="">選択してください</option>
+                                <option value="3days">3日間</option>
+                                <option value="1week">1週間</option>
+                                <option value="2weeks">2週間</option>
+                                <option value="1month">1ヶ月</option>
+                                <option value="other">その他</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- 店舗導入専用フィールド -->
+                    <div class="dynamic-fields store-fields" style="display: none;">
+                        <div class="form-group">
+                            <label for="store-name">店舗・施設名 <span class="required">必須</span></label>
+                            <input type="text" id="store-name" name="store-name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="industry">業種 <span class="required">必須</span></label>
+                            <select id="industry" name="industry">
+                                <option value="">選択してください</option>
+                                <option value="supermarket">スーパー</option>
+                                <option value="convenience">コンビニ</option>
+                                <option value="cinema">映画館</option>
+                                <option value="museum">美術館</option>
+                                <option value="theater">博物館・劇場</option>
+                                <option value="other">その他</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="location">所在地 <span class="optional">任意</span></label>
+                            <input type="text" id="location" name="location" placeholder="例：東京都渋谷区">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="store-phone">電話番号 <span class="optional">任意</span></label>
+                            <input type="tel" id="store-phone" name="store-phone">
+                        </div>
+
+                        <div class="form-group radio-group">
+                            <label>ポスター種類 <span class="required">必須</span></label>
+                            <div class="radio-options">
+                                <div class="radio-option">
+                                    <input type="radio" id="poster-green" name="poster-type" value="green">
+                                    <label for="poster-green">通常モード（グリーン）</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="poster-orange" name="poster-type" value="orange">
+                                    <label for="poster-orange">シアターモード（オレンジ）</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- アプリの使い方専用フィールド -->
+                    <div class="dynamic-fields usage-fields" style="display: none;">
+                        <div class="form-group">
+                            <label for="device-info">端末情報 <span class="optional">任意</span></label>
+                            <input type="text" id="device-info" name="device-info" placeholder="例：iPhone 14, iOS 17.1">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="error-message">エラーメッセージ <span class="optional">任意</span></label>
+                            <textarea id="error-message" name="error-message" rows="3" placeholder="エラーメッセージがあれば正確にご記入ください"></textarea>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label for="message">お問い合わせ内容 <span class="required">必須</span></label>
                         <textarea id="message" name="message" rows="5" required placeholder="お問い合わせ内容をご記入ください"></textarea>

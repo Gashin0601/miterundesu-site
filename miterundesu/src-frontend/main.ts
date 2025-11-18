@@ -101,31 +101,79 @@ function initInquiryTypeHelper(): void {
     return;
   }
 
+  // Get all dynamic field containers
+  const pressFields = document.querySelector('.press-fields') as HTMLElement | null;
+  const storeFields = document.querySelector('.store-fields') as HTMLElement | null;
+  const usageFields = document.querySelector('.usage-fields') as HTMLElement | null;
+
   const helpTexts: Record<string, string> = {
-    press: '取材・プレス関係のお問い合わせの場合は、専用のプレスモード申請ページをご用意しております。媒体名、取材内容、掲載予定日などをお知らせください。',
-    store: '店舗・施設への導入をご検討の場合は、専用の導入申し込みページをご用意しております。店舗名、所在地、導入予定時期などをお知らせください。',
-    usage: 'アプリの使い方に関する質問は、できるだけ具体的にお書きください。どの機能を使用中に問題が発生したか、エラーメッセージがあればその内容などをお知らせください。',
+    press: '以下の項目をご入力ください。より詳細な情報は専用のプレスモード申請ページでも受け付けております。',
+    store: '以下の項目をご入力ください。より詳細な申し込みは専用の導入申し込みページでも受け付けております。',
+    usage: 'アプリの使い方に関する質問は、できるだけ具体的にお書きください。',
     other: 'その他のお問い合わせについては、できるだけ詳しくお書きください。'
   };
 
   const placeholders: Record<string, string> = {
-    press: '媒体名：\n取材内容：\n掲載予定日：\nプレスモードが必要な理由：',
-    store: '店舗名：\n所在地：\n業種：\n導入予定時期：\n導入を検討されている理由：',
-    usage: '発生している問題：\n使用中の機能：\nエラーメッセージ（あれば）：\n端末情報（iOSバージョンなど）：',
+    press: '取材内容の詳細をご記入ください',
+    store: '導入を検討されている理由や、期待される効果などをご記入ください',
+    usage: '発生している問題を具体的にご記入ください',
     other: 'お問い合わせ内容をご記入ください'
   };
 
-  inquiryType.addEventListener('change', () => {
-    const selectedType = inquiryType.value;
+  // Function to show/hide dynamic fields and manage required attributes
+  function updateDynamicFields(type: string) {
+    // Hide all dynamic fields first
+    const allDynamicFields = document.querySelectorAll('.dynamic-fields');
+    allDynamicFields.forEach(container => {
+      (container as HTMLElement).style.display = 'none';
+      // Remove required from all inputs in hidden containers
+      container.querySelectorAll('input, select, textarea').forEach(input => {
+        (input as HTMLInputElement).removeAttribute('required');
+      });
+    });
 
-    if (selectedType && helpTexts[selectedType]) {
-      inquiryHelp.textContent = helpTexts[selectedType];
-      inquiryHelp.style.display = 'block';
-      messageTextarea.placeholder = placeholders[selectedType] || 'お問い合わせ内容をご記入ください';
-    } else {
-      inquiryHelp.style.display = 'none';
-      messageTextarea.placeholder = 'お問い合わせ内容をご記入ください';
+    // Show and set required attributes for selected type
+    if (type === 'press' && pressFields) {
+      pressFields.style.display = 'block';
+      // Set required for press-specific required fields
+      const mediaName = document.getElementById('media-name');
+      const pressDuration = document.getElementById('press-duration');
+      if (mediaName) mediaName.setAttribute('required', 'required');
+      if (pressDuration) pressDuration.setAttribute('required', 'required');
+    } else if (type === 'store' && storeFields) {
+      storeFields.style.display = 'block';
+      // Set required for store-specific required fields
+      const storeName = document.getElementById('store-name');
+      const industry = document.getElementById('industry');
+      if (storeName) storeName.setAttribute('required', 'required');
+      if (industry) industry.setAttribute('required', 'required');
+      // Note: Radio buttons require at least one to be checked, handled by HTML5 validation
+    } else if (type === 'usage' && usageFields) {
+      usageFields.style.display = 'block';
+      // All usage fields are optional
     }
+
+    // Update help text and placeholder
+    if (type && helpTexts[type]) {
+      if (inquiryHelp) {
+        inquiryHelp.textContent = helpTexts[type];
+        inquiryHelp.style.display = 'block';
+      }
+      if (messageTextarea) {
+        messageTextarea.placeholder = placeholders[type] || 'お問い合わせ内容をご記入ください';
+      }
+    } else {
+      if (inquiryHelp) {
+        inquiryHelp.style.display = 'none';
+      }
+      if (messageTextarea) {
+        messageTextarea.placeholder = 'お問い合わせ内容をご記入ください';
+      }
+    }
+  }
+
+  inquiryType.addEventListener('change', () => {
+    updateDynamicFields(inquiryType.value);
   });
 }
 

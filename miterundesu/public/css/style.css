@@ -1262,6 +1262,22 @@ body:not(.subpage) .breadcrumb {
   line-height: 1.6;
 }
 
+/* Dynamic Fields */
+.dynamic-fields {
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px dashed rgba(67, 130, 71, 0.3);
+  transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+.dynamic-fields .form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.dynamic-fields .form-group:last-child {
+  margin-bottom: 0;
+}
+
 .contact-form button[type="submit"] {
   width: 100%;
   margin-top: var(--spacing-md);
@@ -1590,7 +1606,7 @@ body:not(.subpage) .breadcrumb {
   background-color: var(--white);
   padding: var(--spacing-lg);
   border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 2px solid var(--main-green);
 }
 
 .form-group.radio-group {
@@ -1833,7 +1849,7 @@ body:not(.subpage) .breadcrumb {
   background-color: var(--white);
   padding: var(--spacing-lg);
   border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 2px solid var(--main-green);
 }
 
 /* ========================================
