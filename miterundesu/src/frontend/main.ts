@@ -285,6 +285,140 @@ function initScrollAnimations() {
 }
 
 // ========================================
+// Expandable Menu (Dropdown)
+// ========================================
+function initExpandableMenu() {
+  const expandableItems = document.querySelectorAll('.menu-item-expandable');
+
+  expandableItems.forEach(item => {
+    const button = item.querySelector('button');
+    if (!button) return;
+
+    button.addEventListener('click', (e) => {
+      e.stopPropagation();
+
+      // Close other expanded items
+      expandableItems.forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.classList.remove('expanded');
+        }
+      });
+
+      // Toggle current item
+      item.classList.toggle('expanded');
+    });
+  });
+}
+
+// ========================================
+// Breadcrumb Navigation
+// ========================================
+function initBreadcrumb() {
+  const breadcrumbMap: Record<string, Array<{label: string, url: string | null}>> = {
+    '/press': [
+      { label: 'トップ', url: '/' },
+      { label: 'メディアの方へ', url: null }
+    ],
+    '/stores': [
+      { label: 'トップ', url: '/' },
+      { label: '店舗施設', url: null }
+    ],
+    '/stores/apply': [
+      { label: 'トップ', url: '/' },
+      { label: '店舗施設', url: '/stores' },
+      { label: '導入申し込み', url: null }
+    ],
+    '/privacy': [
+      { label: 'トップ', url: '/' },
+      { label: 'プライバシーポリシー', url: null }
+    ],
+    '/terms': [
+      { label: 'トップ', url: '/' },
+      { label: '利用規約', url: null }
+    ]
+  };
+
+  // Normalize path (remove trailing slash except for root)
+  let currentPath = window.location.pathname;
+  if (currentPath !== '/' && currentPath.endsWith('/')) {
+    currentPath = currentPath.slice(0, -1);
+  }
+
+  // Handle news pages
+  if (currentPath.startsWith('/news/')) {
+    breadcrumbMap[currentPath] = [
+      { label: 'トップ', url: '/' },
+      { label: 'ニュース', url: '/#news' },
+      { label: 'お知らせ詳細', url: null }
+    ];
+  }
+
+  const breadcrumbData = breadcrumbMap[currentPath];
+  if (!breadcrumbData) {
+    console.log('No breadcrumb data for path:', currentPath);
+    return;
+  }
+
+  console.log('Initializing breadcrumb for path:', currentPath);
+
+  // Add subpage class to body
+  document.body.classList.add('subpage');
+
+  // Find or create breadcrumb container
+  let breadcrumb = document.querySelector('.breadcrumb');
+  if (!breadcrumb) {
+    breadcrumb = document.createElement('nav');
+    breadcrumb.className = 'breadcrumb';
+    breadcrumb.setAttribute('aria-label', 'パンくずリスト');
+
+    const container = document.createElement('div');
+    container.className = 'breadcrumb-container';
+
+    const list = document.createElement('ol');
+    list.className = 'breadcrumb-list';
+
+    container.appendChild(list);
+    breadcrumb.appendChild(container);
+
+    // Insert after header
+    const header = document.querySelector('.header');
+    if (header && header.nextSibling) {
+      header.parentNode!.insertBefore(breadcrumb, header.nextSibling);
+    }
+  }
+
+  const list = breadcrumb.querySelector('.breadcrumb-list');
+  if (!list) return;
+
+  // Generate breadcrumb items
+  list.innerHTML = '';
+  breadcrumbData.forEach((item, index) => {
+    const li = document.createElement('li');
+    li.className = 'breadcrumb-item';
+
+    if (index === breadcrumbData.length - 1) {
+      li.classList.add('active');
+      li.textContent = item.label;
+    } else {
+      const link = document.createElement('a');
+      link.href = item.url!;
+      link.textContent = item.label;
+      li.appendChild(link);
+    }
+
+    list.appendChild(li);
+
+    // Add separator (except for last item)
+    if (index < breadcrumbData.length - 1) {
+      const separator = document.createElement('span');
+      separator.className = 'breadcrumb-separator';
+      separator.textContent = '>';
+      list.appendChild(separator);
+    }
+  });
+}
+
+// ========================================
 // Initialize All Features
 // ========================================
 function init() {
@@ -297,6 +431,8 @@ function init() {
   initContactForm();
   initHeaderScrollEffect();
   initScrollAnimations();
+  initExpandableMenu();
+  initBreadcrumb();
 
   console.log('✅ All features initialized');
 }

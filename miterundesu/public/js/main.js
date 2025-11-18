@@ -220,7 +220,23 @@ function initScrollAnimations() {
     });
 }
 // ========================================
-// Expandable Menu Items
+// Initialize All Features
+// ========================================
+function init() {
+    console.log('🚀 ミテルンデス - Website Loaded');
+    // Initialize all interactive features
+    initHamburgerMenu();
+    initSmoothScrolling();
+    initInquiryTypeHelper();
+    initContactForm();
+    initHeaderScrollEffect();
+    initScrollAnimations();
+    initExpandableMenu();
+    initBreadcrumb();
+    console.log('✅ All features initialized');
+}
+// ========================================
+// Expandable Menu (Dropdown)
 // ========================================
 function initExpandableMenu() {
     const expandableItems = document.querySelectorAll('.menu-item-expandable');
@@ -268,18 +284,25 @@ function initBreadcrumb() {
             { label: '利用規約', url: null }
         ]
     };
+    // Normalize path (remove trailing slash except for root)
+    let currentPath = window.location.pathname;
+    if (currentPath !== '/' && currentPath.endsWith('/')) {
+        currentPath = currentPath.slice(0, -1);
+    }
     // Handle news pages
-    if (window.location.pathname.startsWith('/news/')) {
-        breadcrumbMap[window.location.pathname] = [
+    if (currentPath.startsWith('/news/')) {
+        breadcrumbMap[currentPath] = [
             { label: 'トップ', url: '/' },
             { label: 'ニュース', url: '/#news' },
             { label: 'お知らせ詳細', url: null }
         ];
     }
-    const currentPath = window.location.pathname;
     const breadcrumbData = breadcrumbMap[currentPath];
-    if (!breadcrumbData)
+    if (!breadcrumbData) {
+        console.log('No breadcrumb data for path:', currentPath);
         return;
+    }
+    console.log('Initializing breadcrumb for path:', currentPath);
     // Add subpage class to body
     document.body.classList.add('subpage');
     // Find or create breadcrumb container
@@ -329,22 +352,6 @@ function initBreadcrumb() {
     });
 }
 // ========================================
-// Initialize All Features
-// ========================================
-function init() {
-    console.log('🚀 ミテルンデス - Website Loaded');
-    // Initialize all interactive features
-    initHamburgerMenu();
-    initSmoothScrolling();
-    initInquiryTypeHelper();
-    initContactForm();
-    initHeaderScrollEffect();
-    initScrollAnimations();
-    initExpandableMenu();
-    initBreadcrumb();
-    console.log('✅ All features initialized');
-}
-// ========================================
 // Run on DOM Content Loaded
 // ========================================
 if (document.readyState === 'loading') {
@@ -353,4 +360,6 @@ if (document.readyState === 'loading') {
 else {
     init();
 }
+// Export for potential use in other modules
+export { init, showFormMessage };
 //# sourceMappingURL=main.js.map
