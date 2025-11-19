@@ -51,6 +51,73 @@ function initHamburgerMenu(): void {
       }
     }
   });
+
+  // Highlight active page
+  highlightActivePage(navMenu);
+}
+
+// ========================================
+// Active Page Detection
+// ========================================
+function highlightActivePage(navMenu: HTMLElement): void {
+  const currentPath = window.location.pathname;
+  const currentHash = window.location.hash;
+
+  // Normalize current path
+  let normalizedPath = currentPath.replace(/\/index\.html$/, '');
+  if (normalizedPath !== '/' && normalizedPath.endsWith('/')) {
+    normalizedPath = normalizedPath.slice(0, -1);
+  }
+  if (!normalizedPath) {
+    normalizedPath = '/';
+  }
+
+  // Get all navigation links
+  const allLinks = navMenu.querySelectorAll('a');
+
+  allLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href) return;
+
+    let isActive = false;
+
+    // Check for hash links (for sections on main page)
+    if (href.startsWith('#')) {
+      if (normalizedPath === '/' && currentHash === href) {
+        isActive = true;
+      }
+    }
+    // Check for hash links with path (e.g., /#about)
+    else if (href.includes('#')) {
+      const [linkPath, linkHash] = href.split('#');
+      const normalizedLinkPath = linkPath || '/';
+      if (normalizedPath === normalizedLinkPath && currentHash === `#${linkHash}`) {
+        isActive = true;
+      }
+    }
+    // Check for exact path match
+    else {
+      let linkPath = href.replace(/\/index\.html$/, '');
+      if (linkPath !== '/' && linkPath.endsWith('/')) {
+        linkPath = linkPath.slice(0, -1);
+      }
+      if (normalizedPath === linkPath) {
+        isActive = true;
+      }
+    }
+
+    if (isActive) {
+      link.classList.add('active');
+
+      // If this is in a submenu, expand the parent
+      const parentExpandable = link.closest('.menu-item-expandable');
+      if (parentExpandable) {
+        parentExpandable.classList.add('expanded');
+      }
+    } else {
+      link.classList.remove('active');
+    }
+  });
 }
 
 // ========================================
