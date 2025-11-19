@@ -471,7 +471,7 @@ img {
     padding: 0;
     border-bottom: none;
     box-shadow: none;
-    margin-left: var(--spacing-lg);
+    margin-left: 0;
   }
 
   .header .breadcrumb-container {
