@@ -546,12 +546,17 @@ function initBreadcrumb() {
     if (header) {
       const isDesktop = window.innerWidth > 768;
       if (isDesktop) {
-        // Desktop: Insert inside header
-        const headerContainer = header.querySelector('.header-container');
-        if (headerContainer) {
-          headerContainer.appendChild(breadcrumb);
+        // Desktop: Insert after logo in header
+        const logo = header.querySelector('.header-logo');
+        if (logo) {
+          logo.after(breadcrumb);
         } else {
-          header.appendChild(breadcrumb);
+          const headerContainer = header.querySelector('.header-container');
+          if (headerContainer) {
+            headerContainer.appendChild(breadcrumb);
+          } else {
+            header.appendChild(breadcrumb);
+          }
         }
       } else {
         // Mobile: Insert after header
