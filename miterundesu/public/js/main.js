@@ -295,13 +295,18 @@ function initExpandableMenu() {
     if (!button)
       return;
     button.addEventListener("click", (e) => {
+      e.preventDefault();
       e.stopPropagation();
+      if (window.getSelection) {
+        window.getSelection()?.removeAllRanges();
+      }
       expandableItems.forEach((otherItem) => {
         if (otherItem !== item) {
           otherItem.classList.remove("expanded");
         }
       });
       item.classList.toggle("expanded");
+      button.blur();
     });
   });
 }

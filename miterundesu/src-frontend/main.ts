@@ -437,7 +437,13 @@ function initExpandableMenu() {
     if (!button) return;
 
     button.addEventListener('click', (e) => {
+      e.preventDefault();
       e.stopPropagation();
+
+      // Prevent text selection
+      if (window.getSelection) {
+        window.getSelection()?.removeAllRanges();
+      }
 
       // Close other expanded items
       expandableItems.forEach(otherItem => {
@@ -448,6 +454,9 @@ function initExpandableMenu() {
 
       // Toggle current item
       item.classList.toggle('expanded');
+
+      // Remove focus from button to prevent visual selection
+      button.blur();
     });
   });
 }
