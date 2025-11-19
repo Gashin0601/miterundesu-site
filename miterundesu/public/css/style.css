@@ -462,6 +462,41 @@ img {
   user-select: none;
 }
 
+/* Desktop: Position breadcrumb in header */
+@media (min-width: 769px) {
+  .breadcrumb {
+    position: static;
+    background-color: transparent;
+    backdrop-filter: none;
+    padding: 8px 0 0 0;
+    border-bottom: none;
+    box-shadow: none;
+  }
+
+  .breadcrumb-container {
+    padding: 0;
+  }
+
+  .breadcrumb-item,
+  .breadcrumb-item a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8125rem;
+  }
+
+  .breadcrumb-item a:hover {
+    color: var(--white);
+  }
+
+  .breadcrumb-item.active {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .breadcrumb-separator {
+    color: rgba(255, 255, 255, 0.4);
+  }
+}
+
 /* Hide breadcrumb on main page */
 body:not(.subpage) .breadcrumb {
   display: none;
