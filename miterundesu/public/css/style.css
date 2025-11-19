@@ -652,6 +652,19 @@ body:not(.subpage) .breadcrumb {
   outline: none !important;
 }
 
+/* Disable hamburger menu hover effects on subpages */
+.subpage .hamburger-menu:hover {
+  background-color: transparent !important;
+}
+
+.subpage .hamburger-menu:hover span {
+  background-color: var(--white) !important;
+}
+
+.subpage .hamburger-menu:active {
+  transform: none !important;
+}
+
 .subpage .nav-menu .menu-item-expandable.expanded > button {
   background-color: transparent !important;
 }
