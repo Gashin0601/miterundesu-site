@@ -27,53 +27,6 @@ function initHamburgerMenu() {
       }
     }
   });
-  highlightActivePage(navMenu);
-}
-function highlightActivePage(navMenu) {
-  const currentPath = window.location.pathname;
-  const currentHash = window.location.hash;
-  let normalizedPath = currentPath.replace(/\/index\.html$/, "");
-  if (normalizedPath !== "/" && normalizedPath.endsWith("/")) {
-    normalizedPath = normalizedPath.slice(0, -1);
-  }
-  if (!normalizedPath) {
-    normalizedPath = "/";
-  }
-  const allLinks = navMenu.querySelectorAll("a");
-  allLinks.forEach((link) => {
-    const href = link.getAttribute("href");
-    if (!href)
-      return;
-    let isActive = false;
-    if (href.startsWith("#")) {
-      if (normalizedPath === "/" && currentHash === href) {
-        isActive = true;
-      }
-    } else if (href.includes("#")) {
-      const [linkPath, linkHash] = href.split("#");
-      const normalizedLinkPath = linkPath || "/";
-      if (normalizedPath === normalizedLinkPath && currentHash === `#${linkHash}`) {
-        isActive = true;
-      }
-    } else {
-      let linkPath = href.replace(/\/index\.html$/, "");
-      if (linkPath !== "/" && linkPath.endsWith("/")) {
-        linkPath = linkPath.slice(0, -1);
-      }
-      if (normalizedPath === linkPath) {
-        isActive = true;
-      }
-    }
-    if (isActive) {
-      link.classList.add("active");
-      const parentExpandable = link.closest(".menu-item-expandable");
-      if (parentExpandable) {
-        parentExpandable.classList.add("expanded");
-      }
-    } else {
-      link.classList.remove("active");
-    }
-  });
 }
 function initSmoothScrolling() {
   const anchorLinks = document.querySelectorAll('a[href^="#"]');
