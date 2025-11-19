@@ -236,7 +236,7 @@ img {
 .header-container {
   display: flex;
   align-items: center;
-  gap: var(--spacing-lg);
+  gap: 16px; /* Reduced from var(--spacing-lg) for tighter layout */
   padding: 0 var(--spacing-md);
   width: 100%;
   max-width: var(--max-width);
@@ -256,7 +256,7 @@ img {
 }
 
 .header-logo img {
-  height: 40px;
+  height: 32px; /* Reduced from 40px for tighter layout */
   width: auto;
   display: block;
   transition: var(--transition);
@@ -266,7 +266,7 @@ img {
 .header-right {
   display: flex;
   align-items: center;
-  gap: var(--spacing-md);
+  gap: 12px; /* Reduced from var(--spacing-md) for tighter layout */
   flex-shrink: 0;
 }
 
@@ -281,7 +281,7 @@ img {
 }
 
 .header-appstore img {
-  height: 32px;
+  height: 28px; /* Reduced from 32px for tighter layout */
   width: auto;
   display: block;
 }
