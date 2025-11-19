@@ -302,13 +302,14 @@ img {
   transition: var(--transition);
 }
 
-.hamburger-menu:hover {
+/* Hover and active animations disabled for hamburger menu */
+/* .hamburger-menu:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
 .hamburger-menu:active {
   transform: scale(0.95);
-}
+} */
 
 .hamburger-menu span {
   display: block;
@@ -333,9 +334,9 @@ img {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-.hamburger-menu:hover span {
+/* .hamburger-menu:hover span {
   background-color: rgba(255, 255, 255, 0.8);
-}
+} */
 
 /* Navigation Menu */
 /* Desktop: Show nav links horizontally */
@@ -652,18 +653,7 @@ body:not(.subpage) .breadcrumb {
   outline: none !important;
 }
 
-/* Disable hamburger menu hover effects on subpages */
-.subpage .hamburger-menu:hover {
-  background-color: transparent !important;
-}
-
-.subpage .hamburger-menu:hover span {
-  background-color: var(--white) !important;
-}
-
-.subpage .hamburger-menu:active {
-  transform: none !important;
-}
+/* Hamburger menu hover effects now disabled globally (see lines 305-312, 337-339) */
 
 .subpage .nav-menu .menu-item-expandable.expanded > button {
   background-color: transparent !important;
