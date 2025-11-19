@@ -281,7 +281,13 @@ function initActiveMenu() {
     threshold: 0.3,
     rootMargin: "-20% 0px -60% 0px"
   };
+  let isInitialized = false;
+  setTimeout(() => {
+    isInitialized = true;
+  }, 500);
   const observer = new IntersectionObserver((entries) => {
+    if (!isInitialized)
+      return;
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const sectionId = entry.target.getAttribute("id");

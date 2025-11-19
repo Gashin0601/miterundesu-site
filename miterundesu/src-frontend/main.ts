@@ -423,7 +423,16 @@ function initActiveMenu() {
     rootMargin: '-20% 0px -60% 0px'
   };
 
+  // Flag to prevent observer from firing immediately on page load
+  let isInitialized = false;
+  setTimeout(() => {
+    isInitialized = true;
+  }, 500); // Wait 500ms before enabling observer
+
   const observer = new IntersectionObserver((entries) => {
+    // Don't update hash during initial page load
+    if (!isInitialized) return;
+
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const sectionId = entry.target.getAttribute('id');
