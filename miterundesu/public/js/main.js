@@ -369,7 +369,17 @@ function initBreadcrumb() {
     breadcrumb.appendChild(container);
     const header = document.querySelector(".header");
     if (header) {
-      header.after(breadcrumb);
+      const isDesktop = window.innerWidth > 768;
+      if (isDesktop) {
+        const headerContainer = header.querySelector(".header-container");
+        if (headerContainer) {
+          headerContainer.appendChild(breadcrumb);
+        } else {
+          header.appendChild(breadcrumb);
+        }
+      } else {
+        header.after(breadcrumb);
+      }
     }
   }
   const list = breadcrumb.querySelector(".breadcrumb-list");

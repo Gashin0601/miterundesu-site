@@ -464,36 +464,42 @@ img {
 
 /* Desktop: Position breadcrumb in header */
 @media (min-width: 769px) {
-  .breadcrumb {
+  .header .breadcrumb {
     position: static;
     background-color: transparent;
     backdrop-filter: none;
     padding: 8px 0 0 0;
     border-bottom: none;
     box-shadow: none;
+    width: 100%;
   }
 
-  .breadcrumb-container {
+  .header .breadcrumb-container {
     padding: 0;
+    max-width: 100%;
   }
 
-  .breadcrumb-item,
-  .breadcrumb-item a {
+  .header .breadcrumb-item,
+  .header .breadcrumb-item a {
     color: rgba(255, 255, 255, 0.7);
     font-size: 0.8125rem;
   }
 
-  .breadcrumb-item a:hover {
+  .header .breadcrumb-item a:hover {
     color: var(--white);
   }
 
-  .breadcrumb-item.active {
+  .header .breadcrumb-item.active {
     color: var(--white);
     font-weight: 500;
   }
 
-  .breadcrumb-separator {
+  .header .breadcrumb-separator {
     color: rgba(255, 255, 255, 0.4);
+  }
+
+  .header-container {
+    flex-wrap: wrap;
   }
 }
 

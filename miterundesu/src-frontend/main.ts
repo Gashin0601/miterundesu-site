@@ -541,10 +541,22 @@ function initBreadcrumb() {
     container.appendChild(list);
     breadcrumb.appendChild(container);
 
-    // Insert after header
+    // Insert breadcrumb: inside header for desktop, after header for mobile
     const header = document.querySelector('.header');
     if (header) {
-      header.after(breadcrumb);
+      const isDesktop = window.innerWidth > 768;
+      if (isDesktop) {
+        // Desktop: Insert inside header
+        const headerContainer = header.querySelector('.header-container');
+        if (headerContainer) {
+          headerContainer.appendChild(breadcrumb);
+        } else {
+          header.appendChild(breadcrumb);
+        }
+      } else {
+        // Mobile: Insert after header
+        header.after(breadcrumb);
+      }
     }
   }
 
