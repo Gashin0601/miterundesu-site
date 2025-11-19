@@ -153,6 +153,8 @@ function initInquiryTypeHelper() {
     inquiryType.addEventListener('change', () => {
         updateDynamicFields(inquiryType.value);
     });
+    // Initialize on page load
+    updateDynamicFields(inquiryType.value);
 }
 // ========================================
 // Contact Form Handling

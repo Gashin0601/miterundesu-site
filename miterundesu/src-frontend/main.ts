@@ -175,6 +175,9 @@ function initInquiryTypeHelper(): void {
   inquiryType.addEventListener('change', () => {
     updateDynamicFields(inquiryType.value);
   });
+
+  // Initialize on page load
+  updateDynamicFields(inquiryType.value);
 }
 
 // ========================================
