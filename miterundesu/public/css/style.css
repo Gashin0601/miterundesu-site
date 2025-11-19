@@ -474,6 +474,11 @@ body:not(.subpage) .breadcrumb {
   display: flex !important;
 }
 
+/* Subpage: Hide desktop navigation menu (use hamburger only) */
+.subpage .nav-menu {
+  display: none !important;
+}
+
 /* ========================================
    2. Hero Section
    ======================================== */
