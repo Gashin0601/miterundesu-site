@@ -457,8 +457,8 @@ function initBreadcrumb() {
         breadcrumb.appendChild(container);
         // Insert after header
         const header = document.querySelector('.header');
-        if (header && header.nextSibling) {
-            header.parentNode.insertBefore(breadcrumb, header.nextSibling);
+        if (header) {
+            header.after(breadcrumb);
         }
     }
     const list = breadcrumb.querySelector('.breadcrumb-list');
