@@ -468,10 +468,10 @@ img {
     position: static;
     background-color: transparent;
     backdrop-filter: none;
-    padding: 8px 0 0 0;
+    padding: 0;
     border-bottom: none;
     box-shadow: none;
-    width: 100%;
+    margin-left: var(--spacing-lg);
   }
 
   .header .breadcrumb-container {
@@ -496,10 +496,6 @@ img {
 
   .header .breadcrumb-separator {
     color: rgba(255, 255, 255, 0.4);
-  }
-
-  .header-container {
-    flex-wrap: wrap;
   }
 }
 
