@@ -8,7 +8,6 @@
 function initHamburgerMenu() {
     const hamburgerMenu = document.getElementById('hamburger-menu');
     const navMenu = document.getElementById('nav-menu');
-
     if (!hamburgerMenu || !navMenu) {
         return;
     }
@@ -158,7 +157,6 @@ function initInquiryTypeHelper() {
 function initContactForm() {
     const contactForm = document.getElementById('contact-form');
     const formMessage = document.getElementById('form-message');
-
     if (!contactForm || !formMessage) {
         return;
     }
@@ -216,7 +214,6 @@ function initContactForm() {
  */
 function showFormMessage(message, type) {
     const formMessage = document.getElementById('form-message');
-
     if (!formMessage)
         return;
     formMessage.textContent = message;

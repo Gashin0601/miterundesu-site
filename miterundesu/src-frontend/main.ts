@@ -14,17 +14,12 @@ interface FormData {
 }
 
 // ========================================
-// DOM Element Selectors
-// ========================================
-const hamburgerMenu = document.getElementById('hamburger-menu') as HTMLButtonElement | null;
-const navMenu = document.getElementById('nav-menu') as HTMLElement | null;
-const contactForm = document.getElementById('contact-form') as HTMLFormElement | null;
-const formMessage = document.getElementById('form-message') as HTMLElement | null;
-
-// ========================================
 // Hamburger Menu Toggle
 // ========================================
 function initHamburgerMenu(): void {
+  const hamburgerMenu = document.getElementById('hamburger-menu') as HTMLButtonElement | null;
+  const navMenu = document.getElementById('nav-menu') as HTMLElement | null;
+
   if (!hamburgerMenu || !navMenu) {
     return;
   }
@@ -184,6 +179,9 @@ function initInquiryTypeHelper(): void {
 // Contact Form Handling
 // ========================================
 function initContactForm(): void {
+  const contactForm = document.getElementById('contact-form') as HTMLFormElement | null;
+  const formMessage = document.getElementById('form-message') as HTMLElement | null;
+
   if (!contactForm || !formMessage) {
     return;
   }
@@ -252,6 +250,8 @@ function initContactForm(): void {
  * Display form message to user
  */
 function showFormMessage(message: string, type: 'success' | 'error'): void {
+  const formMessage = document.getElementById('form-message') as HTMLElement | null;
+
   if (!formMessage) return;
 
   formMessage.textContent = message;
@@ -524,8 +524,8 @@ function initBreadcrumb() {
 
     // Insert after header
     const header = document.querySelector('.header');
-    if (header && header.nextSibling) {
-      header.parentNode!.insertBefore(breadcrumb, header.nextSibling);
+    if (header) {
+      header.after(breadcrumb);
     }
   }
 
