@@ -1081,6 +1081,8 @@ body:not(.subpage) .breadcrumb {
   width: 100%;
   border-radius: 8px;
   margin-top: var(--spacing-sm);
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
 }
 
 .usecases-more {
@@ -1169,6 +1171,8 @@ body:not(.subpage) .breadcrumb {
   margin: 0 auto var(--spacing-sm);
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
 }
 
 .poster-item p {
