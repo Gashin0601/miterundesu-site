@@ -5,7 +5,19 @@
 
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Lazy initialization to avoid crashing when API key is missing
+let resend: Resend | null = null;
+
+function getResendClient(): Resend {
+  if (!resend) {
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      throw new Error('RESEND_API_KEY environment variable is not set');
+    }
+    resend = new Resend(apiKey);
+  }
+  return resend;
+}
 
 const FROM_EMAIL = 'ミテルンデス <noreply@miterundesu.jp>';
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@miterundesu.jp';
@@ -96,9 +108,10 @@ export async function sendContactEmails(data: {
   };
 
   try {
+    const client = getResendClient();
     await Promise.all([
-      resend.emails.send(adminEmail),
-      resend.emails.send(userEmail)
+      client.emails.send(adminEmail),
+      client.emails.send(userEmail)
     ]);
     return { success: true };
   } catch (error) {
@@ -228,7 +241,8 @@ export async function sendStoreApplicationEmails(data: {
   }
 
   try {
-    await Promise.all(emails.map(email => resend.emails.send(email)));
+    const client = getResendClient();
+    await Promise.all(emails.map(email => client.emails.send(email)));
     return { success: true };
   } catch (error) {
     console.error('Email sending failed:', error);
@@ -344,9 +358,10 @@ export async function sendPressApplicationEmails(data: {
   };
 
   try {
+    const client = getResendClient();
     await Promise.all([
-      resend.emails.send(adminEmail),
-      resend.emails.send(pressEmail)
+      client.emails.send(adminEmail),
+      client.emails.send(pressEmail)
     ]);
     return { success: true };
   } catch (error) {
