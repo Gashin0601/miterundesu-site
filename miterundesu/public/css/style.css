@@ -497,6 +497,10 @@ img {
   .header .breadcrumb-separator {
     color: rgba(255, 255, 255, 0.4);
   }
+
+  .header-right {
+    margin-left: auto;
+  }
 }
 
 /* Hide breadcrumb on main page */
