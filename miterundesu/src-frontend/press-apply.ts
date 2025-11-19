@@ -42,8 +42,8 @@ function initPressApplyForm() {
       phone,
       coverageContent,
       publicationDate: publishDate || undefined,
-      requiredPeriodStart: undefined, // Calculated from pressDuration
-      requiredPeriodEnd: undefined,   // Calculated from pressDuration
+      requiredPeriodStart: undefined as string | undefined, // Calculated from pressDuration
+      requiredPeriodEnd: undefined as string | undefined,   // Calculated from pressDuration
       note
     };
 

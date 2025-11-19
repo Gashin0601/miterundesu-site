@@ -110,7 +110,7 @@ function initInquiryTypeHelper() {
     if (selectedType && helpTexts[selectedType]) {
       inquiryHelp.textContent = helpTexts[selectedType];
       inquiryHelp.style.display = 'block';
-      messageTextarea.placeholder = placeholders[selectedType];
+      messageTextarea.placeholder = placeholders[selectedType] || 'お問い合わせ内容をご記入ください';
     } else {
       inquiryHelp.style.display = 'none';
       messageTextarea.placeholder = 'お問い合わせ内容をご記入ください';
