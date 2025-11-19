@@ -405,11 +405,11 @@ function initBreadcrumb() {
         ],
         '/stores': [
             { label: 'トップ', url: '/' },
-            { label: '店舗施設', url: null }
+            { label: '店舗・施設', url: null }
         ],
         '/stores/apply': [
             { label: 'トップ', url: '/' },
-            { label: '店舗施設', url: '/stores' },
+            { label: '店舗・施設', url: '/stores' },
             { label: '導入申し込み', url: null }
         ],
         '/privacy': [
