@@ -595,7 +595,7 @@ function initBreadcrumb() {
     scrollTimer = window.setTimeout(() => {
       scrollTimer = undefined;
     }, 100);
-  });
+  }, { passive: true });
 }
 
 // ========================================

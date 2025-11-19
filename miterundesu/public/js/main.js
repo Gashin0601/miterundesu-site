@@ -409,7 +409,7 @@ function initBreadcrumb() {
     scrollTimer = window.setTimeout(() => {
       scrollTimer = void 0;
     }, 100);
-  });
+  }, { passive: true });
 }
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", init);
