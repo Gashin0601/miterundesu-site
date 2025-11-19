@@ -3,16 +3,12 @@
  * Handles all client-side interactions
  */
 // ========================================
-// DOM Element Selectors
-// ========================================
-const hamburgerMenu = document.getElementById('hamburger-menu');
-const navMenu = document.getElementById('nav-menu');
-const contactForm = document.getElementById('contact-form');
-const formMessage = document.getElementById('form-message');
-// ========================================
 // Hamburger Menu Toggle
 // ========================================
 function initHamburgerMenu() {
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+    const navMenu = document.getElementById('nav-menu');
+
     if (!hamburgerMenu || !navMenu) {
         return;
     }
@@ -160,6 +156,9 @@ function initInquiryTypeHelper() {
 // Contact Form Handling
 // ========================================
 function initContactForm() {
+    const contactForm = document.getElementById('contact-form');
+    const formMessage = document.getElementById('form-message');
+
     if (!contactForm || !formMessage) {
         return;
     }
@@ -216,6 +215,8 @@ function initContactForm() {
  * Display form message to user
  */
 function showFormMessage(message, type) {
+    const formMessage = document.getElementById('form-message');
+
     if (!formMessage)
         return;
     formMessage.textContent = message;
