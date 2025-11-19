@@ -7,6 +7,7 @@
     "build:backend": "tsc",
     "build:frontend": "tsc --project tsconfig.frontend.json",
     "build": "npm run build:backend && npm run build:frontend",
+    "vercel-build": "npm run build",
     "start": "node dist/server.js",
     "dev:backend": "nodemon --watch src --exec ts-node src/server.ts",
     "dev:frontend": "tsc --project tsconfig.frontend.json --watch",
