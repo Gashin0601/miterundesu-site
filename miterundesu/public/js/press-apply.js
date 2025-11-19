@@ -1,5 +1,6 @@
-const pressApplyForm = document.getElementById("press-apply-form");
-const pressFormMessage = document.getElementById("press-form-message");
+// public/js/press-apply.js
+var pressApplyForm = document.getElementById("press-apply-form");
+var pressFormMessage = document.getElementById("press-form-message");
 function initPressApplyForm() {
   if (!pressApplyForm || !pressFormMessage) {
     return;

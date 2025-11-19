@@ -1,29 +1,56 @@
+// public/js/main.js
 function initHamburgerMenu() {
   const hamburgerMenu = document.getElementById("hamburger-menu");
   const navMenu = document.getElementById("nav-menu");
   if (!hamburgerMenu || !navMenu) {
     return;
   }
+  let scrollPosition = 0;
   hamburgerMenu.addEventListener("click", (e) => {
     e.stopPropagation();
     const isActive = navMenu.classList.toggle("active");
     hamburgerMenu.classList.toggle("active", isActive);
+    hamburgerMenu.setAttribute("aria-expanded", isActive.toString());
+    if (isActive) {
+      scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+      document.body.style.overflow = "hidden";
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollPosition}px`;
+      document.body.style.width = "100%";
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+      window.scrollTo(0, scrollPosition);
+    }
   });
+  const closeMenu = () => {
+    navMenu.classList.remove("active");
+    hamburgerMenu.classList.remove("active");
+    hamburgerMenu.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.width = "";
+    window.scrollTo(0, scrollPosition);
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+  };
   const navLinks = navMenu.querySelectorAll("a");
   navLinks.forEach((link) => {
     link.addEventListener("click", () => {
-      if (window.innerWidth <= 768) {
-        navMenu.classList.remove("active");
-        hamburgerMenu.classList.remove("active");
-      }
+      closeMenu();
+      link.style.backgroundColor = "";
+      link.blur();
     });
   });
   document.addEventListener("click", (e) => {
     const target = e.target;
     if (!hamburgerMenu.contains(target) && !navMenu.contains(target)) {
       if (navMenu.classList.contains("active")) {
-        navMenu.classList.remove("active");
-        hamburgerMenu.classList.remove("active");
+        closeMenu();
       }
     }
   });
@@ -43,7 +70,7 @@ function initSmoothScrolling() {
         const targetPosition = targetElement.offsetTop - headerHeight;
         window.scrollTo({
           top: targetPosition,
-          behavior: "smooth"
+          behavior: "auto"
         });
       }
     });
@@ -294,20 +321,38 @@ function initExpandableMenu() {
     const button = item.querySelector("button");
     if (!button)
       return;
+    const submenu = item.querySelector(".submenu");
+    if (submenu) {
+      const submenuId = `submenu-${Math.random().toString(36).substr(2, 9)}`;
+      submenu.id = submenuId;
+      button.setAttribute("aria-expanded", "false");
+      button.setAttribute("aria-controls", submenuId);
+    }
     button.addEventListener("click", (e) => {
       e.preventDefault();
       e.stopPropagation();
       if (window.getSelection) {
         window.getSelection()?.removeAllRanges();
       }
+      const isExpanded = item.classList.contains("expanded");
       expandableItems.forEach((otherItem) => {
         if (otherItem !== item) {
           otherItem.classList.remove("expanded");
+          const otherButton = otherItem.querySelector("button");
+          if (otherButton) {
+            otherButton.setAttribute("aria-expanded", "false");
+          }
         }
       });
       item.classList.toggle("expanded");
+      button.setAttribute("aria-expanded", (!isExpanded).toString());
       button.blur();
     });
+    button.addEventListener("touchend", () => {
+      setTimeout(() => {
+        button.blur();
+      }, 50);
+    }, { passive: true });
   });
 }
 function initBreadcrumb() {

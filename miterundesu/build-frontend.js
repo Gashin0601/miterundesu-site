@@ -22,7 +22,7 @@ for (const file of jsFiles) {
 
   esbuild.buildSync({
     entryPoints: [inputPath],
-    bundle: false,  // Don't bundle dependencies, just convert format
+    bundle: true,  // Bundle dependencies including npm packages
     format: 'esm',  // Output as ES modules
     platform: 'browser',
     target: 'es2020',

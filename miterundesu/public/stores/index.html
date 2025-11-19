@@ -3,53 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ミテルンデス対応店舗・施設一覧。弱視・老眼・車椅子の方が安心してご利用いただける店舗・施設を募集中です。">
+
+    <!-- Primary Meta Tags -->
     <title>対応店舗・施設一覧 - ミテルンデス</title>
+    <meta name="title" content="対応店舗・施設一覧 - ミテルンデス">
+    <meta name="description" content="ミテルンデス対応店舗・施設一覧。弱視・老眼・車椅子の方が安心してご利用いただける店舗・施設を募集中です。">
+    <meta name="keywords" content="ミテルンデス,対応店舗,施設,一覧,バリアフリー,アクセシビリティ,弱視,老眼">
+    <meta name="author" content="miterundesu">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://miterundesu.jp/stores">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#438247">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://miterundesu.jp/stores">
+    <meta property="og:site_name" content="ミテルンデス">
+    <meta property="og:title" content="対応店舗・施設一覧 - ミテルンデス">
+    <meta property="og:description" content="ミテルンデス対応店舗・施設一覧。弱視・老眼・車椅子の方が安心してご利用いただける店舗・施設を募集中です。">
+    <meta property="og:image" content="https://miterundesu.jp/og-image.png">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="1024">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://miterundesu.jp/stores">
+    <meta name="twitter:title" content="対応店舗・施設一覧 - ミテルンデス">
+    <meta name="twitter:description" content="ミテルンデス対応店舗・施設一覧。弱視・老眼・車椅子の方が安心してご利用いただける店舗・施設を募集中です。">
+    <meta name="twitter:image" content="https://miterundesu.jp/og-image.png">
+    <meta name="twitter:site" content="@miterundesu_jp">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "ミテルンデス対応店舗・施設一覧",
+      "description": "ミテルンデス対応店舗・施設一覧",
+      "url": "https://miterundesu.jp/stores",
+      "inLanguage": "ja"
+    }
+    </script>
+
     <link rel="stylesheet" href="/css/style.css">
+    <style>
+        /* Screen reader only content */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* Skip link for keyboard navigation */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #438247;
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+    </style>
 </head>
 <body class="subpage">
+    <!-- Skip link for keyboard navigation -->
+    <a href="#main-content" class="skip-link">メインコンテンツへスキップ</a>
+
     <!-- ヘッダー -->
-    <header class="header" id="header">
+    <header class="header" id="header" role="banner">
         <div class="header-container">
             <div class="header-logo">
-                <a href="/">
-                    <img src="/images/logo/logo-long.svg" alt="ミテルンデス">
+                <a href="/" aria-label="ミテルンデス ホームページ">
+                    <img src="/images/logo/logo-long.svg" alt="ミテルンデス ロゴ">
                 </a>
             </div>
             <div class="header-right">
-                <a href="https://apps.apple.com/jp/app/miterundesu/" class="header-appstore" target="_blank" rel="noopener">
-                    <img src="/images/app-store-badge-ja.svg" alt="App Storeからダウンロード">
+                <a href="https://apps.apple.com/jp/app/miterundesu/" class="header-appstore" target="_blank" rel="noopener" aria-label="App Storeからダウンロード（新しいタブで開く）">
+                    <img src="/images/app-store-badge-ja.svg" alt="App Store バッジ" aria-hidden="true">
                 </a>
-                <button class="hamburger-menu" id="hamburger-menu" aria-label="メニュー">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <button class="hamburger-menu" id="hamburger-menu" aria-label="メニュー" aria-expanded="false" aria-controls="nav-menu">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
                 </button>
             </div>
         </div>
 
         <!-- ハンバーガーメニュー展開後 -->
-        <!-- ハンバーガーメニュー展開後 -->
-        <nav class="nav-menu" id="nav-menu">
-            <ul>
+        <nav class="nav-menu" id="nav-menu" role="navigation" aria-label="メインナビゲーション">
+            <ul role="list">
                 <li><a href="/#about">アプリについて</a></li>
                 <li class="menu-item-expandable">
-                    <button type="button">
+                    <button type="button" aria-label="店舗・施設メニューを開く">
                         <span>店舗・施設</span>
-                        <span class="expand-icon">▼</span>
+                        <span class="expand-icon" aria-hidden="true">▼</span>
                     </button>
-                    <ul class="submenu">
+                    <ul class="submenu" role="list">
                         <li><a href="/#stores">概要を見る</a></li>
-                        <li><a href="/stores">店舗・施設一覧</a></li>
+                        <li><a href="/stores" aria-current="page">店舗・施設一覧</a></li>
                         <li><a href="/stores/apply">導入申し込み</a></li>
                     </ul>
                 </li>
                 <li class="menu-item-expandable">
-                    <button type="button">
+                    <button type="button" aria-label="メディアの方へメニューを開く">
                         <span>メディアの方へ</span>
-                        <span class="expand-icon">▼</span>
+                        <span class="expand-icon" aria-hidden="true">▼</span>
                     </button>
-                    <ul class="submenu">
+                    <ul class="submenu" role="list">
                         <li><a href="/#press">概要を見る</a></li>
                         <li><a href="/press">詳細・申し込み</a></li>
                     </ul>
@@ -60,15 +146,15 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main-content" role="main">
         <!-- 店舗・施設一覧セクション -->
-        <section class="section section-stores-list">
+        <section class="section section-stores-list" aria-labelledby="stores-list-title">
             <div class="container">
-                <h1 class="page-title">ミテルンデス対応店舗・施設</h1>
+                <h1 class="page-title" id="stores-list-title">ミテルンデス対応店舗・施設</h1>
 
                 <!-- 現在の状態 -->
-                <div class="empty-state">
-                    <div class="empty-state-icon">🏪</div>
+                <div class="empty-state" role="status" aria-live="polite">
+                    <div class="empty-state-icon" role="img" aria-label="店舗アイコン">🏪</div>
                     <h2 class="empty-state-title">まだ店舗・施設がありません</h2>
                     <p class="empty-state-description">
                         現在、ミテルンデスを導入いただいている店舗・施設の登録がございません。<br>
@@ -84,9 +170,9 @@
                         ポスターをダウンロードして掲示していただくだけで導入完了です。<br>
                         下記よりお申し込みください。
                     </p>
-                    <div class="recruitment-cta">
+                    <nav class="recruitment-cta" aria-label="店舗導入申し込み">
                         <a href="/stores/apply" class="btn-primary">店舗導入のお申し込み</a>
-                    </div>
+                    </nav>
                 </div>
 
                 <!-- 将来的な店舗・施設リスト表示エリア -->
@@ -107,16 +193,16 @@
     </main>
 
     <!-- フッター -->
-    <footer class="footer" id="footer">
+    <footer class="footer" id="footer" role="contentinfo">
         <div class="container">
             <div class="footer-logo">
-                <img src="/images/logo/logo-long.svg" alt="ミテルンデス">
+                <img src="/images/logo/logo-long.svg" alt="ミテルンデス ロゴ">
             </div>
 
-            <nav class="footer-nav">
-                <ul>
+            <nav class="footer-nav" aria-label="フッターナビゲーション">
+                <ul role="list">
                     <li><a href="/#about">アプリについて</a></li>
-                    <li><a href="/stores">店舗・施設</a></li>
+                    <li><a href="/stores" aria-current="page">店舗・施設</a></li>
                     <li><a href="/press">メディアの方へ</a></li>
                     <li><a href="/#news">ニュース</a></li>
                     <li><a href="/#contact">お問い合わせ</a></li>
@@ -125,12 +211,12 @@
                 </ul>
             </nav>
 
-            <div class="footer-sns">
-                <a href="https://www.instagram.com/miterundesu_jp/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">
-                    <img src="/images/icons/instagram.svg" alt="Instagram">
+            <div class="footer-sns" role="navigation" aria-label="ソーシャルメディアリンク">
+                <a href="https://www.instagram.com/miterundesu_jp/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener" aria-label="Instagram（新しいタブで開く）">
+                    <img src="/images/icons/instagram.svg" alt="Instagram" aria-hidden="true">
                 </a>
-                <a href="https://x.com/miterundesu_jp?s=11" target="_blank" rel="noopener">
-                    <img src="/images/icons/x-twitter.svg" alt="X (Twitter)">
+                <a href="https://x.com/miterundesu_jp?s=11" target="_blank" rel="noopener" aria-label="X（旧Twitter）（新しいタブで開く）">
+                    <img src="/images/icons/x-twitter.svg" alt="X (Twitter)" aria-hidden="true">
                 </a>
             </div>
 

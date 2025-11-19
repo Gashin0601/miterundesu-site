@@ -24,20 +24,64 @@ function initHamburgerMenu(): void {
     return;
   }
 
+  // Variable to store scroll position
+  let scrollPosition = 0;
+
   hamburgerMenu.addEventListener('click', (e: MouseEvent) => {
     e.stopPropagation();
+
     const isActive = navMenu.classList.toggle('active');
     hamburgerMenu.classList.toggle('active', isActive);
+
+    // Update ARIA state for screen readers
+    hamburgerMenu.setAttribute('aria-expanded', isActive.toString());
+
+    if (isActive) {
+      // Opening menu - save current scroll position and lock scroll
+      scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollPosition}px`;
+      document.body.style.width = '100%';
+    } else {
+      // Closing menu - unlock scroll and restore scroll position
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, scrollPosition);
+    }
   });
+
+  // Helper function to close menu
+  const closeMenu = () => {
+    navMenu.classList.remove('active');
+    hamburgerMenu.classList.remove('active');
+
+    // Update ARIA state for screen readers
+    hamburgerMenu.setAttribute('aria-expanded', 'false');
+
+    // Unlock scroll and restore scroll position
+    document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, scrollPosition);
+
+    // Force remove all focus
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
+  };
 
   // Close menu when clicking on a nav link
   const navLinks = navMenu.querySelectorAll('a');
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
-      if (window.innerWidth <= 768) {
-        navMenu.classList.remove('active');
-        hamburgerMenu.classList.remove('active');
-      }
+      closeMenu();
+      // Force remove any visual states
+      (link as HTMLElement).style.backgroundColor = '';
+      (link as HTMLElement).blur();
     });
   });
 
@@ -46,15 +90,14 @@ function initHamburgerMenu(): void {
     const target = e.target as Node;
     if (!hamburgerMenu.contains(target) && !navMenu.contains(target)) {
       if (navMenu.classList.contains('active')) {
-        navMenu.classList.remove('active');
-        hamburgerMenu.classList.remove('active');
+        closeMenu();
       }
     }
   });
 }
 
 // ========================================
-// Smooth Scrolling
+// Instant Scrolling (No Smooth Scroll)
 // ========================================
 function initSmoothScrolling(): void {
   // Get all anchor links that start with #
@@ -75,9 +118,10 @@ function initSmoothScrolling(): void {
         const headerHeight = document.querySelector('.header')?.clientHeight || 0;
         const targetPosition = targetElement.offsetTop - headerHeight;
 
+        // Instant scroll without smooth behavior
         window.scrollTo({
           top: targetPosition,
-          behavior: 'smooth'
+          behavior: 'auto'
         });
       }
     });
@@ -436,6 +480,15 @@ function initExpandableMenu() {
     const button = item.querySelector('button');
     if (!button) return;
 
+    // Initialize ARIA attributes
+    const submenu = item.querySelector('.submenu');
+    if (submenu) {
+      const submenuId = `submenu-${Math.random().toString(36).substr(2, 9)}`;
+      submenu.id = submenuId;
+      button.setAttribute('aria-expanded', 'false');
+      button.setAttribute('aria-controls', submenuId);
+    }
+
     button.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
@@ -445,19 +498,35 @@ function initExpandableMenu() {
         window.getSelection()?.removeAllRanges();
       }
 
+      const isExpanded = item.classList.contains('expanded');
+
       // Close other expanded items
       expandableItems.forEach(otherItem => {
         if (otherItem !== item) {
           otherItem.classList.remove('expanded');
+          const otherButton = otherItem.querySelector('button');
+          if (otherButton) {
+            otherButton.setAttribute('aria-expanded', 'false');
+          }
         }
       });
 
       // Toggle current item
       item.classList.toggle('expanded');
 
+      // Update ARIA state
+      button.setAttribute('aria-expanded', (!isExpanded).toString());
+
       // Remove focus from button to prevent visual selection
       button.blur();
     });
+
+    // Remove focus and active state after touch on mobile
+    button.addEventListener('touchend', () => {
+      setTimeout(() => {
+        button.blur();
+      }, 50);
+    }, { passive: true });
   });
 }
 

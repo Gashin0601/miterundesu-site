@@ -597,16 +597,20 @@ body:not(.subpage) .breadcrumb {
   text-decoration: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   border-left: 3px solid transparent;
-  transition: all 0.25s ease;
   -webkit-tap-highlight-color: transparent;
   tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
-@media (hover: hover) {
-  .subpage .nav-menu > ul > li > a:hover {
-    background-color: rgba(255, 255, 255, 0.08);
-    border-left-color: rgba(255, 255, 255, 0.3);
-  }
+.subpage .nav-menu > ul > li > a:hover,
+.subpage .nav-menu > ul > li > a:focus,
+.subpage .nav-menu > ul > li > a:active,
+.subpage .nav-menu > ul > li > a:focus-visible {
+  background-color: transparent !important;
+  border-left-color: transparent !important;
+  outline: none !important;
 }
 
 /* Expandable menu items for subpages */
@@ -631,30 +635,40 @@ body:not(.subpage) .breadcrumb {
   font-weight: 500;
   line-height: 1.5;
   cursor: pointer;
-  transition: all 0.25s ease;
   font-family: inherit;
   -webkit-tap-highlight-color: transparent;
   tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
-@media (hover: hover) {
-  .subpage .nav-menu .menu-item-expandable > button:hover {
-    background-color: rgba(255, 255, 255, 0.08);
-    border-left-color: rgba(255, 255, 255, 0.3);
-  }
+.subpage .nav-menu .menu-item-expandable > button:hover,
+.subpage .nav-menu .menu-item-expandable > button:focus,
+.subpage .nav-menu .menu-item-expandable > button:active,
+.subpage .nav-menu .menu-item-expandable > button:focus-visible {
+  background-color: transparent !important;
+  border-left-color: transparent !important;
+  outline: none !important;
 }
 
 .subpage .nav-menu .menu-item-expandable.expanded > button {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: transparent !important;
 }
 
 .subpage .nav-menu .menu-item-expandable .expand-icon {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-size: 1.125rem;
   opacity: 0.8;
   margin-left: 12px;
   min-width: 20px;
   text-align: center;
+}
+
+/* Only enable transition on hover-capable devices */
+@media (hover: hover) {
+  .subpage .nav-menu .menu-item-expandable .expand-icon {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }
 
 .subpage .nav-menu .menu-item-expandable.expanded .expand-icon {
@@ -694,12 +708,23 @@ body:not(.subpage) .breadcrumb {
   padding: 16px 24px 16px 48px;
   color: rgba(255, 255, 255, 0.9) !important;
   text-decoration: none;
-  transition: all 0.2s ease;
   border-bottom: 1px solid rgba(255, 255, 255, 0.03);
   border-left: 2px solid transparent;
   position: relative;
   -webkit-tap-highlight-color: transparent;
   tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.subpage .nav-menu .submenu a:hover,
+.subpage .nav-menu .submenu a:focus,
+.subpage .nav-menu .submenu a:active,
+.subpage .nav-menu .submenu a:focus-visible {
+  background-color: transparent !important;
+  border-left-color: transparent !important;
+  outline: none !important;
 }
 
 .subpage .nav-menu .submenu a::before {
@@ -712,20 +737,6 @@ body:not(.subpage) .breadcrumb {
   height: 4px;
   background-color: rgba(255, 255, 255, 0.4);
   border-radius: 50%;
-  transition: all 0.2s ease;
-}
-
-@media (hover: hover) {
-  .subpage .nav-menu .submenu a:hover {
-    color: var(--white) !important;
-    background-color: rgba(255, 255, 255, 0.08);
-    border-left-color: rgba(255, 255, 255, 0.3);
-  }
-
-  .subpage .nav-menu .submenu a:hover::before {
-    background-color: var(--white);
-    transform: translateY(-50%) scale(1.3);
-  }
 }
 
 /* ========================================

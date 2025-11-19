@@ -3,9 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
     <title>404 - ページが見つかりません | ミテルンデス</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#438247">
+
     <link rel="stylesheet" href="/css/style.css">
     <style>
+        /* Screen reader only content */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* Skip link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #438247;
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
         body {
             display: flex;
             flex-direction: column;
@@ -54,48 +101,49 @@
     </style>
 </head>
 <body class="subpage">
+    <a href="#main-content" class="skip-link">メインコンテンツへスキップ</a>
+
     <!-- ヘッダー -->
-    <header class="header" id="header">
+    <header class="header" id="header" role="banner">
         <div class="header-container">
             <div class="header-logo">
-                <a href="/">
-                    <img src="/images/logo/logo-long.svg" alt="ミテルンデス">
+                <a href="/" aria-label="ミテルンデス ホームページ">
+                    <img src="/images/logo/logo-long.svg" alt="ミテルンデス ロゴ">
                 </a>
             </div>
             <div class="header-right">
-                <a href="https://apps.apple.com/jp/app/miterundesu/" class="header-appstore" target="_blank" rel="noopener">
-                    <img src="/images/app-store-badge-ja.svg" alt="App Storeからダウンロード">
+                <a href="https://apps.apple.com/jp/app/miterundesu/" class="header-appstore" target="_blank" rel="noopener" aria-label="App Storeからダウンロード（新しいタブで開く）">
+                    <img src="/images/app-store-badge-ja.svg" alt="App Store バッジ" aria-hidden="true">
                 </a>
-                <button class="hamburger-menu" id="hamburger-menu" aria-label="メニュー">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <button class="hamburger-menu" id="hamburger-menu" aria-label="メニュー" aria-expanded="false" aria-controls="nav-menu">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
                 </button>
             </div>
         </div>
 
         <!-- ハンバーガーメニュー展開後 -->
-        <!-- ハンバーガーメニュー展開後 -->
-        <nav class="nav-menu" id="nav-menu">
-            <ul>
+        <nav class="nav-menu" id="nav-menu" role="navigation" aria-label="メインナビゲーション">
+            <ul role="list">
                 <li><a href="/#about">アプリについて</a></li>
                 <li class="menu-item-expandable">
-                    <button type="button">
+                    <button type="button" aria-label="店舗・施設メニューを開く">
                         <span>店舗・施設</span>
-                        <span class="expand-icon">▼</span>
+                        <span class="expand-icon" aria-hidden="true">▼</span>
                     </button>
-                    <ul class="submenu">
+                    <ul class="submenu" role="list">
                         <li><a href="/#stores">概要を見る</a></li>
                         <li><a href="/stores">店舗・施設一覧</a></li>
                         <li><a href="/stores/apply">導入申し込み</a></li>
                     </ul>
                 </li>
                 <li class="menu-item-expandable">
-                    <button type="button">
+                    <button type="button" aria-label="メディアの方へメニューを開く">
                         <span>メディアの方へ</span>
-                        <span class="expand-icon">▼</span>
+                        <span class="expand-icon" aria-hidden="true">▼</span>
                     </button>
-                    <ul class="submenu">
+                    <ul class="submenu" role="list">
                         <li><a href="/#press">概要を見る</a></li>
                         <li><a href="/press">詳細・申し込み</a></li>
                     </ul>
@@ -106,27 +154,27 @@
         </nav>
     </header>
 
-    <main>
-        <div class="error-container">
-            <div class="error-code">404</div>
+    <main id="main-content" role="main">
+        <div class="error-container" role="alert" aria-live="polite">
+            <div class="error-code" aria-hidden="true">404</div>
             <h1 class="error-title">ページが見つかりません</h1>
             <p class="error-message">
                 お探しのページは存在しないか、移動または削除された可能性があります。<br>
                 URLをご確認の上、もう一度お試しください。
             </p>
-            <a href="/" class="error-link">トップページへ戻る</a>
+            <a href="/" class="error-link" aria-label="トップページへ戻る">トップページへ戻る</a>
         </div>
     </main>
 
     <!-- フッター -->
-    <footer class="footer" id="footer">
+    <footer class="footer" id="footer" role="contentinfo">
         <div class="container">
             <div class="footer-logo">
-                <img src="/images/logo/logo-long.svg" alt="ミテルンデス">
+                <img src="/images/logo/logo-long.svg" alt="ミテルンデス ロゴ">
             </div>
 
-            <nav class="footer-nav">
-                <ul>
+            <nav class="footer-nav" aria-label="フッターナビゲーション">
+                <ul role="list">
                     <li><a href="/#about">アプリについて</a></li>
                     <li><a href="/stores">店舗・施設</a></li>
                     <li><a href="/press">メディアの方へ</a></li>
@@ -137,12 +185,12 @@
                 </ul>
             </nav>
 
-            <div class="footer-sns">
-                <a href="https://www.instagram.com/miterundesu_jp/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">
-                    <img src="/images/icons/instagram.svg" alt="Instagram">
+            <div class="footer-sns" role="navigation" aria-label="ソーシャルメディアリンク">
+                <a href="https://www.instagram.com/miterundesu_jp/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener" aria-label="Instagram（新しいタブで開く）">
+                    <img src="/images/icons/instagram.svg" alt="Instagram" aria-hidden="true">
                 </a>
-                <a href="https://x.com/miterundesu_jp?s=11" target="_blank" rel="noopener">
-                    <img src="/images/icons/x-twitter.svg" alt="X (Twitter)">
+                <a href="https://x.com/miterundesu_jp?s=11" target="_blank" rel="noopener" aria-label="X（旧Twitter）（新しいタブで開く）">
+                    <img src="/images/icons/x-twitter.svg" alt="X (Twitter)" aria-hidden="true">
                 </a>
             </div>
 

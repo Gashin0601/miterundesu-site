@@ -3,54 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="メディア・報道関係者向けプレスモードのご案内。ミテルンデスの取材・紹介に必要な撮影機能を一時的に許可します。">
+
+    <!-- Primary Meta Tags -->
     <title>メディア・報道関係者の方へ - ミテルンデス</title>
+    <meta name="title" content="メディア・報道関係者の方へ - ミテルンデス">
+    <meta name="description" content="メディア・報道関係者向けプレスモードのご案内。ミテルンデスの取材・紹介に必要な撮影機能を一時的に許可します。">
+    <meta name="keywords" content="ミテルンデス,プレスモード,メディア,報道,取材,撮影,プレスリリース">
+    <meta name="author" content="miterundesu">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://miterundesu.jp/press">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#438247">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://miterundesu.jp/press">
+    <meta property="og:site_name" content="ミテルンデス">
+    <meta property="og:title" content="メディア・報道関係者の方へ - ミテルンデス">
+    <meta property="og:description" content="メディア・報道関係者向けプレスモードのご案内。ミテルンデスの取材・紹介に必要な撮影機能を一時的に許可します。">
+    <meta property="og:image" content="https://miterundesu.jp/og-image.png">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="1024">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://miterundesu.jp/press">
+    <meta name="twitter:title" content="メディア・報道関係者の方へ - ミテルンデス">
+    <meta name="twitter:description" content="メディア・報道関係者向けプレスモードのご案内。ミテルンデスの取材・紹介に必要な撮影機能を一時的に許可します。">
+    <meta name="twitter:image" content="https://miterundesu.jp/og-image.png">
+    <meta name="twitter:site" content="@miterundesu_jp">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "メディア・報道関係者の方へ",
+      "description": "メディア・報道関係者向けプレスモードのご案内",
+      "url": "https://miterundesu.jp/press",
+      "inLanguage": "ja",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "ミテルンデス",
+        "url": "https://miterundesu.jp"
+      }
+    }
+    </script>
+
     <link rel="stylesheet" href="/css/style.css">
+    <style>
+        /* Screen reader only content */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* Skip link for keyboard navigation */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #438247;
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+    </style>
 </head>
 <body class="subpage">
+    <!-- Skip link for keyboard navigation -->
+    <a href="#main-content" class="skip-link">メインコンテンツへスキップ</a>
+
     <!-- ヘッダー -->
-    <header class="header" id="header">
+    <header class="header" id="header" role="banner">
         <div class="header-container">
             <div class="header-logo">
-                <a href="/">
-                    <img src="/images/logo/logo-long.svg" alt="ミテルンデス">
+                <a href="/" aria-label="ミテルンデス ホームページ">
+                    <img src="/images/logo/logo-long.svg" alt="ミテルンデス ロゴ">
                 </a>
             </div>
             <div class="header-right">
-                <a href="https://apps.apple.com/jp/app/miterundesu/" class="header-appstore" target="_blank" rel="noopener">
-                    <img src="/images/app-store-badge-ja.svg" alt="App Storeからダウンロード">
+                <a href="https://apps.apple.com/jp/app/miterundesu/" class="header-appstore" target="_blank" rel="noopener" aria-label="App Storeからダウンロード（新しいタブで開く）">
+                    <img src="/images/app-store-badge-ja.svg" alt="App Store バッジ" aria-hidden="true">
                 </a>
-                <button class="hamburger-menu" id="hamburger-menu" aria-label="メニュー">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <button class="hamburger-menu" id="hamburger-menu" aria-label="メニュー" aria-expanded="false" aria-controls="nav-menu">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
                 </button>
             </div>
         </div>
 
         <!-- ハンバーガーメニュー展開後 -->
-        <nav class="nav-menu" id="nav-menu">
-            <ul>
+        <nav class="nav-menu" id="nav-menu" role="navigation" aria-label="メインナビゲーション">
+            <ul role="list">
                 <li><a href="/#about">アプリについて</a></li>
                 <li class="menu-item-expandable">
-                    <button type="button">
+                    <button type="button" aria-label="店舗・施設メニューを開く">
                         <span>店舗・施設</span>
-                        <span class="expand-icon">▼</span>
+                        <span class="expand-icon" aria-hidden="true">▼</span>
                     </button>
-                    <ul class="submenu">
+                    <ul class="submenu" role="list">
                         <li><a href="/#stores">概要を見る</a></li>
                         <li><a href="/stores">店舗・施設一覧</a></li>
                         <li><a href="/stores/apply">導入申し込み</a></li>
                     </ul>
                 </li>
                 <li class="menu-item-expandable">
-                    <button type="button">
+                    <button type="button" aria-label="メディアの方へメニューを開く">
                         <span>メディアの方へ</span>
-                        <span class="expand-icon">▼</span>
+                        <span class="expand-icon" aria-hidden="true">▼</span>
                     </button>
-                    <ul class="submenu">
+                    <ul class="submenu" role="list">
                         <li><a href="/#press">概要を見る</a></li>
-                        <li><a href="/press">詳細・申し込み</a></li>
+                        <li><a href="/press" aria-current="page">詳細・申し込み</a></li>
                     </ul>
                 </li>
                 <li><a href="/#news">ニュース</a></li>
@@ -59,13 +151,13 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main-content" role="main">
         <!-- プレスページセクション -->
-        <section class="section section-press-page">
+        <section class="section section-press-page" aria-labelledby="press-page-title">
             <div class="container">
                 <!-- ヒーローセクション -->
                 <div class="press-hero">
-                    <h1>メディア・報道関係者の方へ</h1>
+                    <h1 id="press-page-title">メディア・報道関係者の方へ</h1>
                     <p class="hero-message">あなたの力が必要です</p>
                     <div class="hero-description">
                         <p>ミテルンデスを取り上げていただく際に、より詳しくアプリをご紹介いただけるよう、<br>
@@ -93,27 +185,27 @@
 
                 <!-- スクリーンショット例 -->
                 <div class="press-screenshots">
-                    <h2>プレスモード画面イメージ</h2>
-                    <div class="screenshots-grid">
-                        <div class="screenshot-item">
-                            <img src="/images/press/press-mode-before.jpg" alt="プレスモード有効化前の画面">
-                            <p class="caption">有効化前の画面</p>
-                        </div>
-                        <div class="screenshot-item">
-                            <img src="/images/press/press-mode-code-input.jpg" alt="コード入力画面">
-                            <p class="caption">コード入力画面</p>
-                        </div>
-                        <div class="screenshot-item">
-                            <img src="/images/press/press-mode-after.jpg" alt="プレスモード有効化後の画面">
-                            <p class="caption">有効化後の画面</p>
-                        </div>
+                    <h2 id="screenshots-title">プレスモード画面イメージ</h2>
+                    <div class="screenshots-grid" role="list" aria-labelledby="screenshots-title">
+                        <figure class="screenshot-item" role="listitem">
+                            <img src="/images/press/press-mode-before.jpg" alt="プレスモード有効化前の画面" loading="lazy">
+                            <figcaption class="caption">有効化前の画面</figcaption>
+                        </figure>
+                        <figure class="screenshot-item" role="listitem">
+                            <img src="/images/press/press-mode-code-input.jpg" alt="コード入力画面" loading="lazy">
+                            <figcaption class="caption">コード入力画面</figcaption>
+                        </figure>
+                        <figure class="screenshot-item" role="listitem">
+                            <img src="/images/press/press-mode-after.jpg" alt="プレスモード有効化後の画面" loading="lazy">
+                            <figcaption class="caption">有効化後の画面</figcaption>
+                        </figure>
                     </div>
                 </div>
 
                 <!-- ご利用方法 -->
                 <div class="press-steps">
-                    <h2>プレスモードのご利用方法</h2>
-                    <ul class="steps-list">
+                    <h2 id="steps-title">プレスモードのご利用方法</h2>
+                    <ol class="steps-list" aria-labelledby="steps-title">
                         <li class="step-item">
                             <div class="step-content">
                                 <h3 class="step-title">下記のお問い合わせフォームからご連絡ください</h3>
@@ -144,56 +236,81 @@
 ・ 有効期間内であればいつでもご利用いただけます</p>
                             </div>
                         </li>
-                    </ul>
+                    </ol>
                 </div>
 
                 <!-- お問い合わせフォーム -->
                 <div class="press-form-section">
-                    <h2>プレスモードのお申し込み</h2>
-                    <p class="form-intro">
+                    <h2 id="form-section-title">プレスモードのお申し込み</h2>
+                    <p class="form-intro" id="form-intro-text">
                         下記フォームより、プレスモードのご利用をお申し込みください。<br>
                         内容を確認次第、担当者よりご連絡させていただきます。
                     </p>
 
-                    <form class="press-apply-form" id="press-apply-form">
+                    <form class="press-apply-form" id="press-apply-form" aria-labelledby="form-section-title" aria-describedby="form-intro-text">
                         <div class="form-group">
-                            <label for="press-name">お名前 <span class="required">必須</span></label>
-                            <input type="text" id="press-name" name="press-name" required placeholder="例) 山田 太郎">
+                            <label for="press-name">
+                                お名前
+                                <span class="required" aria-label="必須項目">必須</span>
+                            </label>
+                            <input type="text" id="press-name" name="press-name" required aria-required="true" placeholder="例) 山田 太郎">
                         </div>
 
                         <div class="form-group">
-                            <label for="media-name">媒体名 <span class="required">必須</span></label>
-                            <input type="text" id="media-name" name="media-name" required placeholder="例) ○○新聞 / △△テレビ / □□ウェブメディア">
+                            <label for="media-name">
+                                媒体名
+                                <span class="required" aria-label="必須項目">必須</span>
+                            </label>
+                            <input type="text" id="media-name" name="media-name" required aria-required="true" placeholder="例) ○○新聞 / △△テレビ / □□ウェブメディア">
                         </div>
 
                         <div class="form-group">
-                            <label for="position">役職・部署 <span class="optional">(任意)</span></label>
+                            <label for="position">
+                                役職・部署
+                                <span class="optional">(任意)</span>
+                            </label>
                             <input type="text" id="position" name="position" placeholder="例) 編集部 記者">
                         </div>
 
                         <div class="form-group">
-                            <label for="press-email">メールアドレス <span class="required">必須</span></label>
-                            <input type="email" id="press-email" name="press-email" required placeholder="press@example.com">
+                            <label for="press-email">
+                                メールアドレス
+                                <span class="required" aria-label="必須項目">必須</span>
+                            </label>
+                            <input type="email" id="press-email" name="press-email" required aria-required="true" placeholder="press@example.com" aria-describedby="email-help">
+                            <span class="sr-only" id="email-help">メールアドレスを入力してください。例: press@example.com</span>
                         </div>
 
                         <div class="form-group">
-                            <label for="press-phone">電話番号 <span class="optional">(任意)</span></label>
+                            <label for="press-phone">
+                                電話番号
+                                <span class="optional">(任意)</span>
+                            </label>
                             <input type="tel" id="press-phone" name="press-phone" placeholder="03-1234-5678">
                         </div>
 
                         <div class="form-group">
-                            <label for="coverage-content">取材内容 <span class="required">必須</span></label>
-                            <textarea id="coverage-content" name="coverage-content" rows="5" required placeholder="どのような形でミテルンデスを紹介いただく予定かご記入ください"></textarea>
+                            <label for="coverage-content">
+                                取材内容
+                                <span class="required" aria-label="必須項目">必須</span>
+                            </label>
+                            <textarea id="coverage-content" name="coverage-content" rows="5" required aria-required="true" placeholder="どのような形でミテルンデスを紹介いただく予定かご記入ください"></textarea>
                         </div>
 
                         <div class="form-group">
-                            <label for="publish-date">掲載予定日 <span class="optional">(任意)</span></label>
+                            <label for="publish-date">
+                                掲載予定日
+                                <span class="optional">(任意)</span>
+                            </label>
                             <input type="date" id="publish-date" name="publish-date">
                         </div>
 
                         <div class="form-group">
-                            <label for="press-duration">プレスモード利用期間 <span class="required">必須</span></label>
-                            <select id="press-duration" name="press-duration" required>
+                            <label for="press-duration">
+                                プレスモード利用期間
+                                <span class="required" aria-label="必須項目">必須</span>
+                            </label>
+                            <select id="press-duration" name="press-duration" required aria-required="true">
                                 <option value="">選択してください</option>
                                 <option value="3days">3日間</option>
                                 <option value="1week">1週間</option>
@@ -204,31 +321,34 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="press-note">備考 <span class="optional">(任意)</span></label>
+                            <label for="press-note">
+                                備考
+                                <span class="optional">(任意)</span>
+                            </label>
                             <textarea id="press-note" name="press-note" rows="4" placeholder="その他ご要望やご質問などございましたらご記入ください"></textarea>
                         </div>
 
                         <button type="submit" class="btn-primary">申し込む</button>
                     </form>
 
-                    <div class="form-message" id="press-form-message" style="display: none;"></div>
+                    <div class="form-message" id="press-form-message" style="display: none;" role="alert" aria-live="polite" aria-atomic="true"></div>
                 </div>
             </div>
         </section>
     </main>
 
     <!-- フッター -->
-    <footer class="footer" id="footer">
+    <footer class="footer" id="footer" role="contentinfo">
         <div class="container">
             <div class="footer-logo">
-                <img src="/images/logo/logo-long.svg" alt="ミテルンデス">
+                <img src="/images/logo/logo-long.svg" alt="ミテルンデス ロゴ">
             </div>
 
-            <nav class="footer-nav">
-                <ul>
+            <nav class="footer-nav" aria-label="フッターナビゲーション">
+                <ul role="list">
                     <li><a href="/#about">アプリについて</a></li>
                     <li><a href="/stores">店舗・施設</a></li>
-                    <li><a href="/press">メディアの方へ</a></li>
+                    <li><a href="/press" aria-current="page">メディアの方へ</a></li>
                     <li><a href="/#news">ニュース</a></li>
                     <li><a href="/#contact">お問い合わせ</a></li>
                     <li><a href="/privacy">プライバシーポリシー</a></li>
@@ -236,12 +356,12 @@
                 </ul>
             </nav>
 
-            <div class="footer-sns">
-                <a href="https://www.instagram.com/miterundesu_jp/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">
-                    <img src="/images/icons/instagram.svg" alt="Instagram">
+            <div class="footer-sns" role="navigation" aria-label="ソーシャルメディアリンク">
+                <a href="https://www.instagram.com/miterundesu_jp/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener" aria-label="Instagram（新しいタブで開く）">
+                    <img src="/images/icons/instagram.svg" alt="Instagram" aria-hidden="true">
                 </a>
-                <a href="https://x.com/miterundesu_jp?s=11" target="_blank" rel="noopener">
-                    <img src="/images/icons/x-twitter.svg" alt="X (Twitter)">
+                <a href="https://x.com/miterundesu_jp?s=11" target="_blank" rel="noopener" aria-label="X（旧Twitter）（新しいタブで開く）">
+                    <img src="/images/icons/x-twitter.svg" alt="X (Twitter)" aria-hidden="true">
                 </a>
             </div>
 

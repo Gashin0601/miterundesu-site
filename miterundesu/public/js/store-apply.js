@@ -1,5 +1,6 @@
-const storeApplyForm = document.getElementById("store-apply-form");
-const storeFormMessage = document.getElementById("store-form-message");
+// public/js/store-apply.js
+var storeApplyForm = document.getElementById("store-apply-form");
+var storeFormMessage = document.getElementById("store-form-message");
 function initStoreApplyForm() {
   if (!storeApplyForm || !storeFormMessage) {
     return;

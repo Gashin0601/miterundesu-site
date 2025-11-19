@@ -1,0 +1,25 @@
+# robots.txt for miterundesu.jp
+
+# Allow all search engines to crawl the site
+User-agent: *
+Allow: /
+
+# Disallow admin or sensitive paths (if any in the future)
+# Disallow: /admin/
+# Disallow: /api/
+
+# Sitemap location
+Sitemap: https://miterundesu.jp/sitemap.xml
+
+# Common bots configuration
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /

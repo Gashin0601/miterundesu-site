@@ -3,42 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ミテルンデスは、弱視・老眼・車椅子の方に向けた見るため専用のカメラアプリです。視力検査やコンサート、美術館に最適。">
-    <meta name="keywords" content="ミテルンデス,拡大,カメラ,アプリ,視力検査,弱視,老眼,車椅子,アクセシビリティ">
 
-    <!-- OGP -->
-    <meta property="og:title" content="ミテルンデス - 拡大して見るための、まったく新しいカメラアプリ">
-    <meta property="og:description" content="ミテルンデスは、弱視・老眼・車椅子の方に向けた見るため専用のカメラアプリです。">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://miterundesu.jp">
-
+    <!-- Primary Meta Tags -->
     <title>ミテルンデス - 拡大して見るための、まったく新しいカメラアプリ</title>
+    <meta name="title" content="ミテルンデス - 拡大して見るための、まったく新しいカメラアプリ">
+    <meta name="description" content="ミテルンデスは、弱視・老眼・車椅子の方に向けた見るため専用のカメラアプリです。視力検査やコンサート、美術館に最適。">
+    <meta name="keywords" content="ミテルンデス,拡大,カメラ,アプリ,視力検査,弱視,老眼,車椅子,アクセシビリティ,バリアフリー,見やすい">
+    <meta name="author" content="miterundesu">
+    <meta name="language" content="Japanese">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://miterundesu.jp/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#438247">
+    <meta name="msapplication-TileColor" content="#438247">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://miterundesu.jp/">
+    <meta property="og:site_name" content="ミテルンデス">
+    <meta property="og:title" content="ミテルンデス - 拡大して見るための、まったく新しいカメラアプリ">
+    <meta property="og:description" content="ミテルンデスは、弱視・老眼・車椅子の方に向けた見るため専用のカメラアプリです。視力検査やコンサート、美術館に最適。">
+    <meta property="og:image" content="https://miterundesu.jp/og-image.png">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="1024">
+    <meta property="og:image:alt" content="ミテルンデスアプリアイコン">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://miterundesu.jp/">
+    <meta name="twitter:title" content="ミテルンデス - 拡大して見るための、まったく新しいカメラアプリ">
+    <meta name="twitter:description" content="ミテルンデスは、弱視・老眼・車椅子の方に向けた見るため専用のカメラアプリです。視力検査やコンサート、美術館に最適。">
+    <meta name="twitter:image" content="https://miterundesu.jp/og-image.png">
+    <meta name="twitter:image:alt" content="ミテルンデスアプリアイコン">
+    <meta name="twitter:site" content="@miterundesu_jp">
+    <meta name="twitter:creator" content="@miterundesu_jp">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "ミテルンデス",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "iOS",
+      "description": "弱視・老眼・車椅子の方に向けた見るため専用のカメラアプリ。視力検査やコンサート、美術館に最適。",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "JPY"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "ratingCount": "1"
+      },
+      "downloadUrl": "https://apps.apple.com/jp/app/miterundesu/",
+      "image": "https://miterundesu.jp/og-image.png",
+      "publisher": {
+        "@type": "Organization",
+        "name": "miterundesu",
+        "url": "https://miterundesu.jp"
+      },
+      "inLanguage": "ja",
+      "accessibilityFeature": [
+        "highContrastDisplay",
+        "largePrint",
+        "zoomable"
+      ],
+      "accessibilityHazard": "none",
+      "accessibilityControl": [
+        "fullTouchControl"
+      ]
+    }
+    </script>
+
     <link rel="stylesheet" href="/css/style.css">
+    <style>
+        /* スクリーンリーダー専用（視覚的に隠す） */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+        /* スキップリンク */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #438247;
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+    </style>
 </head>
 <body>
+    <!-- スキップリンク -->
+    <a href="#main-content" class="skip-link">メインコンテンツへスキップ</a>
+
     <!-- 1. ヘッダー -->
-    <header class="header" id="header">
+    <header class="header" id="header" role="banner">
         <div class="header-container">
             <div class="header-logo">
-                <a href="/">
-                    <img src="/images/logo/logo-long.svg" alt="ミテルンデス" class="logo-long">
+                <a href="/" aria-label="ミテルンデス ホームページ">
+                    <img src="/images/logo/logo-long.svg" alt="ミテルンデス ロゴ" class="logo-long">
                 </a>
             </div>
             <div class="header-right">
-                <a href="https://apps.apple.com/jp/app/miterundesu/" class="header-appstore" target="_blank" rel="noopener">
-                    <img src="/images/app-store-badge-ja.svg" alt="App Storeからダウンロード">
+                <a href="https://apps.apple.com/jp/app/miterundesu/" class="header-appstore" target="_blank" rel="noopener" aria-label="App Storeでダウンロード（新しいタブで開く）">
+                    <img src="/images/app-store-badge-ja.svg" alt="App Storeからダウンロード" aria-hidden="true">
                 </a>
-                <button class="hamburger-menu" id="hamburger-menu" aria-label="メニュー">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <button class="hamburger-menu" id="hamburger-menu" aria-label="メニュー" aria-expanded="false" aria-controls="nav-menu">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
                 </button>
             </div>
         </div>
 
         <!-- ハンバーガーメニュー展開後 -->
-        <nav class="nav-menu" id="nav-menu">
-            <ul>
+        <nav class="nav-menu" id="nav-menu" role="navigation" aria-label="メインナビゲーション">
+            <ul role="list">
                 <li><a href="#about">アプリについて</a></li>
                 <li><a href="#stores">店舗・施設</a></li>
                 <li><a href="#press">メディアの方へ</a></li>
@@ -48,32 +157,33 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main-content" role="main">
         <!-- 2. ヒーローセクション -->
-        <section class="hero" id="hero">
-            <div class="hero-visual">
+        <section class="hero" id="hero" aria-label="ヒーローセクション">
+            <h1 class="sr-only">ミテルンデス - 拡大して見るための、まったく新しいカメラアプリ</h1>
+            <div class="hero-visual" aria-hidden="true">
                 <!-- SVGイラスト：手、スマホ、周囲の建物 -->
                 <div class="hero-illustration">
                     <!-- Center: Hand holding phone -->
                     <div class="hero-center">
-                        <img src="/images/hero/hand-phone.svg" alt="スマートフォンを持つ手" class="hand-phone">
+                        <img src="/images/hero/hand-phone.svg" alt="" class="hand-phone">
                     </div>
 
                     <!-- Surrounding buildings in circular formation -->
                     <div class="hero-buildings">
-                        <img src="/images/hero/building-convenience.svg" alt="コンビニ" class="building building-top-left">
-                        <img src="/images/hero/building-supermarket.svg" alt="スーパー" class="building building-top-right">
-                        <img src="/images/hero/building-museum.svg" alt="美術館" class="building building-bottom-left">
-                        <img src="/images/hero/building-theater.svg" alt="映画館" class="building building-bottom-right">
+                        <img src="/images/hero/building-convenience.svg" alt="" class="building building-top-left">
+                        <img src="/images/hero/building-supermarket.svg" alt="" class="building building-top-right">
+                        <img src="/images/hero/building-museum.svg" alt="" class="building building-bottom-left">
+                        <img src="/images/hero/building-theater.svg" alt="" class="building building-bottom-right">
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- 3. 説明セクション -->
-        <section class="section section-description" id="about">
+        <section class="section section-description" id="about" aria-labelledby="about-title">
             <div class="container">
-                <h2 class="section-title">写真を撮るためじゃない<br>拡大して見るための、まったく新しいカメラアプリ</h2>
+                <h2 class="section-title" id="about-title">写真を撮るためじゃない<br>拡大して見るための、まったく新しいカメラアプリ</h2>
                 <div class="description-text">
                     <p>ミテルンデスは、弱視・老眼・車椅子の方に向けた"見るため"専用のカメラアプリです。<br>
                     遠くて見えづらいけれど、撮影は禁止されている——そんな場面で安心してご利用いただけます。</p>
@@ -84,11 +194,11 @@
         </section>
 
         <!-- 4. 使用例（Use Cases） -->
-        <section class="section section-usecases" id="usecases">
+        <section class="section section-usecases" id="usecases" aria-labelledby="usecases-title">
             <div class="container">
-                <h2 class="section-title">使い方</h2>
+                <h2 class="section-title" id="usecases-title">使い方</h2>
 
-                <div class="user-icons">
+                <div class="user-icons" role="img" aria-label="対象ユーザー: 弱視の方、老眼の方、車椅子の方">
                     <div class="user-icon">
                         <img src="/images/icons/icon-white-cane.svg" alt="白杖を持った人">
                     </div>
@@ -101,29 +211,29 @@
                 </div>
 
                 <div class="usecases-grid">
-                    <div class="usecase-card usecase-card-green">
+                    <article class="usecase-card usecase-card-green">
                         <h3>コンビニやスーパー</h3>
                         <div class="usecase-item">
                             <p>拡大して見たいが、撮影禁止と書かれている・誤解されたくない。</p>
-                            <img src="/images/usecases/usecase-convenience-store.jpg" alt="コンビニでおにぎりを拡大している白杖の人">
+                            <img src="/images/usecases/usecase-convenience-store.jpg" alt="コンビニでおにぎりを拡大している白杖の人" loading="lazy">
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="usecase-card usecase-card-orange">
+                    <article class="usecase-card usecase-card-orange">
                         <h3>美術館・博物館</h3>
                         <div class="usecase-item">
                             <p>作品を見たいけれど、撮影禁止の表示がある。</p>
-                            <img src="/images/usecases/usecase-museum.jpg" alt="美術館で作品をアプリで見ているおばあちゃん">
+                            <img src="/images/usecases/usecase-museum.jpg" alt="美術館で作品をアプリで見ているおばあちゃん" loading="lazy">
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="usecase-card usecase-card-green">
+                    <article class="usecase-card usecase-card-green">
                         <h3>車椅子ユーザー</h3>
                         <div class="usecase-item">
                             <p>手が届かないため、一度写真に撮って拡大して確認したい。</p>
-                            <img src="/images/usecases/usecase-high-shelf.jpg" alt="高い棚の商品を手を挙げてスマホで写真を撮っている車椅子の人">
+                            <img src="/images/usecases/usecase-high-shelf.jpg" alt="高い棚の商品を手を挙げてスマホで写真を撮っている車椅子の人" loading="lazy">
                         </div>
-                    </div>
+                    </article>
 
                     <!-- その他 - 使い方は無限大 -->
                     <div class="usecases-more">
@@ -138,40 +248,40 @@
         </section>
 
         <!-- 5. 店舗・施設 -->
-        <section class="section section-stores" id="stores">
+        <section class="section section-stores" id="stores" aria-labelledby="stores-title">
             <div class="container">
-                <h2 class="section-title">この紙が貼ってある店舗・施設でご利用いただけます。</h2>
+                <h2 class="section-title" id="stores-title">この紙が貼ってある店舗・施設でご利用いただけます。</h2>
 
                 <div class="store-content">
-                    <div class="store-posters">
-                        <div class="poster-item poster-item-green">
-                            <img src="/images/posters/poster-green-supermarket.jpg" alt="スーパー用グリーンポスター">
+                    <div class="store-posters" role="list" aria-label="利用可能な店舗タイプ">
+                        <div class="poster-item poster-item-green" role="listitem">
+                            <img src="/images/posters/poster-green-supermarket.jpg" alt="スーパー用グリーンポスター" loading="lazy">
                             <p>スーパーに貼ってある緑の紙（ミテルンデスグリーン）</p>
                         </div>
-                        <div class="poster-item poster-item-orange">
-                            <img src="/images/posters/poster-orange-theater.jpg" alt="映画館用オレンジポスター">
+                        <div class="poster-item poster-item-orange" role="listitem">
+                            <img src="/images/posters/poster-orange-theater.jpg" alt="映画館用オレンジポスター" loading="lazy">
                             <p>映画館に貼ってあるオレンジの紙（ミテルンデスオレンジ）</p>
                         </div>
                     </div>
 
-                    <div class="store-links">
+                    <nav class="store-links" aria-label="店舗関連ページ">
                         <a href="/stores" class="btn-secondary">店舗・施設一覧はこちら</a>
                         <a href="/stores/apply" class="btn-secondary">店舗・施設の方はこちら（導入申し込み）</a>
-                    </div>
+                    </nav>
                 </div>
             </div>
         </section>
 
         <!-- 6. メディアの方へ -->
-        <section class="section section-press" id="press">
+        <section class="section section-press" id="press" aria-labelledby="press-title">
             <div class="container">
-                <h2 class="section-title">メディア・報道関係者の方へ</h2>
+                <h2 class="section-title" id="press-title">メディア・報道関係者の方へ</h2>
 
                 <div class="press-content">
                     <p class="press-message">あなたの力が必要です</p>
 
-                    <div class="press-icon">
-                        <img src="/images/icons/icon-megaphone.svg" alt="メガホン" class="icon-media">
+                    <div class="press-icon" aria-hidden="true">
+                        <img src="/images/icons/icon-megaphone.svg" alt="" class="icon-media">
                     </div>
 
                     <div class="press-description">
@@ -187,12 +297,12 @@
         </section>
 
         <!-- 7. ニュース -->
-        <section class="section section-news" id="news">
+        <section class="section section-news" id="news" aria-labelledby="news-title">
             <div class="container">
-                <h2 class="section-title">最新情報</h2>
+                <h2 class="section-title" id="news-title">最新情報</h2>
 
                 <!-- ニュース記事リスト -->
-                <div class="news-list">
+                <div class="news-list" role="feed" aria-label="最新ニュース一覧">
                     <article class="news-item">
                         <time class="news-date" datetime="2024-11-15">2024.11.15</time>
                         <h3 class="news-title">
@@ -381,14 +491,14 @@
     </main>
 
     <!-- 9. フッター -->
-    <footer class="footer" id="footer">
+    <footer class="footer" id="footer" role="contentinfo">
         <div class="container">
             <div class="footer-logo">
-                <img src="/images/logo/logo-long.svg" alt="ミテルンデス">
+                <img src="/images/logo/logo-long.svg" alt="ミテルンデス ロゴ">
             </div>
 
-            <nav class="footer-nav">
-                <ul>
+            <nav class="footer-nav" aria-label="フッターナビゲーション">
+                <ul role="list">
                     <li><a href="#about">アプリについて</a></li>
                     <li><a href="#stores">店舗・施設</a></li>
                     <li><a href="#press">メディアの方へ</a></li>
@@ -399,12 +509,12 @@
                 </ul>
             </nav>
 
-            <div class="footer-sns">
-                <a href="https://www.instagram.com/miterundesu_jp/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener">
-                    <img src="/images/icons/instagram.svg" alt="Instagram">
+            <div class="footer-sns" role="navigation" aria-label="ソーシャルメディアリンク">
+                <a href="https://www.instagram.com/miterundesu_jp/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener" aria-label="Instagram（新しいタブで開く）">
+                    <img src="/images/icons/instagram.svg" alt="Instagram" aria-hidden="true">
                 </a>
-                <a href="https://x.com/miterundesu_jp?s=11" target="_blank" rel="noopener">
-                    <img src="/images/icons/x-twitter.svg" alt="X (Twitter)">
+                <a href="https://x.com/miterundesu_jp?s=11" target="_blank" rel="noopener" aria-label="X (Twitter)（新しいタブで開く）">
+                    <img src="/images/icons/x-twitter.svg" alt="X (Twitter)" aria-hidden="true">
                 </a>
             </div>
 

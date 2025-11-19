@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- トップページ - 最高優先度 -->
+  <url>
+    <loc>https://miterundesu.jp/</loc>
+    <lastmod>2024-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- 店舗・施設ページ -->
+  <url>
+    <loc>https://miterundesu.jp/stores</loc>
+    <lastmod>2024-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 店舗導入申し込み -->
+  <url>
+    <loc>https://miterundesu.jp/stores/apply</loc>
+    <lastmod>2024-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- メディア向けページ -->
+  <url>
+    <loc>https://miterundesu.jp/press</loc>
+    <lastmod>2024-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ニュース記事 -->
+  <url>
+    <loc>https://miterundesu.jp/news/app-release</loc>
+    <lastmod>2024-11-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://miterundesu.jp/news/press-mode</loc>
+    <lastmod>2024-11-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://miterundesu.jp/news/site-renewal</loc>
+    <lastmod>2024-11-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://miterundesu.jp/news/store-program</loc>
+    <lastmod>2024-11-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- プライバシーポリシー -->
+  <url>
+    <loc>https://miterundesu.jp/privacy</loc>
+    <lastmod>2024-11-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- 利用規約 -->
+  <url>
+    <loc>https://miterundesu.jp/terms</loc>
+    <lastmod>2024-11-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>
