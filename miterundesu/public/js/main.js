@@ -1,507 +1,404 @@
-/**
- * Miterundesu Website - Frontend TypeScript
- * Handles all client-side interactions
- */
-// ========================================
-// Hamburger Menu Toggle
-// ========================================
 function initHamburgerMenu() {
-    const hamburgerMenu = document.getElementById('hamburger-menu');
-    const navMenu = document.getElementById('nav-menu');
-    if (!hamburgerMenu || !navMenu) {
-        return;
+  const hamburgerMenu = document.getElementById("hamburger-menu");
+  const navMenu = document.getElementById("nav-menu");
+  if (!hamburgerMenu || !navMenu) {
+    return;
+  }
+  hamburgerMenu.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isActive = navMenu.classList.toggle("active");
+    hamburgerMenu.classList.toggle("active", isActive);
+  });
+  const navLinks = navMenu.querySelectorAll("a");
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (window.innerWidth <= 768) {
+        navMenu.classList.remove("active");
+        hamburgerMenu.classList.remove("active");
+      }
+    });
+  });
+  document.addEventListener("click", (e) => {
+    const target = e.target;
+    if (!hamburgerMenu.contains(target) && !navMenu.contains(target)) {
+      if (navMenu.classList.contains("active")) {
+        navMenu.classList.remove("active");
+        hamburgerMenu.classList.remove("active");
+      }
     }
-    hamburgerMenu.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isActive = navMenu.classList.toggle('active');
-        hamburgerMenu.classList.toggle('active', isActive);
-    });
-    // Close menu when clicking on a nav link
-    const navLinks = navMenu.querySelectorAll('a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth <= 768) {
-                navMenu.classList.remove('active');
-                hamburgerMenu.classList.remove('active');
-            }
-        });
-    });
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-        const target = e.target;
-        if (!hamburgerMenu.contains(target) && !navMenu.contains(target)) {
-            if (navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-                hamburgerMenu.classList.remove('active');
-            }
-        }
-    });
+  });
 }
-// ========================================
-// Smooth Scrolling
-// ========================================
 function initSmoothScrolling() {
-    // Get all anchor links that start with #
-    const anchorLinks = document.querySelectorAll('a[href^="#"]');
-    anchorLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const href = link.getAttribute('href');
-            if (!href || href === '#')
-                return;
-            const targetId = href.substring(1);
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                // Calculate offset for sticky header
-                const headerHeight = document.querySelector('.header')?.clientHeight || 0;
-                const targetPosition = targetElement.offsetTop - headerHeight;
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
+  const anchorLinks = document.querySelectorAll('a[href^="#"]');
+  anchorLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const href = link.getAttribute("href");
+      if (!href || href === "#")
+        return;
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        const headerHeight = document.querySelector(".header")?.clientHeight || 0;
+        const targetPosition = targetElement.offsetTop - headerHeight;
+        window.scrollTo({
+          top: targetPosition,
+          behavior: "smooth"
         });
+      }
     });
+  });
 }
-// ========================================
-// Inquiry Type Helper
-// ========================================
 function initInquiryTypeHelper() {
-    const inquiryType = document.getElementById('inquiry-type');
-    const inquiryHelp = document.getElementById('inquiry-help');
-    const messageTextarea = document.getElementById('message');
-    if (!inquiryType || !inquiryHelp || !messageTextarea) {
-        return;
-    }
-    // Get all dynamic field containers
-    const pressFields = document.querySelector('.press-fields');
-    const storeFields = document.querySelector('.store-fields');
-    const usageFields = document.querySelector('.usage-fields');
-    const helpTexts = {
-        press: '以下の項目をご入力ください。より詳細な情報は専用のプレスモード申請ページでも受け付けております。',
-        store: '以下の項目をご入力ください。より詳細な申し込みは専用の導入申し込みページでも受け付けております。',
-        usage: 'アプリの使い方に関する質問は、できるだけ具体的にお書きください。',
-        other: 'その他のお問い合わせについては、できるだけ詳しくお書きください。'
-    };
-    const placeholders = {
-        press: '取材内容の詳細をご記入ください',
-        store: '導入を検討されている理由や、期待される効果などをご記入ください',
-        usage: '発生している問題を具体的にご記入ください',
-        other: 'お問い合わせ内容をご記入ください'
-    };
-    // Function to show/hide dynamic fields and manage required attributes
-    function updateDynamicFields(type) {
-        // Hide all dynamic fields first
-        const allDynamicFields = document.querySelectorAll('.dynamic-fields');
-        allDynamicFields.forEach(container => {
-            container.style.display = 'none';
-            // Remove required from all inputs in hidden containers
-            container.querySelectorAll('input, select, textarea').forEach(input => {
-                input.removeAttribute('required');
-            });
-        });
-        // Show and set required attributes for selected type
-        if (type === 'press' && pressFields) {
-            pressFields.style.display = 'block';
-            // Set required for press-specific required fields
-            const mediaName = document.getElementById('media-name');
-            const pressDuration = document.getElementById('press-duration');
-            if (mediaName)
-                mediaName.setAttribute('required', 'required');
-            if (pressDuration)
-                pressDuration.setAttribute('required', 'required');
-        }
-        else if (type === 'store' && storeFields) {
-            storeFields.style.display = 'block';
-            // Set required for store-specific required fields
-            const storeName = document.getElementById('store-name');
-            const industry = document.getElementById('industry');
-            if (storeName)
-                storeName.setAttribute('required', 'required');
-            if (industry)
-                industry.setAttribute('required', 'required');
-            // Note: Radio buttons require at least one to be checked, handled by HTML5 validation
-        }
-        else if (type === 'usage' && usageFields) {
-            usageFields.style.display = 'block';
-            // All usage fields are optional
-        }
-        // Update help text and placeholder
-        if (type && helpTexts[type]) {
-            if (inquiryHelp) {
-                inquiryHelp.textContent = helpTexts[type];
-                inquiryHelp.style.display = 'block';
-            }
-            if (messageTextarea) {
-                messageTextarea.placeholder = placeholders[type] || 'お問い合わせ内容をご記入ください';
-            }
-        }
-        else {
-            if (inquiryHelp) {
-                inquiryHelp.style.display = 'none';
-            }
-            if (messageTextarea) {
-                messageTextarea.placeholder = 'お問い合わせ内容をご記入ください';
-            }
-        }
-    }
-    inquiryType.addEventListener('change', () => {
-        updateDynamicFields(inquiryType.value);
+  const inquiryType = document.getElementById("inquiry-type");
+  const inquiryHelp = document.getElementById("inquiry-help");
+  const messageTextarea = document.getElementById("message");
+  if (!inquiryType || !inquiryHelp || !messageTextarea) {
+    return;
+  }
+  const pressFields = document.querySelector(".press-fields");
+  const storeFields = document.querySelector(".store-fields");
+  const usageFields = document.querySelector(".usage-fields");
+  const helpTexts = {
+    press: "\u4EE5\u4E0B\u306E\u9805\u76EE\u3092\u3054\u5165\u529B\u304F\u3060\u3055\u3044\u3002\u3088\u308A\u8A73\u7D30\u306A\u60C5\u5831\u306F\u5C02\u7528\u306E\u30D7\u30EC\u30B9\u30E2\u30FC\u30C9\u7533\u8ACB\u30DA\u30FC\u30B8\u3067\u3082\u53D7\u3051\u4ED8\u3051\u3066\u304A\u308A\u307E\u3059\u3002",
+    store: "\u4EE5\u4E0B\u306E\u9805\u76EE\u3092\u3054\u5165\u529B\u304F\u3060\u3055\u3044\u3002\u3088\u308A\u8A73\u7D30\u306A\u7533\u3057\u8FBC\u307F\u306F\u5C02\u7528\u306E\u5C0E\u5165\u7533\u3057\u8FBC\u307F\u30DA\u30FC\u30B8\u3067\u3082\u53D7\u3051\u4ED8\u3051\u3066\u304A\u308A\u307E\u3059\u3002",
+    usage: "\u30A2\u30D7\u30EA\u306E\u4F7F\u3044\u65B9\u306B\u95A2\u3059\u308B\u8CEA\u554F\u306F\u3001\u3067\u304D\u308B\u3060\u3051\u5177\u4F53\u7684\u306B\u304A\u66F8\u304D\u304F\u3060\u3055\u3044\u3002",
+    other: "\u305D\u306E\u4ED6\u306E\u304A\u554F\u3044\u5408\u308F\u305B\u306B\u3064\u3044\u3066\u306F\u3001\u3067\u304D\u308B\u3060\u3051\u8A73\u3057\u304F\u304A\u66F8\u304D\u304F\u3060\u3055\u3044\u3002"
+  };
+  const placeholders = {
+    press: "\u53D6\u6750\u5185\u5BB9\u306E\u8A73\u7D30\u3092\u3054\u8A18\u5165\u304F\u3060\u3055\u3044",
+    store: "\u5C0E\u5165\u3092\u691C\u8A0E\u3055\u308C\u3066\u3044\u308B\u7406\u7531\u3084\u3001\u671F\u5F85\u3055\u308C\u308B\u52B9\u679C\u306A\u3069\u3092\u3054\u8A18\u5165\u304F\u3060\u3055\u3044",
+    usage: "\u767A\u751F\u3057\u3066\u3044\u308B\u554F\u984C\u3092\u5177\u4F53\u7684\u306B\u3054\u8A18\u5165\u304F\u3060\u3055\u3044",
+    other: "\u304A\u554F\u3044\u5408\u308F\u305B\u5185\u5BB9\u3092\u3054\u8A18\u5165\u304F\u3060\u3055\u3044"
+  };
+  function updateDynamicFields(type) {
+    const allDynamicFields = document.querySelectorAll(".dynamic-fields");
+    allDynamicFields.forEach((container) => {
+      container.style.display = "none";
+      container.querySelectorAll("input, select, textarea").forEach((input) => {
+        input.removeAttribute("required");
+      });
     });
-    // Initialize on page load
+    if (type === "press" && pressFields) {
+      pressFields.style.display = "block";
+      const mediaName = document.getElementById("media-name");
+      const pressDuration = document.getElementById("press-duration");
+      if (mediaName)
+        mediaName.setAttribute("required", "required");
+      if (pressDuration)
+        pressDuration.setAttribute("required", "required");
+    } else if (type === "store" && storeFields) {
+      storeFields.style.display = "block";
+      const storeName = document.getElementById("store-name");
+      const industry = document.getElementById("industry");
+      if (storeName)
+        storeName.setAttribute("required", "required");
+      if (industry)
+        industry.setAttribute("required", "required");
+    } else if (type === "usage" && usageFields) {
+      usageFields.style.display = "block";
+    }
+    if (type && helpTexts[type]) {
+      if (inquiryHelp) {
+        inquiryHelp.textContent = helpTexts[type];
+        inquiryHelp.style.display = "block";
+      }
+      if (messageTextarea) {
+        messageTextarea.placeholder = placeholders[type] || "\u304A\u554F\u3044\u5408\u308F\u305B\u5185\u5BB9\u3092\u3054\u8A18\u5165\u304F\u3060\u3055\u3044";
+      }
+    } else {
+      if (inquiryHelp) {
+        inquiryHelp.style.display = "none";
+      }
+      if (messageTextarea) {
+        messageTextarea.placeholder = "\u304A\u554F\u3044\u5408\u308F\u305B\u5185\u5BB9\u3092\u3054\u8A18\u5165\u304F\u3060\u3055\u3044";
+      }
+    }
+  }
+  inquiryType.addEventListener("change", () => {
     updateDynamicFields(inquiryType.value);
+  });
+  updateDynamicFields(inquiryType.value);
 }
-// ========================================
-// Contact Form Handling
-// ========================================
 function initContactForm() {
-    const contactForm = document.getElementById('contact-form');
-    const formMessage = document.getElementById('form-message');
-    if (!contactForm || !formMessage) {
-        return;
+  const contactForm = document.getElementById("contact-form");
+  const formMessage = document.getElementById("form-message");
+  if (!contactForm || !formMessage) {
+    return;
+  }
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const formData = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      "inquiry-type": document.getElementById("inquiry-type").value,
+      message: document.getElementById("message").value
+    };
+    if (!formData.name || !formData.email || !formData["inquiry-type"] || !formData.message) {
+      showFormMessage("\u3059\u3079\u3066\u306E\u5FC5\u9808\u9805\u76EE\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002", "error");
+      return;
     }
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        // Get form data
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            'inquiry-type': document.getElementById('inquiry-type').value,
-            message: document.getElementById('message').value
-        };
-        // Validate form data
-        if (!formData.name || !formData.email || !formData['inquiry-type'] || !formData.message) {
-            showFormMessage('すべての必須項目を入力してください。', 'error');
-            return;
-        }
-        // Email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(formData.email)) {
-            showFormMessage('有効なメールアドレスを入力してください。', 'error');
-            return;
-        }
-        try {
-            // Show loading state
-            const submitButton = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitButton.textContent;
-            submitButton.disabled = true;
-            submitButton.textContent = '送信中...';
-            // TODO: Phase 3 - Add API endpoint for form submission
-            // For now, simulate API call
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            // Temporary: Log to console (will be replaced with actual API call)
-            console.log('Form submitted:', formData);
-            // Show success message
-            showFormMessage('お問い合わせを受け付けました。2-3営業日以内にご連絡いたします。', 'success');
-            // Reset form
-            contactForm.reset();
-            // Reset submit button
-            submitButton.disabled = false;
-            submitButton.textContent = originalText || '送信する';
-        }
-        catch (error) {
-            console.error('Form submission error:', error);
-            showFormMessage('送信中にエラーが発生しました。もう一度お試しください。', 'error');
-            // Reset submit button
-            const submitButton = contactForm.querySelector('button[type="submit"]');
-            submitButton.disabled = false;
-            submitButton.textContent = '送信する';
-        }
-    });
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      showFormMessage("\u6709\u52B9\u306A\u30E1\u30FC\u30EB\u30A2\u30C9\u30EC\u30B9\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002", "error");
+      return;
+    }
+    try {
+      const submitButton = contactForm.querySelector('button[type="submit"]');
+      const originalText = submitButton.textContent;
+      submitButton.disabled = true;
+      submitButton.textContent = "\u9001\u4FE1\u4E2D...";
+      await new Promise((resolve) => setTimeout(resolve, 1e3));
+      console.log("Form submitted:", formData);
+      showFormMessage("\u304A\u554F\u3044\u5408\u308F\u305B\u3092\u53D7\u3051\u4ED8\u3051\u307E\u3057\u305F\u30022-3\u55B6\u696D\u65E5\u4EE5\u5185\u306B\u3054\u9023\u7D61\u3044\u305F\u3057\u307E\u3059\u3002", "success");
+      contactForm.reset();
+      submitButton.disabled = false;
+      submitButton.textContent = originalText || "\u9001\u4FE1\u3059\u308B";
+    } catch (error) {
+      console.error("Form submission error:", error);
+      showFormMessage("\u9001\u4FE1\u4E2D\u306B\u30A8\u30E9\u30FC\u304C\u767A\u751F\u3057\u307E\u3057\u305F\u3002\u3082\u3046\u4E00\u5EA6\u304A\u8A66\u3057\u304F\u3060\u3055\u3044\u3002", "error");
+      const submitButton = contactForm.querySelector('button[type="submit"]');
+      submitButton.disabled = false;
+      submitButton.textContent = "\u9001\u4FE1\u3059\u308B";
+    }
+  });
 }
-/**
- * Display form message to user
- */
 function showFormMessage(message, type) {
-    const formMessage = document.getElementById('form-message');
-    if (!formMessage)
-        return;
-    formMessage.textContent = message;
-    formMessage.className = `form-message ${type}`;
-    formMessage.style.display = 'block';
-    // Scroll to message
-    formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    // Auto-hide success messages after 5 seconds
-    if (type === 'success') {
-        setTimeout(() => {
-            formMessage.style.display = 'none';
-        }, 5000);
-    }
+  const formMessage = document.getElementById("form-message");
+  if (!formMessage)
+    return;
+  formMessage.textContent = message;
+  formMessage.className = `form-message ${type}`;
+  formMessage.style.display = "block";
+  formMessage.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  if (type === "success") {
+    setTimeout(() => {
+      formMessage.style.display = "none";
+    }, 5e3);
+  }
 }
-// ========================================
-// Header Scroll Effect
-// ========================================
 function initHeaderScrollEffect() {
-    const header = document.querySelector('.header');
-    if (!header)
-        return;
-    const scrollThreshold = 50;
-    window.addEventListener('scroll', () => {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        // Add scrolled class when scrolled past threshold
-        if (scrollTop > scrollThreshold) {
-            header.classList.add('scrolled');
-        }
-        else {
-            header.classList.remove('scrolled');
-        }
-    }, { passive: true });
+  const header = document.querySelector(".header");
+  if (!header)
+    return;
+  const scrollThreshold = 50;
+  window.addEventListener("scroll", () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollTop > scrollThreshold) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  }, { passive: true });
 }
-// ========================================
-// Intersection Observer for Fade-in Animations
-// ========================================
 function initScrollAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-    // Observe all sections
-    const sections = document.querySelectorAll('.section');
-    sections.forEach(section => {
-        section.classList.add('fade-in-target');
-        observer.observe(section);
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+  };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("fade-in");
+        observer.unobserve(entry.target);
+      }
     });
+  }, observerOptions);
+  const sections = document.querySelectorAll(".section");
+  sections.forEach((section) => {
+    section.classList.add("fade-in-target");
+    observer.observe(section);
+  });
 }
-// ========================================
-// Active Menu Item Highlighting
-// ========================================
 function initActiveMenu() {
-    const currentPath = window.location.pathname;
-    const currentHash = window.location.hash;
-    // Function to set active menu item
-    function setActiveMenuItem(selector) {
-        // Remove all active classes
-        document.querySelectorAll('.nav-menu a, .nav-menu button').forEach(item => {
-            item.classList.remove('active');
-        });
-        // Add active class to current item
-        const activeItem = document.querySelector(selector);
-        if (activeItem) {
-            activeItem.classList.add('active');
-            // If it's in a submenu, also mark the parent as active
-            const parentExpandable = activeItem.closest('.menu-item-expandable');
-            if (parentExpandable) {
-                const parentButton = parentExpandable.querySelector('button');
-                if (parentButton) {
-                    parentButton.classList.add('active');
-                    parentExpandable.classList.add('expanded');
-                }
-            }
-        }
-    }
-    // For subpages, highlight based on current path
-    if (currentPath !== '/') {
-        if (currentPath.startsWith('/press')) {
-            setActiveMenuItem('.nav-menu a[href="/press"], .nav-menu a[href="/#press"]');
-        }
-        else if (currentPath.startsWith('/stores')) {
-            setActiveMenuItem('.nav-menu a[href="/stores"]');
-        }
-        else if (currentPath.startsWith('/privacy')) {
-            setActiveMenuItem('.nav-menu a[href="/privacy"]');
-        }
-        else if (currentPath.startsWith('/terms')) {
-            setActiveMenuItem('.nav-menu a[href="/terms"]');
-        }
-        else if (currentPath.startsWith('/news')) {
-            setActiveMenuItem('.nav-menu a[href="/#news"]');
-        }
-        return;
-    }
-    // For main page, highlight based on scroll position and hash
-    const sections = document.querySelectorAll('section[id]');
-    // Initial highlight based on hash
-    if (currentHash) {
-        setActiveMenuItem(`.nav-menu a[href="${currentHash}"]`);
-    }
-    else {
-        setActiveMenuItem('.nav-menu a[href="#about"]');
-    }
-    // Update on scroll
-    const observerOptions = {
-        threshold: 0.3,
-        rootMargin: '-20% 0px -60% 0px'
-    };
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const sectionId = entry.target.getAttribute('id');
-                if (sectionId) {
-                    setActiveMenuItem(`.nav-menu a[href="#${sectionId}"]`);
-                    // Update URL hash without scrolling
-                    if (history.replaceState) {
-                        history.replaceState(null, '', `#${sectionId}`);
-                    }
-                }
-            }
-        });
-    }, observerOptions);
-    sections.forEach(section => observer.observe(section));
-    // Update on hash change
-    window.addEventListener('hashchange', () => {
-        const newHash = window.location.hash;
-        if (newHash) {
-            setActiveMenuItem(`.nav-menu a[href="${newHash}"]`);
-        }
+  const currentPath = window.location.pathname;
+  const currentHash = window.location.hash;
+  function setActiveMenuItem(selector) {
+    document.querySelectorAll(".nav-menu a, .nav-menu button").forEach((item) => {
+      item.classList.remove("active");
     });
+    const activeItem = document.querySelector(selector);
+    if (activeItem) {
+      activeItem.classList.add("active");
+      const parentExpandable = activeItem.closest(".menu-item-expandable");
+      if (parentExpandable) {
+        const parentButton = parentExpandable.querySelector("button");
+        if (parentButton) {
+          parentButton.classList.add("active");
+          parentExpandable.classList.add("expanded");
+        }
+      }
+    }
+  }
+  if (currentPath !== "/") {
+    if (currentPath.startsWith("/press")) {
+      setActiveMenuItem('.nav-menu a[href="/press"], .nav-menu a[href="/#press"]');
+    } else if (currentPath.startsWith("/stores")) {
+      setActiveMenuItem('.nav-menu a[href="/stores"]');
+    } else if (currentPath.startsWith("/privacy")) {
+      setActiveMenuItem('.nav-menu a[href="/privacy"]');
+    } else if (currentPath.startsWith("/terms")) {
+      setActiveMenuItem('.nav-menu a[href="/terms"]');
+    } else if (currentPath.startsWith("/news")) {
+      setActiveMenuItem('.nav-menu a[href="/#news"]');
+    }
+    return;
+  }
+  const sections = document.querySelectorAll("section[id]");
+  if (currentHash) {
+    setActiveMenuItem(`.nav-menu a[href="${currentHash}"]`);
+  } else {
+    setActiveMenuItem('.nav-menu a[href="#about"]');
+  }
+  const observerOptions = {
+    threshold: 0.3,
+    rootMargin: "-20% 0px -60% 0px"
+  };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const sectionId = entry.target.getAttribute("id");
+        if (sectionId) {
+          setActiveMenuItem(`.nav-menu a[href="#${sectionId}"]`);
+          if (history.replaceState) {
+            history.replaceState(null, "", `#${sectionId}`);
+          }
+        }
+      }
+    });
+  }, observerOptions);
+  sections.forEach((section) => observer.observe(section));
+  window.addEventListener("hashchange", () => {
+    const newHash = window.location.hash;
+    if (newHash) {
+      setActiveMenuItem(`.nav-menu a[href="${newHash}"]`);
+    }
+  });
 }
-// ========================================
-// Initialize All Features
-// ========================================
 function init() {
-    console.log('🚀 ミテルンデス - Website Loaded');
-    // Initialize all interactive features
-    initHamburgerMenu();
-    initSmoothScrolling();
-    initInquiryTypeHelper();
-    initContactForm();
-    initHeaderScrollEffect();
-    initScrollAnimations();
-    initExpandableMenu();
-    initBreadcrumb();
-    initActiveMenu();
-    console.log('✅ All features initialized');
+  console.log("\u{1F680} \u30DF\u30C6\u30EB\u30F3\u30C7\u30B9 - Website Loaded");
+  initHamburgerMenu();
+  initSmoothScrolling();
+  initInquiryTypeHelper();
+  initContactForm();
+  initHeaderScrollEffect();
+  initScrollAnimations();
+  initExpandableMenu();
+  initBreadcrumb();
+  initActiveMenu();
+  console.log("\u2705 All features initialized");
 }
-// ========================================
-// Expandable Menu (Dropdown)
-// ========================================
 function initExpandableMenu() {
-    const expandableItems = document.querySelectorAll('.menu-item-expandable');
-    expandableItems.forEach(item => {
-        const button = item.querySelector('button');
-        if (!button)
-            return;
-        button.addEventListener('click', (e) => {
-            e.stopPropagation();
-            // Close other expanded items
-            expandableItems.forEach(otherItem => {
-                if (otherItem !== item) {
-                    otherItem.classList.remove('expanded');
-                }
-            });
-            // Toggle current item
-            item.classList.toggle('expanded');
-        });
+  const expandableItems = document.querySelectorAll(".menu-item-expandable");
+  expandableItems.forEach((item) => {
+    const button = item.querySelector("button");
+    if (!button)
+      return;
+    button.addEventListener("click", (e) => {
+      e.stopPropagation();
+      expandableItems.forEach((otherItem) => {
+        if (otherItem !== item) {
+          otherItem.classList.remove("expanded");
+        }
+      });
+      item.classList.toggle("expanded");
     });
+  });
 }
-// ========================================
-// Breadcrumb Navigation
-// ========================================
 function initBreadcrumb() {
-    const breadcrumbMap = {
-        '/press': [
-            { label: 'トップ', url: '/' },
-            { label: 'メディアの方へ', url: null }
-        ],
-        '/stores': [
-            { label: 'トップ', url: '/' },
-            { label: '店舗・施設', url: null }
-        ],
-        '/stores/apply': [
-            { label: 'トップ', url: '/' },
-            { label: '店舗・施設', url: '/stores' },
-            { label: '導入申し込み', url: null }
-        ],
-        '/privacy': [
-            { label: 'トップ', url: '/' },
-            { label: 'プライバシーポリシー', url: null }
-        ],
-        '/terms': [
-            { label: 'トップ', url: '/' },
-            { label: '利用規約', url: null }
-        ]
-    };
-    // Normalize path (remove trailing slash except for root)
-    let currentPath = window.location.pathname;
-    // Remove index.html from path
-    currentPath = currentPath.replace(/\/index\.html$/, '');
-    // Remove trailing slash except for root
-    if (currentPath !== '/' && currentPath.endsWith('/')) {
-        currentPath = currentPath.slice(0, -1);
+  const breadcrumbMap = {
+    "/press": [
+      { label: "\u30C8\u30C3\u30D7", url: "/" },
+      { label: "\u30E1\u30C7\u30A3\u30A2\u306E\u65B9\u3078", url: null }
+    ],
+    "/stores": [
+      { label: "\u30C8\u30C3\u30D7", url: "/" },
+      { label: "\u5E97\u8217\u30FB\u65BD\u8A2D", url: null }
+    ],
+    "/stores/apply": [
+      { label: "\u30C8\u30C3\u30D7", url: "/" },
+      { label: "\u5E97\u8217\u30FB\u65BD\u8A2D", url: "/stores" },
+      { label: "\u5C0E\u5165\u7533\u3057\u8FBC\u307F", url: null }
+    ],
+    "/privacy": [
+      { label: "\u30C8\u30C3\u30D7", url: "/" },
+      { label: "\u30D7\u30E9\u30A4\u30D0\u30B7\u30FC\u30DD\u30EA\u30B7\u30FC", url: null }
+    ],
+    "/terms": [
+      { label: "\u30C8\u30C3\u30D7", url: "/" },
+      { label: "\u5229\u7528\u898F\u7D04", url: null }
+    ]
+  };
+  let currentPath = window.location.pathname;
+  currentPath = currentPath.replace(/\/index\.html$/, "");
+  if (currentPath !== "/" && currentPath.endsWith("/")) {
+    currentPath = currentPath.slice(0, -1);
+  }
+  if (!currentPath) {
+    currentPath = "/";
+  }
+  if (currentPath.startsWith("/news/")) {
+    breadcrumbMap[currentPath] = [
+      { label: "\u30C8\u30C3\u30D7", url: "/" },
+      { label: "\u30CB\u30E5\u30FC\u30B9", url: "/#news" },
+      { label: "\u304A\u77E5\u3089\u305B\u8A73\u7D30", url: null }
+    ];
+  }
+  const breadcrumbData = breadcrumbMap[currentPath];
+  if (!breadcrumbData) {
+    console.log("No breadcrumb data for path:", currentPath);
+    return;
+  }
+  console.log("Initializing breadcrumb for path:", currentPath);
+  document.body.classList.add("subpage");
+  let breadcrumb = document.querySelector(".breadcrumb");
+  if (!breadcrumb) {
+    breadcrumb = document.createElement("nav");
+    breadcrumb.className = "breadcrumb";
+    breadcrumb.setAttribute("aria-label", "\u30D1\u30F3\u304F\u305A\u30EA\u30B9\u30C8");
+    const container = document.createElement("div");
+    container.className = "breadcrumb-container";
+    const list2 = document.createElement("ol");
+    list2.className = "breadcrumb-list";
+    container.appendChild(list2);
+    breadcrumb.appendChild(container);
+    const header = document.querySelector(".header");
+    if (header) {
+      header.after(breadcrumb);
     }
-    // Default to root if empty
-    if (!currentPath) {
-        currentPath = '/';
+  }
+  const list = breadcrumb.querySelector(".breadcrumb-list");
+  if (!list)
+    return;
+  list.innerHTML = "";
+  breadcrumbData.forEach((item, index) => {
+    const li = document.createElement("li");
+    li.className = "breadcrumb-item";
+    if (index === breadcrumbData.length - 1) {
+      li.classList.add("active");
+      li.textContent = item.label;
+    } else {
+      const link = document.createElement("a");
+      link.href = item.url;
+      link.textContent = item.label;
+      li.appendChild(link);
     }
-    // Handle news pages
-    if (currentPath.startsWith('/news/')) {
-        breadcrumbMap[currentPath] = [
-            { label: 'トップ', url: '/' },
-            { label: 'ニュース', url: '/#news' },
-            { label: 'お知らせ詳細', url: null }
-        ];
+    list.appendChild(li);
+    if (index < breadcrumbData.length - 1) {
+      const separator = document.createElement("span");
+      separator.className = "breadcrumb-separator";
+      separator.textContent = ">";
+      list.appendChild(separator);
     }
-    const breadcrumbData = breadcrumbMap[currentPath];
-    if (!breadcrumbData) {
-        console.log('No breadcrumb data for path:', currentPath);
-        return;
-    }
-    console.log('Initializing breadcrumb for path:', currentPath);
-    // Add subpage class to body
-    document.body.classList.add('subpage');
-    // Find or create breadcrumb container
-    let breadcrumb = document.querySelector('.breadcrumb');
-    if (!breadcrumb) {
-        breadcrumb = document.createElement('nav');
-        breadcrumb.className = 'breadcrumb';
-        breadcrumb.setAttribute('aria-label', 'パンくずリスト');
-        const container = document.createElement('div');
-        container.className = 'breadcrumb-container';
-        const list = document.createElement('ol');
-        list.className = 'breadcrumb-list';
-        container.appendChild(list);
-        breadcrumb.appendChild(container);
-        // Insert after header
-        const header = document.querySelector('.header');
-        if (header) {
-            header.after(breadcrumb);
-        }
-    }
-    const list = breadcrumb.querySelector('.breadcrumb-list');
-    if (!list)
-        return;
-    // Generate breadcrumb items
-    list.innerHTML = '';
-    breadcrumbData.forEach((item, index) => {
-        const li = document.createElement('li');
-        li.className = 'breadcrumb-item';
-        if (index === breadcrumbData.length - 1) {
-            li.classList.add('active');
-            li.textContent = item.label;
-        }
-        else {
-            const link = document.createElement('a');
-            link.href = item.url;
-            link.textContent = item.label;
-            li.appendChild(link);
-        }
-        list.appendChild(li);
-        // Add separator (except for last item)
-        if (index < breadcrumbData.length - 1) {
-            const separator = document.createElement('span');
-            separator.className = 'breadcrumb-separator';
-            separator.textContent = '>';
-            list.appendChild(separator);
-        }
-    });
+  });
 }
-// ========================================
-// Run on DOM Content Loaded
-// ========================================
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
+} else {
+  init();
 }
-else {
-    init();
-}
-// Export for potential use in other modules
-export { init, showFormMessage };
-//# sourceMappingURL=main.js.map
+export {
+  init,
+  showFormMessage
+};
+//# sourceMappingURL=main.bundle.js.map
