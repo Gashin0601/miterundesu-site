@@ -568,6 +568,25 @@ function initBreadcrumb() {
       list.appendChild(separator);
     }
   });
+
+  // Add scroll effect for breadcrumb shadow
+  let scrollTimer: number | undefined;
+  window.addEventListener('scroll', () => {
+    if (scrollTimer !== undefined) {
+      window.clearTimeout(scrollTimer);
+    }
+
+    if (window.scrollY > 10) {
+      breadcrumb?.classList.add('scrolled');
+    } else {
+      breadcrumb?.classList.remove('scrolled');
+    }
+
+    // Debounce for performance
+    scrollTimer = window.setTimeout(() => {
+      scrollTimer = undefined;
+    }, 100);
+  });
 }
 
 // ========================================

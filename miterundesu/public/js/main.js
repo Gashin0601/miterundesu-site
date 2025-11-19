@@ -391,6 +391,20 @@ function initBreadcrumb() {
       list.appendChild(separator);
     }
   });
+  let scrollTimer;
+  window.addEventListener("scroll", () => {
+    if (scrollTimer !== void 0) {
+      window.clearTimeout(scrollTimer);
+    }
+    if (window.scrollY > 10) {
+      breadcrumb?.classList.add("scrolled");
+    } else {
+      breadcrumb?.classList.remove("scrolled");
+    }
+    scrollTimer = window.setTimeout(() => {
+      scrollTimer = void 0;
+    }, 100);
+  });
 }
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", init);

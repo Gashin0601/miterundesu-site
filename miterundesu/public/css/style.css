@@ -416,9 +416,19 @@ img {
    1.5 Breadcrumb Navigation
    ======================================== */
 .breadcrumb {
-  background-color: rgba(67, 130, 71, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(8px);
   padding: 12px 0;
   border-bottom: 1px solid rgba(67, 130, 71, 0.15);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0);
+  transition: box-shadow 0.2s ease;
+}
+
+.breadcrumb.scrolled {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .breadcrumb-container {
