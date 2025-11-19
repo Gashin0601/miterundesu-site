@@ -421,8 +421,15 @@ function initBreadcrumb() {
     };
     // Normalize path (remove trailing slash except for root)
     let currentPath = window.location.pathname;
+    // Remove index.html from path
+    currentPath = currentPath.replace(/\/index\.html$/, '');
+    // Remove trailing slash except for root
     if (currentPath !== '/' && currentPath.endsWith('/')) {
         currentPath = currentPath.slice(0, -1);
+    }
+    // Default to root if empty
+    if (!currentPath) {
+        currentPath = '/';
     }
     // Handle news pages
     if (currentPath.startsWith('/news/')) {

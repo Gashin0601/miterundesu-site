@@ -474,9 +474,174 @@ body:not(.subpage) .breadcrumb {
   display: flex !important;
 }
 
-/* Subpage: Hide desktop navigation menu (use hamburger only) */
+/* Subpage: Full-screen hamburger menu on all screen sizes */
 .subpage .nav-menu {
-  display: none !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(42, 42, 42, 0.98);
+  backdrop-filter: blur(10px);
+  padding: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 1000;
+  transform: scale(0.95);
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.subpage .nav-menu:not(.active) {
+  display: flex !important;
+}
+
+.subpage .nav-menu.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.subpage .nav-menu ul {
+  flex-direction: column;
+  gap: 0;
+  max-width: calc(100% - 48px);
+  width: 100%;
+}
+
+.subpage .nav-menu li {
+  width: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  visibility: hidden;
+}
+
+.subpage .nav-menu.active li {
+  animation: slideInMenuItemFullscreen 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.subpage .nav-menu.active li:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.subpage .nav-menu.active li:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.subpage .nav-menu.active li:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.subpage .nav-menu.active li:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.subpage .nav-menu.active li:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.subpage .nav-menu > ul > li > a {
+  display: block;
+  padding: var(--spacing-md) var(--spacing-lg);
+  color: var(--white) !important;
+  font-size: 1.25rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.2s ease, padding-left 0.2s ease;
+}
+
+.subpage .nav-menu > ul > li > a:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding-left: calc(var(--spacing-lg) + 8px);
+}
+
+/* Expandable menu items for subpages */
+.subpage .nav-menu .menu-item-expandable {
+  position: relative;
+  margin-bottom: 0;
+}
+
+.subpage .nav-menu .menu-item-expandable > button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+  text-align: left;
+  background: none;
+  border: none;
+  color: var(--white) !important;
+  font-size: 1.25rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.2s ease, padding-left 0.2s ease;
+  font-family: inherit;
+}
+
+.subpage .nav-menu .menu-item-expandable > button:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding-left: calc(var(--spacing-lg) + 8px);
+}
+
+.subpage .nav-menu .menu-item-expandable .expand-icon {
+  transition: transform 0.3s ease;
+  font-size: 1rem;
+  opacity: 0.7;
+  margin-left: 8px;
+}
+
+.subpage .nav-menu .menu-item-expandable.expanded .expand-icon {
+  transform: rotate(180deg);
+}
+
+.subpage .nav-menu .submenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s ease;
+  opacity: 0;
+  list-style: none;
+  padding: 0;
+}
+
+.subpage .nav-menu .menu-item-expandable.expanded .submenu {
+  max-height: 500px;
+  opacity: 1;
+  padding: 8px 0;
+}
+
+.subpage .nav-menu .submenu li {
+  opacity: 1;
+  transform: none;
+  animation: none;
+  width: 100%;
+}
+
+.subpage .nav-menu .submenu a {
+  display: block;
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 12px var(--spacing-lg) 12px calc(var(--spacing-lg) + 16px);
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, padding-left 0.2s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.subpage .nav-menu .submenu a:hover {
+  color: var(--white) !important;
+  background-color: rgba(255, 255, 255, 0.08);
+  padding-left: calc(var(--spacing-lg) + 24px);
 }
 
 /* ========================================
