@@ -1342,6 +1342,12 @@ body:not(.subpage) .breadcrumb {
   text-decoration: underline;
 }
 
+.news-more-button {
+  text-align: center;
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
 .news-sns-section {
   text-align: center;
   padding: var(--spacing-xl);
