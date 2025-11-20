@@ -629,6 +629,10 @@ function initBreadcrumb() {
     '/terms': [
       { label: 'トップ', url: '/' },
       { label: '利用規約', url: null }
+    ],
+    '/news': [
+      { label: 'トップ', url: '/' },
+      { label: 'ニュース一覧', url: null }
     ]
   };
 

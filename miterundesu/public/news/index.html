@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ニュース一覧 - ミテルンデス</title>
+    <meta name="description" content="ミテルンデスの最新情報・お知らせ一覧ページです。">
+    <link rel="canonical" href="https://miterundesu.jp/news">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #438247;
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+    </style>
+</head>
+<body class="subpage">
+    <a href="#main-content" class="skip-link">メインコンテンツへスキップ</a>
+
+    <header class="header" id="header" role="banner">
+        <div class="header-container">
+            <div class="header-logo">
+                <a href="/" aria-label="ミテルンデス ホームページ">
+                    <img src="/images/logo/logo-long.svg" alt="ミテルンデス ロゴ">
+                </a>
+            </div>
+            <div class="header-right">
+                <a href="https://apps.apple.com/jp/app/miterundesu/" class="header-appstore" target="_blank" rel="noopener">
+                    <img src="/images/app-store-badge-ja.svg" alt="App Store">
+                </a>
+                <button class="hamburger-menu" id="hamburger-menu" aria-label="メニュー">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <nav class="nav-menu" id="nav-menu" role="navigation">
+            <ul>
+                <li><a href="/#about">アプリについて</a></li>
+                <li><a href="/#usecases">使い方</a></li>
+                <li class="menu-item-expandable">
+                    <button type="button" aria-label="店舗・施設メニューを開く">
+                        <span>店舗・施設</span>
+                        <span class="expand-icon" aria-hidden="true">▼</span>
+                    </button>
+                    <ul class="submenu" role="list">
+                        <li><a href="/#stores">概要を見る</a></li>
+                        <li><a href="/stores">店舗・施設一覧</a></li>
+                        <li><a href="/stores/apply">導入申し込み</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-expandable">
+                    <button type="button" aria-label="メディアの方へメニューを開く">
+                        <span>メディアの方へ</span>
+                        <span class="expand-icon" aria-hidden="true">▼</span>
+                    </button>
+                    <ul class="submenu" role="list">
+                        <li><a href="/#press">概要を見る</a></li>
+                        <li><a href="/press">詳細・申し込み</a></li>
+                    </ul>
+                </li>
+                <li><a href="/#news" aria-current="page">ニュース</a></li>
+                <li><a href="/#contact">お問い合わせ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content" class="news-list-page">
+        <section class="section">
+            <div class="container">
+                <h1 class="section-title">ニュース一覧</h1>
+
+                <div class="news-list" role="feed" aria-label="ニュース一覧">
+                    <article class="news-item">
+                        <time class="news-date" datetime="2024-11-18">2024.11.18</time>
+                        <h2 class="news-title">
+                            <a href="/news/theater-mode.html">
+                                シアターモード機能を追加しました
+                            </a>
+                        </h2>
+                    </article>
+
+                    <article class="news-item">
+                        <time class="news-date" datetime="2024-11-15">2024.11.15</time>
+                        <h2 class="news-title">
+                            <a href="/news/site-renewal.html">
+                                ミテルンデス公式サイトをリニューアルしました
+                            </a>
+                        </h2>
+                    </article>
+
+                    <article class="news-item">
+                        <time class="news-date" datetime="2024-11-10">2024.11.10</time>
+                        <h2 class="news-title">
+                            <a href="/news/store-program.html">
+                                店舗導入プログラムを開始しました
+                            </a>
+                        </h2>
+                    </article>
+
+                    <article class="news-item">
+                        <time class="news-date" datetime="2024-11-01">2024.11.01</time>
+                        <h2 class="news-title">
+                            <a href="/news/press-mode.html">
+                                プレスモード機能を追加しました
+                            </a>
+                        </h2>
+                    </article>
+
+                    <article class="news-item">
+                        <time class="news-date" datetime="2024-10-25">2024.10.25</time>
+                        <h2 class="news-title">
+                            <a href="/news/accessibility-update.html">
+                                アクセシビリティ機能を強化しました
+                            </a>
+                        </h2>
+                    </article>
+
+                    <article class="news-item">
+                        <time class="news-date" datetime="2024-10-20">2024.10.20</time>
+                        <h2 class="news-title">
+                            <a href="/news/app-release.html">
+                                ミテルンデスアプリをリリースしました
+                            </a>
+                        </h2>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="/#about">アプリについて</a></li>
+                    <li><a href="/stores">店舗・施設</a></li>
+                    <li><a href="/press">メディアの方へ</a></li>
+                    <li><a href="/#contact">お問い合わせ</a></li>
+                    <li><a href="/privacy">プライバシーポリシー</a></li>
+                    <li><a href="/terms">利用規約</a></li>
+                </ul>
+            </nav>
+            <p class="footer-copyright">&copy; 2024 miterundesu. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

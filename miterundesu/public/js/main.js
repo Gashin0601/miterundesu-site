@@ -308,6 +308,10 @@ function initBreadcrumb() {
     "/terms": [
       { label: "\u30C8\u30C3\u30D7", url: "/" },
       { label: "\u5229\u7528\u898F\u7D04", url: null }
+    ],
+    "/news": [
+      { label: "\u30C8\u30C3\u30D7", url: "/" },
+      { label: "\u30CB\u30E5\u30FC\u30B9\u4E00\u89A7", url: null }
     ]
   };
   let currentPath = window.location.pathname;
