@@ -14,6 +14,19 @@ interface FormData {
 }
 
 // ========================================
+// Prevent Browser Auto-Scroll (Run Immediately)
+// ========================================
+// Remove hash IMMEDIATELY to prevent browser from scrolling to hash
+if (window.location.hash) {
+  history.replaceState(null, '', window.location.pathname + window.location.search);
+}
+
+// Disable browser scroll restoration immediately
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+// ========================================
 // Hamburger Menu Toggle
 // ========================================
 function initHamburgerMenu(): void {
@@ -423,14 +436,19 @@ function initActiveMenu() {
     rootMargin: '-20% 0px -60% 0px'
   };
 
-  // Flag to prevent observer from firing immediately on page load
+  // Flag to prevent observer from firing until page is fully loaded
   let isInitialized = false;
-  setTimeout(() => {
-    isInitialized = true;
-  }, 500); // Wait 500ms before enabling observer
+
+  // Wait for all images and resources to load before enabling observer
+  window.addEventListener('load', () => {
+    // Add extra delay after load to ensure everything is settled
+    setTimeout(() => {
+      isInitialized = true;
+    }, 300);
+  });
 
   const observer = new IntersectionObserver((entries) => {
-    // Don't update hash during initial page load
+    // Don't update hash until page is fully loaded
     if (!isInitialized) return;
 
     entries.forEach(entry => {
@@ -439,10 +457,10 @@ function initActiveMenu() {
         if (sectionId) {
           setActiveMenuItem(`.nav-menu a[href="#${sectionId}"]`);
 
-          // Update URL hash without scrolling
-          if (history.replaceState) {
-            history.replaceState(null, '', `#${sectionId}`);
-          }
+          // DISABLED: Hash update to test if this is causing scroll issues
+          // if (history.replaceState) {
+          //   history.replaceState(null, '', `#${sectionId}`);
+          // }
         }
       }
     });
@@ -463,20 +481,20 @@ function initActiveMenu() {
 // Initialize All Features
 // ========================================
 function init(): void {
-  console.log('🚀 ミテルンデス - Website Loaded');
+  // TEMPORARILY DISABLED FOR TESTING
+  // Reset scroll position to top on page load (using instant behavior)
+  // window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
 
   // Initialize all interactive features
   initHamburgerMenu();
-  initSmoothScrolling();
+
+  // @ts-ignore - Temporarily disabled for testing
+  if (false) { initSmoothScrolling(); initHeaderScrollEffect(); initScrollAnimations(); initActiveMenu(); }
+
   initInquiryTypeHelper();
   initContactForm();
-  initHeaderScrollEffect();
-  initScrollAnimations();
   initExpandableMenu();
   initBreadcrumb();
-  initActiveMenu();
-
-  console.log('✅ All features initialized');
 }
 
 // ========================================

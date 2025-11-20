@@ -1,4 +1,10 @@
 // public/js/main.js
+if (window.location.hash) {
+  history.replaceState(null, "", window.location.pathname + window.location.search);
+}
+if ("scrollRestoration" in history) {
+  history.scrollRestoration = "manual";
+}
 function initHamburgerMenu() {
   const hamburgerMenu = document.getElementById("hamburger-menu");
   const navMenu = document.getElementById("nav-menu");
@@ -53,27 +59,6 @@ function initHamburgerMenu() {
         closeMenu();
       }
     }
-  });
-}
-function initSmoothScrolling() {
-  const anchorLinks = document.querySelectorAll('a[href^="#"]');
-  anchorLinks.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      const href = link.getAttribute("href");
-      if (!href || href === "#")
-        return;
-      const targetId = href.substring(1);
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        const headerHeight = document.querySelector(".header")?.clientHeight || 0;
-        const targetPosition = targetElement.offsetTop - headerHeight;
-        window.scrollTo({
-          top: targetPosition,
-          behavior: "auto"
-        });
-      }
-    });
   });
 }
 function initInquiryTypeHelper() {
@@ -204,122 +189,18 @@ function showFormMessage(message, type) {
     }, 5e3);
   }
 }
-function initHeaderScrollEffect() {
-  const header = document.querySelector(".header");
-  if (!header)
-    return;
-  const scrollThreshold = 50;
-  window.addEventListener("scroll", () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    if (scrollTop > scrollThreshold) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
-  }, { passive: true });
-}
-function initScrollAnimations() {
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px"
-  };
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("fade-in");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-  const sections = document.querySelectorAll(".section");
-  sections.forEach((section) => {
-    section.classList.add("fade-in-target");
-    observer.observe(section);
-  });
-}
-function initActiveMenu() {
-  const currentPath = window.location.pathname;
-  const currentHash = window.location.hash;
-  function setActiveMenuItem(selector) {
-    document.querySelectorAll(".nav-menu a, .nav-menu button").forEach((item) => {
-      item.classList.remove("active");
-    });
-    const activeItem = document.querySelector(selector);
-    if (activeItem) {
-      activeItem.classList.add("active");
-      const parentExpandable = activeItem.closest(".menu-item-expandable");
-      if (parentExpandable) {
-        const parentButton = parentExpandable.querySelector("button");
-        if (parentButton) {
-          parentButton.classList.add("active");
-          parentExpandable.classList.add("expanded");
-        }
-      }
-    }
-  }
-  if (currentPath !== "/") {
-    if (currentPath.startsWith("/press")) {
-      setActiveMenuItem('.nav-menu a[href="/press"], .nav-menu a[href="/#press"]');
-    } else if (currentPath.startsWith("/stores")) {
-      setActiveMenuItem('.nav-menu a[href="/stores"]');
-    } else if (currentPath.startsWith("/privacy")) {
-      setActiveMenuItem('.nav-menu a[href="/privacy"]');
-    } else if (currentPath.startsWith("/terms")) {
-      setActiveMenuItem('.nav-menu a[href="/terms"]');
-    } else if (currentPath.startsWith("/news")) {
-      setActiveMenuItem('.nav-menu a[href="/#news"]');
-    }
-    return;
-  }
-  const sections = document.querySelectorAll("section[id]");
-  if (currentHash) {
-    setActiveMenuItem(`.nav-menu a[href="${currentHash}"]`);
-  } else {
-    setActiveMenuItem('.nav-menu a[href="#about"]');
-  }
-  const observerOptions = {
-    threshold: 0.3,
-    rootMargin: "-20% 0px -60% 0px"
-  };
-  let isInitialized = false;
-  setTimeout(() => {
-    isInitialized = true;
-  }, 500);
-  const observer = new IntersectionObserver((entries) => {
-    if (!isInitialized)
-      return;
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const sectionId = entry.target.getAttribute("id");
-        if (sectionId) {
-          setActiveMenuItem(`.nav-menu a[href="#${sectionId}"]`);
-          if (history.replaceState) {
-            history.replaceState(null, "", `#${sectionId}`);
-          }
-        }
-      }
-    });
-  }, observerOptions);
-  sections.forEach((section) => observer.observe(section));
-  window.addEventListener("hashchange", () => {
-    const newHash = window.location.hash;
-    if (newHash) {
-      setActiveMenuItem(`.nav-menu a[href="${newHash}"]`);
-    }
-  });
-}
 function init() {
-  console.log("\u{1F680} \u30DF\u30C6\u30EB\u30F3\u30C7\u30B9 - Website Loaded");
   initHamburgerMenu();
-  initSmoothScrolling();
+  if (false) {
+    initSmoothScrolling();
+    initHeaderScrollEffect();
+    initScrollAnimations();
+    initActiveMenu();
+  }
   initInquiryTypeHelper();
   initContactForm();
-  initHeaderScrollEffect();
-  initScrollAnimations();
   initExpandableMenu();
   initBreadcrumb();
-  initActiveMenu();
-  console.log("\u2705 All features initialized");
 }
 function initExpandableMenu() {
   const expandableItems = document.querySelectorAll(".menu-item-expandable");
