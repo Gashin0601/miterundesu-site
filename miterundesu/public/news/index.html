@@ -3,12 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
     <title>ニュース一覧 - ミテルンデス</title>
+    <meta name="title" content="ニュース一覧 - ミテルンデス">
     <meta name="description" content="ミテルンデスの最新情報・お知らせ一覧ページです。">
+    <meta name="keywords" content="ミテルンデス,ニュース,お知らせ,最新情報">
+    <meta name="author" content="miterundesu">
+
+    <!-- Canonical URL -->
     <link rel="canonical" href="https://miterundesu.jp/news">
+
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#438247">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://miterundesu.jp/news">
+    <meta property="og:site_name" content="ミテルンデス">
+    <meta property="og:title" content="ニュース一覧 - ミテルンデス">
+    <meta property="og:description" content="ミテルンデスの最新情報・お知らせ一覧ページです。">
+    <meta property="og:image" content="https://miterundesu.jp/og-image.png">
+    <meta property="og:locale" content="ja_JP">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://miterundesu.jp/news">
+    <meta name="twitter:title" content="ニュース一覧 - ミテルンデス">
+    <meta name="twitter:description" content="ミテルンデスの最新情報・お知らせ一覧ページです。">
+    <meta name="twitter:image" content="https://miterundesu.jp/og-image.png">
+    <meta name="twitter:site" content="@miterundesu_jp">
+
     <link rel="stylesheet" href="/css/style.css">
     <style>
+        /* Screen reader only content */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* Skip link for keyboard navigation */
         .skip-link {
             position: absolute;
             top: -40px;
@@ -19,12 +71,14 @@
             text-decoration: none;
             z-index: 100;
         }
+
         .skip-link:focus {
             top: 0;
         }
     </style>
 </head>
 <body class="subpage">
+    <!-- Skip link for keyboard navigation -->
     <a href="#main-content" class="skip-link">メインコンテンツへスキップ</a>
 
     <header class="header" id="header" role="banner">
@@ -35,19 +89,20 @@
                 </a>
             </div>
             <div class="header-right">
-                <a href="https://apps.apple.com/jp/app/miterundesu/" class="header-appstore" target="_blank" rel="noopener">
-                    <img src="/images/app-store-badge-ja.svg" alt="App Store">
+                <a href="https://apps.apple.com/jp/app/miterundesu/" class="header-appstore" target="_blank" rel="noopener" aria-label="App Storeからダウンロード（新しいタブで開く）">
+                    <img src="/images/app-store-badge-ja.svg" alt="App Store バッジ" aria-hidden="true">
                 </a>
-                <button class="hamburger-menu" id="hamburger-menu" aria-label="メニュー">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <button class="hamburger-menu" id="hamburger-menu" aria-label="メニュー" aria-expanded="false" aria-controls="nav-menu">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
                 </button>
             </div>
         </div>
 
-        <nav class="nav-menu" id="nav-menu" role="navigation">
-            <ul>
+        <!-- ハンバーガーメニュー展開後 -->
+        <nav class="nav-menu" id="nav-menu" role="navigation" aria-label="メインナビゲーション">
+            <ul role="list">
                 <li><a href="/#about">アプリについて</a></li>
                 <li><a href="/#usecases">使い方</a></li>
                 <li class="menu-item-expandable">
@@ -93,55 +148,10 @@
 
                 <div class="news-list" role="feed" aria-label="ニュース一覧">
                     <article class="news-item">
-                        <time class="news-date" datetime="2024-11-18">2024.11.18</time>
-                        <h2 class="news-title">
-                            <a href="/news/theater-mode.html">
-                                シアターモード機能を追加しました
-                            </a>
-                        </h2>
-                    </article>
-
-                    <article class="news-item">
-                        <time class="news-date" datetime="2024-11-15">2024.11.15</time>
-                        <h2 class="news-title">
-                            <a href="/news/site-renewal.html">
-                                ミテルンデス公式サイトをリニューアルしました
-                            </a>
-                        </h2>
-                    </article>
-
-                    <article class="news-item">
-                        <time class="news-date" datetime="2024-11-10">2024.11.10</time>
-                        <h2 class="news-title">
-                            <a href="/news/store-program.html">
-                                店舗導入プログラムを開始しました
-                            </a>
-                        </h2>
-                    </article>
-
-                    <article class="news-item">
-                        <time class="news-date" datetime="2024-11-01">2024.11.01</time>
-                        <h2 class="news-title">
-                            <a href="/news/press-mode.html">
-                                プレスモード機能を追加しました
-                            </a>
-                        </h2>
-                    </article>
-
-                    <article class="news-item">
-                        <time class="news-date" datetime="2024-10-25">2024.10.25</time>
-                        <h2 class="news-title">
-                            <a href="/news/accessibility-update.html">
-                                アクセシビリティ機能を強化しました
-                            </a>
-                        </h2>
-                    </article>
-
-                    <article class="news-item">
-                        <time class="news-date" datetime="2024-10-20">2024.10.20</time>
+                        <time class="news-date" datetime="2025-11-21">2025.11.21</time>
                         <h2 class="news-title">
                             <a href="/news/app-release.html">
-                                ミテルンデスアプリをリリースしました
+                                ミテルンデスをリリースしました
                             </a>
                         </h2>
                     </article>
@@ -150,22 +160,39 @@
         </section>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" id="footer" role="contentinfo">
         <div class="container">
-            <nav class="footer-nav">
-                <ul>
+            <div class="footer-logo">
+                <img src="/images/logo/logo-long.svg" alt="ミテルンデス ロゴ">
+            </div>
+
+            <nav class="footer-nav" aria-label="フッターナビゲーション">
+                <ul role="list">
                     <li><a href="/#about">アプリについて</a></li>
                     <li><a href="/stores">店舗・施設</a></li>
                     <li><a href="/press">メディアの方へ</a></li>
+                    <li><a href="/#news">ニュース</a></li>
                     <li><a href="/#contact">お問い合わせ</a></li>
                     <li><a href="/privacy">プライバシーポリシー</a></li>
                     <li><a href="/terms">利用規約</a></li>
                 </ul>
             </nav>
-            <p class="footer-copyright">&copy; 2024 miterundesu. All rights reserved.</p>
+
+            <div class="footer-sns" role="navigation" aria-label="ソーシャルメディアリンク">
+                <a href="https://www.instagram.com/miterundesu_jp/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener" aria-label="Instagram（新しいタブで開く）">
+                    <img src="/images/icons/instagram.svg" alt="Instagram" aria-hidden="true">
+                </a>
+                <a href="https://x.com/miterundesu_jp?s=11" target="_blank" rel="noopener" aria-label="X（旧Twitter）（新しいタブで開く）">
+                    <img src="/images/icons/x-twitter.svg" alt="X (Twitter)" aria-hidden="true">
+                </a>
+            </div>
+
+            <div class="footer-copyright">
+                <p>&copy; 2024 miterundesu. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <script src="/js/main.js"></script>
+    <script type="module" src="/js/main.js"></script>
 </body>
 </html>
