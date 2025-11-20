@@ -188,7 +188,7 @@
     <main id="main-content" role="main">
     <article class="policy-container" aria-labelledby="policy-title">
         <h1 class="policy-title" id="policy-title">プライバシーポリシー</h1>
-        <p class="policy-updated"><time datetime="2025-01-17">最終更新日：2025年1月17日</time></p>
+        <p class="policy-updated"><time datetime="2025-01-20">最終更新日：2025年1月20日</time></p>
 
         <section class="policy-section" aria-labelledby="policy-section-1">
             <h2>1. 基本方針</h2>
@@ -214,22 +214,22 @@
             <h3>2.2 撮影画像</h3>
             <p>ユーザーが撮影ボタンを押した場合のみ、以下の処理が行われます：</p>
             <ul>
-                <li>画像はJPEG形式で圧縮され、端末内のCoreDataに保存されます</li>
+                <li>画像は端末内に保存されます</li>
                 <li>画像には透かし（タイムスタンプとデバイスID）が埋め込まれます</li>
                 <li>画像は撮影時刻から<strong>正確に10分後</strong>に自動的に削除されます</li>
                 <li>アプリを再起動しても、10分の削除タイマーは継続されます</li>
             </ul>
 
             <h3>2.3 デバイス識別子</h3>
-            <p>以下の目的でのみ、デバイスのUUID（identifierForVendor）を使用します：</p>
+            <p>以下の目的でのみ、お使いの端末に固有の識別子を使用します：</p>
             <ul>
                 <li><strong>透かし機能：</strong>撮影画像に6文字の短縮IDを埋め込み、万が一画像が流出した場合に特定できるようにします</li>
                 <li><strong>プレスモード：</strong>報道関係者や開発者がプレスモードを申請する際の端末認証に使用します</li>
             </ul>
-            <p>このUUIDは、アプリをアンインストールすると自動的にリセットされます。他のアプリや第三者と共有されることはありません。</p>
+            <p>この識別子は、アプリをアンインストールすると自動的にリセットされます。他のアプリや第三者と共有されることはありません。</p>
 
             <h3>2.4 アプリ設定</h3>
-            <p>以下の設定情報がUserDefaults（端末内）に保存されます：</p>
+            <p>以下の設定情報が端末内に保存されます：</p>
             <ul>
                 <li>最大ズーム倍率（デフォルト：100倍）</li>
                 <li>表示言語（日本語または英語）</li>
@@ -272,32 +272,30 @@
         <div class="policy-section">
             <h2>4. 情報の保存場所と期間</h2>
 
-            <h3>4.1 ローカルストレージ（端末内）</h3>
+            <h3>4.1 端末内での保存</h3>
+            <p>すべてのデータはお使いの端末内にのみ保存され、外部のサーバーやクラウドには送信されません（プレスモード認証を除く）。</p>
+
             <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
                 <tr style="background-color: var(--bg-light-green);">
                     <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">データ種類</th>
-                    <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">保存場所</th>
                     <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">保存期間</th>
                 </tr>
                 <tr>
                     <td style="border: 1px solid #ddd; padding: 12px;">撮影画像</td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">CoreData</td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">最大10分間</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">最大10分間（自動削除）</td>
                 </tr>
                 <tr>
-                    <td style="border: 1px solid #ddd; padding: 12px;">デバイスID</td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">UserDefaults</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">デバイス識別子</td>
                     <td style="border: 1px solid #ddd; padding: 12px;">アプリアンインストールまで</td>
                 </tr>
                 <tr>
                     <td style="border: 1px solid #ddd; padding: 12px;">アプリ設定</td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">UserDefaults</td>
                     <td style="border: 1px solid #ddd; padding: 12px;">リセットまたはアンインストールまで</td>
                 </tr>
             </table>
 
-            <h3>4.2 クラウドストレージ</h3>
-            <p><strong>本アプリはクラウドストレージを使用しません。</strong>すべてのデータは端末内にのみ保存されます。</p>
+            <h3>4.2 外部サーバーへの送信</h3>
+            <p>プレスモード機能を使用する場合のみ、デバイス識別子とアクセスコードが認証サーバー（Supabase）に送信されます。撮影画像やカメラ映像が外部に送信されることは一切ありません。</p>
         </div>
 
         <div class="policy-section">
@@ -306,7 +304,7 @@
             <h3>5.1 Supabase（プレスモード認証のみ）</h3>
             <p>プレスモード機能を利用する場合のみ、以下の情報がSupabaseサーバーに送信されます：</p>
             <ul>
-                <li>デバイスID（UUID）</li>
+                <li>デバイス識別子</li>
                 <li>アクセスコード（ユーザーが入力）</li>
             </ul>
             <p><strong>送信目的：</strong>報道関係者や開発者の認証を行うため</p>
@@ -333,18 +331,17 @@
             <h2>6. セキュリティ対策</h2>
 
             <h3>6.1 スクリーンショット防止</h3>
-            <p>画像の不正な保存を防ぐため、以下の技術的対策を実施しています：</p>
+            <p>画像の不正な保存を防ぐため、以下の対策を実施しています：</p>
             <ul>
-                <li>セキュアテキスト入力フィールド技術による画面保護</li>
-                <li>スクリーンショット検知機能（検知時に画面を即座に非表示）</li>
-                <li>コンテキストメニュー無効化（長押し保存の防止）</li>
+                <li>画面保護技術による保護</li>
+                <li>スクリーンショット検知（検知時に画面を即座に非表示）</li>
+                <li>長押しによる保存の防止</li>
             </ul>
 
             <h3>6.2 画面録画検知</h3>
-            <p>画面録画を即座に検知し、以下の対策を実施します：</p>
+            <p>画面録画を検知し、以下の対策を実施します：</p>
             <ul>
-                <li>0.1秒ごとの高頻度ポーリング監視</li>
-                <li>iOS 18+の最新検知API対応</li>
+                <li>リアルタイムでの録画検知</li>
                 <li>検知時にカメラプレビューをぼかし処理</li>
                 <li>警告バナー表示</li>
             </ul>
@@ -355,15 +352,10 @@
                 <li>撮影日時（YYYY/MM/DD HH:mm形式）</li>
                 <li>デバイスID（6文字の短縮形式）</li>
             </ul>
-            <p>この透かしは画像のピクセルデータに焼き付けられ、削除できません。</p>
+            <p>この透かしは画像に焼き付けられており、削除できません。</p>
 
             <h3>6.4 自動削除機能</h3>
-            <p>撮影から10分経過すると、以下の処理が自動的に実行されます：</p>
-            <ul>
-                <li>メモリからの削除</li>
-                <li>CoreDataからの完全削除</li>
-                <li>復元不可能な状態にする</li>
-            </ul>
+            <p>撮影から10分経過すると、画像は端末から完全に削除され、復元できません。</p>
         </div>
 
         <div class="policy-section">
