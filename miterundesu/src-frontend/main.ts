@@ -16,8 +16,11 @@ interface FormData {
 // ========================================
 // Prevent Browser Auto-Scroll (Run Immediately)
 // ========================================
+// Save hash before removing it to handle navigation from subpages
+const initialHash = window.location.hash;
+
 // Remove hash IMMEDIATELY to prevent browser from scrolling to hash
-if (window.location.hash) {
+if (initialHash) {
   history.replaceState(null, '', window.location.pathname + window.location.search);
 }
 
@@ -136,7 +139,7 @@ function initSmoothScrolling(): void {
         const breadcrumbHeight = breadcrumb ? breadcrumb.offsetHeight : 0;
 
         // Small padding to ensure the title is clearly visible
-        const extraPadding = 30;
+        const extraPadding = 10;
 
         // Calculate total offset
         const totalOffset = headerHeight + breadcrumbHeight + extraPadding;
@@ -492,6 +495,37 @@ function initActiveMenu() {
 }
 
 // ========================================
+// Handle Initial Hash Navigation
+// ========================================
+function handleInitialHash(): void {
+  // If there was a hash when page loaded, scroll to that section
+  if (initialHash) {
+    const targetId = initialHash.substring(1);
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      // Wait for page to fully render before scrolling
+      setTimeout(() => {
+        const header = document.querySelector('.header') as HTMLElement;
+        const breadcrumb = document.querySelector('.breadcrumb') as HTMLElement;
+
+        const headerHeight = header ? header.offsetHeight : 0;
+        const breadcrumbHeight = breadcrumb ? breadcrumb.offsetHeight : 0;
+        const extraPadding = 10;
+
+        const totalOffset = headerHeight + breadcrumbHeight + extraPadding;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - totalOffset;
+
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'auto'
+        });
+      }, 100);
+    }
+  }
+}
+
+// ========================================
 // Initialize All Features
 // ========================================
 function init(): void {
@@ -505,6 +539,9 @@ function init(): void {
   initContactForm();
   initExpandableMenu();
   initBreadcrumb();
+
+  // Handle initial hash navigation from subpages
+  handleInitialHash();
 }
 
 // ========================================

@@ -1,5 +1,6 @@
 // public/js/main.js
-if (window.location.hash) {
+var initialHash = window.location.hash;
+if (initialHash) {
   history.replaceState(null, "", window.location.pathname + window.location.search);
 }
 if ("scrollRestoration" in history) {
@@ -76,7 +77,7 @@ function initSmoothScrolling() {
         const breadcrumb = document.querySelector(".breadcrumb");
         const headerHeight = header ? header.offsetHeight : 0;
         const breadcrumbHeight = breadcrumb ? breadcrumb.offsetHeight : 0;
-        const extraPadding = 30;
+        const extraPadding = 10;
         const totalOffset = headerHeight + breadcrumbHeight + extraPadding;
         const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - totalOffset;
         window.scrollTo({
@@ -215,6 +216,27 @@ function showFormMessage(message, type) {
     }, 5e3);
   }
 }
+function handleInitialHash() {
+  if (initialHash) {
+    const targetId = initialHash.substring(1);
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      setTimeout(() => {
+        const header = document.querySelector(".header");
+        const breadcrumb = document.querySelector(".breadcrumb");
+        const headerHeight = header ? header.offsetHeight : 0;
+        const breadcrumbHeight = breadcrumb ? breadcrumb.offsetHeight : 0;
+        const extraPadding = 10;
+        const totalOffset = headerHeight + breadcrumbHeight + extraPadding;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - totalOffset;
+        window.scrollTo({
+          top: targetPosition,
+          behavior: "auto"
+        });
+      }, 100);
+    }
+  }
+}
 function init() {
   initHamburgerMenu();
   initSmoothScrolling();
@@ -222,6 +244,7 @@ function init() {
   initContactForm();
   initExpandableMenu();
   initBreadcrumb();
+  handleInitialHash();
 }
 function initExpandableMenu() {
   const expandableItems = document.querySelectorAll(".menu-item-expandable");
