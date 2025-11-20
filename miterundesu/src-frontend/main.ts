@@ -340,6 +340,7 @@ function showFormMessage(message: string, type: 'success' | 'error'): void {
 // ========================================
 // Header Scroll Effect
 // ========================================
+// @ts-ignore - Function kept for potential future use
 function initHeaderScrollEffect(): void {
   const header = document.querySelector('.header') as HTMLElement | null;
   if (!header) return;
@@ -361,6 +362,7 @@ function initHeaderScrollEffect(): void {
 // ========================================
 // Intersection Observer for Fade-in Animations
 // ========================================
+// @ts-ignore - Function kept for potential future use
 function initScrollAnimations(): void {
   const observerOptions = {
     threshold: 0.1,
@@ -387,6 +389,7 @@ function initScrollAnimations(): void {
 // ========================================
 // Active Menu Item Highlighting
 // ========================================
+// @ts-ignore - Function kept for potential future use
 function initActiveMenu() {
   const currentPath = window.location.pathname;
   const currentHash = window.location.hash;
@@ -495,9 +498,8 @@ function init(): void {
   // Initialize all interactive features
   initHamburgerMenu();
 
-  // Scroll-related functions and active menu disabled
-  // @ts-ignore - Disabled for testing
-  if (false) { initSmoothScrolling(); initHeaderScrollEffect(); initScrollAnimations(); initActiveMenu(); }
+  // Re-enable smooth scrolling with dynamic offset calculation
+  initSmoothScrolling();
 
   initInquiryTypeHelper();
   initContactForm();

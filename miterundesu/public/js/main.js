@@ -61,6 +61,32 @@ function initHamburgerMenu() {
     }
   });
 }
+function initSmoothScrolling() {
+  const anchorLinks = document.querySelectorAll('a[href^="#"]');
+  anchorLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const href = link.getAttribute("href");
+      if (!href || href === "#")
+        return;
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        const header = document.querySelector(".header");
+        const breadcrumb = document.querySelector(".breadcrumb");
+        const headerHeight = header ? header.offsetHeight : 0;
+        const breadcrumbHeight = breadcrumb ? breadcrumb.offsetHeight : 0;
+        const extraPadding = 30;
+        const totalOffset = headerHeight + breadcrumbHeight + extraPadding;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - totalOffset;
+        window.scrollTo({
+          top: targetPosition,
+          behavior: "auto"
+        });
+      }
+    });
+  });
+}
 function initInquiryTypeHelper() {
   const inquiryType = document.getElementById("inquiry-type");
   const inquiryHelp = document.getElementById("inquiry-help");
@@ -191,12 +217,7 @@ function showFormMessage(message, type) {
 }
 function init() {
   initHamburgerMenu();
-  if (false) {
-    initSmoothScrolling();
-    initHeaderScrollEffect();
-    initScrollAnimations();
-    initActiveMenu();
-  }
+  initSmoothScrolling();
   initInquiryTypeHelper();
   initContactForm();
   initExpandableMenu();
