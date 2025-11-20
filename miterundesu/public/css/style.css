@@ -1273,7 +1273,8 @@ body:not(.subpage) .breadcrumb {
 
 .press-description {
   max-width: 700px;
-  margin: 0 auto var(--spacing-lg);
+  margin: 0 0 var(--spacing-lg) 0;
+  text-align: left;
 }
 
 .press-description p {
@@ -1963,10 +1964,11 @@ body:not(.subpage) .breadcrumb {
 
 .press-hero .hero-description {
   max-width: 700px;
-  margin: 0 auto;
+  margin: 0;
   font-size: 1.05rem;
   line-height: 1.8;
   color: var(--text-dark);
+  text-align: left;
 }
 
 .press-about {
