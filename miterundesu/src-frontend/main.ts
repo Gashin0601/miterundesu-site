@@ -130,7 +130,7 @@ function initSmoothScrolling(): void {
         // Calculate offset for sticky header and breadcrumb
         const headerHeight = document.querySelector('.header')?.clientHeight || 0;
         const breadcrumbHeight = document.querySelector('.breadcrumb')?.clientHeight || 0;
-        const extraPadding = 80; // Additional padding for better visibility
+        const extraPadding = 150; // Additional padding for better visibility
         const totalOffset = headerHeight + breadcrumbHeight + extraPadding;
         const targetPosition = targetElement.offsetTop - totalOffset;
 
