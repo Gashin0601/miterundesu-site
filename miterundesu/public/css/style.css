@@ -302,14 +302,16 @@ img {
   transition: var(--transition);
 }
 
-/* Hover and active animations disabled for hamburger menu */
-/* .hamburger-menu:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
+/* Hover and active animations for hamburger menu (PC only) */
+@media (min-width: 1024px) {
+  .hamburger-menu:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
 
-.hamburger-menu:active {
-  transform: scale(0.95);
-} */
+  .hamburger-menu:active {
+    transform: scale(0.95);
+  }
+}
 
 .hamburger-menu span {
   display: block;
@@ -334,9 +336,12 @@ img {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* .hamburger-menu:hover span {
-  background-color: rgba(255, 255, 255, 0.8);
-} */
+/* Hamburger menu span hover (PC only) */
+@media (min-width: 1024px) {
+  .hamburger-menu:hover span {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+}
 
 /* Navigation Menu */
 /* Desktop: Show nav links horizontally */
@@ -605,13 +610,21 @@ body:not(.subpage) .breadcrumb {
   touch-action: manipulation;
 }
 
-.subpage .nav-menu > ul > li > a:hover,
 .subpage .nav-menu > ul > li > a:focus,
-.subpage .nav-menu > ul > li > a:active,
 .subpage .nav-menu > ul > li > a:focus-visible {
-  background-color: transparent !important;
-  border-left-color: transparent !important;
   outline: none !important;
+}
+
+/* Disable main page header hover animation for subpage navigation */
+.subpage .nav-menu a::after {
+  display: none !important;
+}
+
+/* Hover effects for full-screen navigation (mobile and PC) */
+.subpage .nav-menu > ul > li > a:hover,
+.subpage .nav-menu > ul > li > a:active {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-left-color: var(--main-green) !important;
 }
 
 /* Expandable menu items for subpages */
@@ -644,16 +657,17 @@ body:not(.subpage) .breadcrumb {
   touch-action: manipulation;
 }
 
-.subpage .nav-menu .menu-item-expandable > button:hover,
 .subpage .nav-menu .menu-item-expandable > button:focus,
-.subpage .nav-menu .menu-item-expandable > button:active,
 .subpage .nav-menu .menu-item-expandable > button:focus-visible {
-  background-color: transparent !important;
-  border-left-color: transparent !important;
   outline: none !important;
 }
 
-/* Hamburger menu hover effects now disabled globally (see lines 305-312, 337-339) */
+/* Hover effects for expandable menu buttons (mobile and PC) */
+.subpage .nav-menu .menu-item-expandable > button:hover,
+.subpage .nav-menu .menu-item-expandable > button:active {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-left-color: var(--main-green) !important;
+}
 
 .subpage .nav-menu .menu-item-expandable.expanded > button {
   background-color: transparent !important;

@@ -481,14 +481,11 @@ function initActiveMenu() {
 // Initialize All Features
 // ========================================
 function init(): void {
-  // TEMPORARILY DISABLED FOR TESTING
-  // Reset scroll position to top on page load (using instant behavior)
-  // window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
-
   // Initialize all interactive features
   initHamburgerMenu();
 
-  // @ts-ignore - Temporarily disabled for testing
+  // Scroll-related functions and active menu disabled
+  // @ts-ignore - Disabled for testing
   if (false) { initSmoothScrolling(); initHeaderScrollEffect(); initScrollAnimations(); initActiveMenu(); }
 
   initInquiryTypeHelper();
