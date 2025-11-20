@@ -127,9 +127,12 @@ function initSmoothScrolling(): void {
       const targetElement = document.getElementById(targetId);
 
       if (targetElement) {
-        // Calculate offset for sticky header
+        // Calculate offset for sticky header and breadcrumb
         const headerHeight = document.querySelector('.header')?.clientHeight || 0;
-        const targetPosition = targetElement.offsetTop - headerHeight;
+        const breadcrumbHeight = document.querySelector('.breadcrumb')?.clientHeight || 0;
+        const extraPadding = 20; // Additional padding for better visibility
+        const totalOffset = headerHeight + breadcrumbHeight + extraPadding;
+        const targetPosition = targetElement.offsetTop - totalOffset;
 
         // Instant scroll without smooth behavior
         window.scrollTo({
