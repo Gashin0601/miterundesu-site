@@ -236,12 +236,13 @@ img {
 .header-container {
   display: flex;
   align-items: center;
-  gap: 16px; /* Reduced from var(--spacing-lg) for tighter layout */
+  gap: var(--spacing-md);
   padding: 0 var(--spacing-md);
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
   box-sizing: border-box;
+  flex-wrap: nowrap;
 }
 
 .header-logo {
@@ -349,6 +350,7 @@ img {
   display: flex;
   justify-content: center;
   flex: 1;
+  align-items: center;
 }
 
 .nav-menu ul {
