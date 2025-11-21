@@ -187,7 +187,7 @@
 一時的にスクリーンショットと画面収録を許可する特別なモードです。
 
 【特徴】
-・ ユーザーIDとパスワードでログインして有効化
+・ 申請後、承認されたアカウントで有効化
 ・ アカウントの有効期限内のみ利用可能（承認日から1年間）
 ・ 期限終了後は自動的に通常モードに戻ります
 ・ 取材・紹介目的に限定してご利用ください</div>
@@ -219,8 +219,8 @@
                         <li class="step-item">
                             <div class="step-content">
                                 <h3 class="step-title">下記のフォームからアカウント申請</h3>
-                                <p class="step-description">・ ご希望のユーザーIDとパスワードを設定
-・ 組織情報とご連絡先を入力</p>
+                                <p class="step-description">・ 組織情報とご連絡先を入力
+・ プレスモード利用期間を選択</p>
                             </div>
                         </li>
                         <li class="step-item">
@@ -234,7 +234,7 @@
                             <div class="step-content">
                                 <h3 class="step-title">アプリでログイン</h3>
                                 <p class="step-description">・ アプリ内の設定画面からログイン
-・ 申請時に設定したユーザーIDとパスワードを入力</p>
+・ 承認されたアカウント情報を使用してログイン</p>
                             </div>
                         </li>
                         <li class="step-item">
@@ -256,41 +256,6 @@
                     </p>
 
                     <form class="press-apply-form" id="press-apply-form" aria-labelledby="form-section-title" aria-describedby="form-intro-text">
-                        <div class="form-group">
-                            <label for="user-id">
-                                希望ユーザーID
-                                <span class="required" aria-label="必須項目">必須</span>
-                            </label>
-                            <input type="text" id="user-id" name="user-id" required aria-required="true"
-                                   placeholder="例) asahi-news"
-                                   pattern="[a-zA-Z0-9\-_]{4,20}"
-                                   title="4〜20文字の半角英数字、ハイフン、アンダースコアが使用できます"
-                                   aria-describedby="user-id-help">
-                            <span class="form-help" id="user-id-help">4〜20文字の半角英数字、ハイフン(-)、アンダースコア(_)が使用できます</span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password">
-                                パスワード
-                                <span class="required" aria-label="必須項目">必須</span>
-                            </label>
-                            <input type="password" id="password" name="password" required aria-required="true"
-                                   minlength="8"
-                                   placeholder="8文字以上のパスワード"
-                                   aria-describedby="password-help">
-                            <span class="form-help" id="password-help">8文字以上で設定してください</span>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password-confirm">
-                                パスワード（確認）
-                                <span class="required" aria-label="必須項目">必須</span>
-                            </label>
-                            <input type="password" id="password-confirm" name="password-confirm" required aria-required="true"
-                                   minlength="8"
-                                   placeholder="もう一度入力してください">
-                        </div>
-
                         <div class="form-group">
                             <label for="organization-name">
                                 組織名
