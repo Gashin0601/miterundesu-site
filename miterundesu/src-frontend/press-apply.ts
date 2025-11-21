@@ -1,5 +1,5 @@
 /**
- * Press Apply Page - Form Handling
+ * Press Apply Page - Form Handling (User ID + Password Authentication)
  */
 
 // DOM Element Selectors
@@ -18,52 +18,59 @@ function initPressApplyForm() {
     e.preventDefault();
 
     // Get form data
-    const name = (document.getElementById('press-name') as HTMLInputElement).value;
-    const mediaName = (document.getElementById('media-name') as HTMLInputElement).value;
-    const position = (document.getElementById('position') as HTMLInputElement).value;
-    const email = (document.getElementById('press-email') as HTMLInputElement).value;
-    const phone = (document.getElementById('press-phone') as HTMLInputElement).value;
-    const coverageContent = (document.getElementById('coverage-content') as HTMLTextAreaElement).value;
-    const publishDate = (document.getElementById('publish-date') as HTMLInputElement).value;
-    const pressDuration = (document.getElementById('press-duration') as HTMLSelectElement).value;
-    const note = (document.getElementById('press-note') as HTMLTextAreaElement).value;
+    const userId = (document.getElementById('user-id') as HTMLInputElement).value.trim();
+    const password = (document.getElementById('password') as HTMLInputElement).value;
+    const passwordConfirm = (document.getElementById('password-confirm') as HTMLInputElement).value;
+    const organizationName = (document.getElementById('organization-name') as HTMLInputElement).value.trim();
+    const organizationType = (document.getElementById('organization-type') as HTMLSelectElement).value;
+    const contactPerson = (document.getElementById('contact-person') as HTMLInputElement).value.trim();
+    const email = (document.getElementById('press-email') as HTMLInputElement).value.trim();
+    const phone = (document.getElementById('press-phone') as HTMLInputElement).value.trim();
+    const note = (document.getElementById('press-note') as HTMLTextAreaElement).value.trim();
 
     // Validate required fields
-    if (!name || !mediaName || !email || !coverageContent || !pressDuration) {
+    if (!userId || !password || !passwordConfirm || !organizationName || !organizationType || !contactPerson || !email) {
       showPressFormMessage('すべての必須項目を入力してください。', 'error');
+      return;
+    }
+
+    // Validate user ID format
+    const userIdRegex = /^[a-zA-Z0-9\-_]{4,20}$/;
+    if (!userIdRegex.test(userId)) {
+      showPressFormMessage('ユーザーIDは4〜20文字の半角英数字、ハイフン、アンダースコアで入力してください。', 'error');
+      return;
+    }
+
+    // Validate password length
+    if (password.length < 8) {
+      showPressFormMessage('パスワードは8文字以上で入力してください。', 'error');
+      return;
+    }
+
+    // Validate password match
+    if (password !== passwordConfirm) {
+      showPressFormMessage('パスワードが一致しません。', 'error');
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      showPressFormMessage('有効なメールアドレスを入力してください。', 'error');
       return;
     }
 
     // Map form data to API format
     const formData = {
-      mediaName,
-      contactPerson: `${name}${position ? ` (${position})` : ''}`,
-      email,
-      phone,
-      coverageContent,
-      publicationDate: publishDate || undefined,
-      requiredPeriodStart: undefined as string | undefined, // Calculated from pressDuration
-      requiredPeriodEnd: undefined as string | undefined,   // Calculated from pressDuration
-      note
+      userId,
+      password,
+      organizationName,
+      organizationType,
+      contactName: contactPerson,
+      contactEmail: email,
+      contactPhone: phone || undefined,
+      notes: note || undefined
     };
-
-    // Calculate period from pressDuration (e.g., "7days", "14days", "30days")
-    if (pressDuration) {
-      const days = parseInt(pressDuration.replace('days', ''));
-      const startDate = new Date();
-      const endDate = new Date();
-      endDate.setDate(endDate.getDate() + days);
-
-      formData.requiredPeriodStart = startDate.toISOString().split('T')[0];
-      formData.requiredPeriodEnd = endDate.toISOString().split('T')[0];
-    }
-
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      showPressFormMessage('有効なメールアドレスを入力してください。', 'error');
-      return;
-    }
 
     try {
       // Show loading state
@@ -73,7 +80,7 @@ function initPressApplyForm() {
       submitButton.textContent = '送信中...';
 
       // Submit to API
-      const response = await fetch('/api/press-application', {
+      const response = await fetch('/api/press-account-application', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -88,7 +95,7 @@ function initPressApplyForm() {
       }
 
       // Show success message
-      showPressFormMessage(result.message, 'success');
+      showPressFormMessage(result.message || 'お申し込みありがとうございます。審査完了後、メールにてご連絡いたします。', 'success');
 
       // Reset form
       pressApplyForm.reset();
@@ -98,7 +105,8 @@ function initPressApplyForm() {
       submitButton.textContent = originalText;
     } catch (error) {
       console.error('Press apply form submission error:', error);
-      showPressFormMessage('送信中にエラーが発生しました。もう一度お試しください。', 'error');
+      const errorMessage = error instanceof Error ? error.message : '送信中にエラーが発生しました。もう一度お試しください。';
+      showPressFormMessage(errorMessage, 'error');
 
       // Reset submit button
       const submitButton = pressApplyForm.querySelector('button[type="submit"]') as HTMLButtonElement;
