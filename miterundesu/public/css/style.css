@@ -774,10 +774,12 @@ body:not(.subpage) .breadcrumb {
 }
 
 .hero-text {
-  text-align: center;
+  text-align: left;
   margin-bottom: 0;
   padding: 0 var(--spacing-md);
   z-index: 1;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .hero-title {
