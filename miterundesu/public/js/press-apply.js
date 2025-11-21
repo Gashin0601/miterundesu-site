@@ -7,30 +7,14 @@ function initPressApplyForm() {
   }
   pressApplyForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const userId = document.getElementById("user-id").value.trim();
-    const password = document.getElementById("password").value;
-    const passwordConfirm = document.getElementById("password-confirm").value;
     const organizationName = document.getElementById("organization-name").value.trim();
     const organizationType = document.getElementById("organization-type").value;
     const contactPerson = document.getElementById("contact-person").value.trim();
     const email = document.getElementById("press-email").value.trim();
     const phone = document.getElementById("press-phone").value.trim();
     const note = document.getElementById("press-note").value.trim();
-    if (!userId || !password || !passwordConfirm || !organizationName || !organizationType || !contactPerson || !email) {
+    if (!organizationName || !organizationType || !contactPerson || !email) {
       showPressFormMessage("\u3059\u3079\u3066\u306E\u5FC5\u9808\u9805\u76EE\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002", "error");
-      return;
-    }
-    const userIdRegex = /^[a-zA-Z0-9\-_]{4,20}$/;
-    if (!userIdRegex.test(userId)) {
-      showPressFormMessage("\u30E6\u30FC\u30B6\u30FCID\u306F4\u301C20\u6587\u5B57\u306E\u534A\u89D2\u82F1\u6570\u5B57\u3001\u30CF\u30A4\u30D5\u30F3\u3001\u30A2\u30F3\u30C0\u30FC\u30B9\u30B3\u30A2\u3067\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002", "error");
-      return;
-    }
-    if (password.length < 8) {
-      showPressFormMessage("\u30D1\u30B9\u30EF\u30FC\u30C9\u306F8\u6587\u5B57\u4EE5\u4E0A\u3067\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002", "error");
-      return;
-    }
-    if (password !== passwordConfirm) {
-      showPressFormMessage("\u30D1\u30B9\u30EF\u30FC\u30C9\u304C\u4E00\u81F4\u3057\u307E\u305B\u3093\u3002", "error");
       return;
     }
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -39,8 +23,6 @@ function initPressApplyForm() {
       return;
     }
     const formData = {
-      userId,
-      password,
       organizationName,
       organizationType,
       contactName: contactPerson,
