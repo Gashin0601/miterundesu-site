@@ -272,24 +272,24 @@ router.post('/press-application', async (req: Request, res: Response): Promise<v
 });
 
 /**
- * POST /api/press-account
+ * POST /api/press-account-application
  * Create press account with user ID + password authentication
  */
-router.post('/press-account', async (req: Request, res: Response): Promise<void> => {
+router.post('/press-account-application', async (req: Request, res: Response): Promise<void> => {
   try {
     const {
       userId,
       password,
       organizationName,
       organizationType,
-      contactPerson,
-      email,
-      phone,
-      note
+      contactName,
+      contactEmail,
+      contactPhone,
+      notes
     } = req.body;
 
     // Validation
-    if (!userId || !password || !organizationName || !organizationType || !contactPerson || !email) {
+    if (!userId || !password || !organizationName || !organizationType || !contactName || !contactEmail) {
       res.status(400).json({
         error: 'すべての必須項目を入力してください。'
       });
@@ -315,7 +315,7 @@ router.post('/press-account', async (req: Request, res: Response): Promise<void>
 
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!emailRegex.test(contactEmail)) {
       res.status(400).json({
         error: '有効なメールアドレスを入力してください。'
       });
@@ -361,9 +361,10 @@ router.post('/press-account', async (req: Request, res: Response): Promise<void>
         password_hash: passwordHash,
         organization_name: organizationName,
         organization_type: organizationType,
-        contact_person: contactPerson,
-        email,
-        phone: phone || null,
+        contact_person: contactName,
+        email: contactEmail,
+        phone: contactPhone || null,
+        notes: notes || null,
         expires_at: expiresAt.toISOString(),
         is_active: false, // Pending approval
         created_at: new Date().toISOString(),
@@ -383,10 +384,10 @@ router.post('/press-account', async (req: Request, res: Response): Promise<void>
     try {
       await sendPressApplicationEmails({
         mediaName: organizationName,
-        contactPerson,
-        email,
-        phone,
-        coverageContent: `組織種別: ${organizationType}\nユーザーID: ${userId}\n備考: ${note || 'なし'}`,
+        contactPerson: contactName,
+        email: contactEmail,
+        phone: contactPhone,
+        coverageContent: `組織種別: ${organizationType}\nユーザーID: ${userId}\n備考: ${notes || 'なし'}`,
         publicationDate: undefined,
         requiredPeriodStart: undefined,
         requiredPeriodEnd: undefined,
