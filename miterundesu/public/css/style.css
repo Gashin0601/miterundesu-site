@@ -764,8 +764,8 @@ body:not(.subpage) .breadcrumb {
 .hero {
   background: linear-gradient(135deg, var(--main-green) 0%, rgba(67, 130, 71, 0.8) 100%);
   color: var(--white);
-  padding: var(--spacing-lg) 0;
-  min-height: 50vh;
+  padding: var(--spacing-md) 0;
+  min-height: 30vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
