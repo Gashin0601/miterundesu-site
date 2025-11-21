@@ -387,9 +387,9 @@ router.post('/press-account', async (req: Request, res: Response): Promise<void>
         email,
         phone,
         coverageContent: `組織種別: ${organizationType}\nユーザーID: ${userId}\n備考: ${note || 'なし'}`,
-        publicationDate: null,
-        requiredPeriodStart: null,
-        requiredPeriodEnd: null,
+        publicationDate: undefined,
+        requiredPeriodStart: undefined,
+        requiredPeriodEnd: undefined,
         note: `【新システム】プレスアカウント申請\n\n承認が必要です。承認後、is_active = true に設定してください。`
       });
     } catch (emailError) {
