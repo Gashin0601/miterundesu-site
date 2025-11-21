@@ -218,32 +218,30 @@
                     <ol class="steps-list" aria-labelledby="steps-title">
                         <li class="step-item">
                             <div class="step-content">
-                                <h3 class="step-title">下記のお問い合わせフォームからご連絡ください</h3>
-                                <p class="step-description">・ 媒体名
-・ 取材内容
-・ 掲載予定日
-・ 必要な期間</p>
+                                <h3 class="step-title">下記のフォームからアカウント申請</h3>
+                                <p class="step-description">・ ご希望のユーザーIDとパスワードを設定
+・ 組織情報とご連絡先を入力</p>
                             </div>
                         </li>
                         <li class="step-item">
                             <div class="step-content">
-                                <h3 class="step-title">担当者よりプレスモードコードをお送りします</h3>
-                                <p class="step-description">・ メールにて専用コードを送付
-・ 有効期間も併せてお知らせします</p>
+                                <h3 class="step-title">審査・アカウント承認</h3>
+                                <p class="step-description">・ 2-3営業日以内に審査を実施
+・ 承認後、メールにて通知をお送りします</p>
                             </div>
                         </li>
                         <li class="step-item">
                             <div class="step-content">
-                                <h3 class="step-title">アプリでコードを入力</h3>
-                                <p class="step-description">・ アプリ内の設定画面からコード入力
-・ 入力後、すぐにプレスモードが有効化されます</p>
+                                <h3 class="step-title">アプリでログイン</h3>
+                                <p class="step-description">・ アプリ内の設定画面からログイン
+・ 申請時に設定したユーザーIDとパスワードを入力</p>
                             </div>
                         </li>
                         <li class="step-item">
                             <div class="step-content">
-                                <h3 class="step-title">取材・撮影を実施</h3>
-                                <p class="step-description">・ スクリーンショット、画面収録が可能になります
-・ 有効期間内であればいつでもご利用いただけます</p>
+                                <h3 class="step-title">プレスモードを有効化</h3>
+                                <p class="step-description">・ ログイン後、プレスモードをオンに切り替え
+・ スクリーンショット・画面収録が可能になります</p>
                             </div>
                         </li>
                     </ol>
@@ -259,27 +257,69 @@
 
                     <form class="press-apply-form" id="press-apply-form" aria-labelledby="form-section-title" aria-describedby="form-intro-text">
                         <div class="form-group">
-                            <label for="press-name">
-                                お名前
+                            <label for="user-id">
+                                希望ユーザーID
                                 <span class="required" aria-label="必須項目">必須</span>
                             </label>
-                            <input type="text" id="press-name" name="press-name" required aria-required="true" placeholder="例) 山田 太郎">
+                            <input type="text" id="user-id" name="user-id" required aria-required="true"
+                                   placeholder="例) asahi-news"
+                                   pattern="[a-zA-Z0-9\-_]{4,20}"
+                                   title="4〜20文字の半角英数字、ハイフン、アンダースコアが使用できます"
+                                   aria-describedby="user-id-help">
+                            <span class="form-help" id="user-id-help">4〜20文字の半角英数字、ハイフン(-)、アンダースコア(_)が使用できます</span>
                         </div>
 
                         <div class="form-group">
-                            <label for="media-name">
-                                媒体名
+                            <label for="password">
+                                パスワード
                                 <span class="required" aria-label="必須項目">必須</span>
                             </label>
-                            <input type="text" id="media-name" name="media-name" required aria-required="true" placeholder="例) ○○新聞 / △△テレビ / □□ウェブメディア">
+                            <input type="password" id="password" name="password" required aria-required="true"
+                                   minlength="8"
+                                   placeholder="8文字以上のパスワード"
+                                   aria-describedby="password-help">
+                            <span class="form-help" id="password-help">8文字以上で設定してください</span>
                         </div>
 
                         <div class="form-group">
-                            <label for="position">
-                                役職・部署
-                                <span class="optional">(任意)</span>
+                            <label for="password-confirm">
+                                パスワード（確認）
+                                <span class="required" aria-label="必須項目">必須</span>
                             </label>
-                            <input type="text" id="position" name="position" placeholder="例) 編集部 記者">
+                            <input type="password" id="password-confirm" name="password-confirm" required aria-required="true"
+                                   minlength="8"
+                                   placeholder="もう一度入力してください">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="organization-name">
+                                組織名
+                                <span class="required" aria-label="必須項目">必須</span>
+                            </label>
+                            <input type="text" id="organization-name" name="organization-name" required aria-required="true" placeholder="例) 朝日新聞社 / NHK / ウェブメディア株式会社">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="organization-type">
+                                組織種別
+                                <span class="required" aria-label="必須項目">必須</span>
+                            </label>
+                            <select id="organization-type" name="organization-type" required aria-required="true">
+                                <option value="">選択してください</option>
+                                <option value="newspaper">新聞</option>
+                                <option value="tv">テレビ</option>
+                                <option value="magazine">雑誌</option>
+                                <option value="web_media">ウェブメディア</option>
+                                <option value="other">その他</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-person">
+                                担当者名
+                                <span class="required" aria-label="必須項目">必須</span>
+                            </label>
+                            <input type="text" id="contact-person" name="contact-person" required aria-required="true" placeholder="例) 山田 太郎">
                         </div>
 
                         <div class="form-group">
@@ -300,42 +340,16 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="coverage-content">
-                                取材内容
-                                <span class="required" aria-label="必須項目">必須</span>
-                            </label>
-                            <textarea id="coverage-content" name="coverage-content" rows="5" required aria-required="true" placeholder="どのような形でミテルンデスを紹介いただく予定かご記入ください"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="publish-date">
-                                掲載予定日
-                                <span class="optional">(任意)</span>
-                            </label>
-                            <input type="date" id="publish-date" name="publish-date">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="press-duration">
-                                プレスモード利用期間
-                                <span class="required" aria-label="必須項目">必須</span>
-                            </label>
-                            <select id="press-duration" name="press-duration" required aria-required="true">
-                                <option value="">選択してください</option>
-                                <option value="3days">3日間</option>
-                                <option value="1week">1週間</option>
-                                <option value="2weeks">2週間</option>
-                                <option value="1month">1ヶ月</option>
-                                <option value="other">その他（備考欄に記載）</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
                             <label for="press-note">
                                 備考
                                 <span class="optional">(任意)</span>
                             </label>
                             <textarea id="press-note" name="press-note" rows="4" placeholder="その他ご要望やご質問などございましたらご記入ください"></textarea>
+                        </div>
+
+                        <div class="form-notice">
+                            <p>※ アカウントの有効期限は承認日から1年間です</p>
+                            <p>※ 審査完了後、メールにてご連絡いたします</p>
                         </div>
 
                         <button type="submit" class="btn-primary">申し込む</button>
