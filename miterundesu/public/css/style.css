@@ -2399,6 +2399,23 @@ body:not(.subpage) .breadcrumb {
     flex-direction: column;
     gap: var(--spacing-sm);
   }
+
+  /* Press screenshots - mobile centering */
+  .screenshots-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: var(--spacing-xl);
+  }
+
+  .screenshot-item {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .screenshot-item img {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 /* Mobile: 480px and below */
@@ -2453,6 +2470,11 @@ body:not(.subpage) .breadcrumb {
   .btn-secondary {
     padding: 12px 24px;
     font-size: 0.95rem;
+  }
+
+  /* Press screenshots - smaller mobile screens */
+  .screenshot-item {
+    max-width: 350px;
   }
 }
 
