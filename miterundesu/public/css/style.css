@@ -2528,77 +2528,58 @@ body:not(.subpage) .breadcrumb {
 
 /* お知らせボックス */
 .form-notice-box {
-  background: linear-gradient(135deg, #fff9e6 0%, #fff5cc 100%);
-  border: 2px solid #ffc107;
-  border-radius: 16px;
-  padding: var(--spacing-xl);
   margin-bottom: var(--spacing-xl);
   text-align: center;
-  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.15);
 }
 
 .notice-icon {
-  font-size: 3rem;
-  margin-bottom: var(--spacing-sm);
+  display: none;
 }
 
 .form-notice-box h3 {
   color: #333;
-  font-size: 1.5rem;
+  font-size: 1rem;
+  font-weight: normal;
   margin-bottom: var(--spacing-sm);
 }
 
 .form-notice-box p {
   color: #555;
   line-height: 1.6;
+  font-size: 0.95rem;
 }
 
 .email-info-box {
-  background-color: white;
-  border-radius: 12px;
-  padding: var(--spacing-lg);
-  margin: var(--spacing-lg) 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin: var(--spacing-md) 0;
 }
 
 .email-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-sm);
   margin: var(--spacing-sm) 0;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
 }
 
 .email-row .label {
-  font-weight: 600;
+  font-weight: normal;
   color: #333;
 }
 
 .email-link {
   color: var(--main-green);
-  font-weight: 600;
-  text-decoration: none;
-  padding: 8px 16px;
-  background-color: #f0f8f0;
-  border-radius: 8px;
-  transition: background-color 0.3s;
+  text-decoration: underline;
 }
 
 .email-link:hover {
-  background-color: #e0f0e0;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .subject-example {
   color: #666;
-  font-style: italic;
 }
 
 .response-time {
   color: #666;
   font-size: 0.9rem;
-  margin-top: var(--spacing-md);
+  margin-top: var(--spacing-sm);
   margin-bottom: 0;
 }
 
@@ -2627,20 +2608,12 @@ body:not(.subpage) .breadcrumb {
 
 /* モバイル対応 */
 @media (max-width: 768px) {
-  .email-row {
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .form-notice-box {
-    padding: var(--spacing-lg);
-  }
-
-  .notice-icon {
-    font-size: 2.5rem;
-  }
-
   .form-notice-box h3 {
-    font-size: 1.3rem;
+    font-size: 0.95rem;
+  }
+
+  .form-notice-box p,
+  .email-row {
+    font-size: 0.9rem;
   }
 }
