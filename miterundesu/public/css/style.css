@@ -2590,6 +2590,13 @@ body:not(.subpage) .breadcrumb {
   position: relative;
 }
 
+/* お問い合わせ種類の選択は有効にする */
+.disabled-form #inquiry-type {
+  opacity: 1;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
 .disabled-form::before {
   content: "（参考表示）";
   display: block;
