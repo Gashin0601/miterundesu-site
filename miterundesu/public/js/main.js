@@ -187,15 +187,30 @@ function initContactForm() {
       const originalText = submitButton.textContent;
       submitButton.disabled = true;
       submitButton.textContent = "\u9001\u4FE1\u4E2D...";
-      await new Promise((resolve) => setTimeout(resolve, 1e3));
-      console.log("Form submitted:", formData);
-      showFormMessage("\u304A\u554F\u3044\u5408\u308F\u305B\u3092\u53D7\u3051\u4ED8\u3051\u307E\u3057\u305F\u30022-3\u55B6\u696D\u65E5\u4EE5\u5185\u306B\u3054\u9023\u7D61\u3044\u305F\u3057\u307E\u3059\u3002", "success");
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          inquiryType: formData["inquiry-type"],
+          message: formData.message
+        })
+      });
+      const result = await response.json();
+      if (!response.ok) {
+        throw new Error(result.error || "\u9001\u4FE1\u306B\u5931\u6557\u3057\u307E\u3057\u305F");
+      }
+      showFormMessage("\u304A\u554F\u3044\u5408\u308F\u305B\u3092\u53D7\u3051\u4ED8\u3051\u307E\u3057\u305F\u3002\n\u78BA\u8A8D\u30E1\u30FC\u30EB\u3092\u304A\u9001\u308A\u3057\u307E\u3057\u305F\u306E\u3067\u3054\u78BA\u8A8D\u304F\u3060\u3055\u3044\u3002\n2-3\u55B6\u696D\u65E5\u4EE5\u5185\u306B\u62C5\u5F53\u8005\u3088\u308A\u3054\u9023\u7D61\u3044\u305F\u3057\u307E\u3059\u3002", "success");
       contactForm.reset();
       submitButton.disabled = false;
       submitButton.textContent = originalText || "\u9001\u4FE1\u3059\u308B";
     } catch (error) {
       console.error("Form submission error:", error);
-      showFormMessage("\u9001\u4FE1\u4E2D\u306B\u30A8\u30E9\u30FC\u304C\u767A\u751F\u3057\u307E\u3057\u305F\u3002\u3082\u3046\u4E00\u5EA6\u304A\u8A66\u3057\u304F\u3060\u3055\u3044\u3002", "error");
+      const errorMessage = error instanceof Error ? error.message : "\u9001\u4FE1\u4E2D\u306B\u30A8\u30E9\u30FC\u304C\u767A\u751F\u3057\u307E\u3057\u305F\u3002\u3082\u3046\u4E00\u5EA6\u304A\u8A66\u3057\u304F\u3060\u3055\u3044\u3002";
+      showFormMessage(errorMessage, "error");
       const submitButton = contactForm.querySelector('button[type="submit"]');
       submitButton.disabled = false;
       submitButton.textContent = "\u9001\u4FE1\u3059\u308B";

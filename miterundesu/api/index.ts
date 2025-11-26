@@ -141,9 +141,11 @@ app.post('/api/contact', async (req: Request, res: Response): Promise<void> => {
       other: 'その他'
     };
 
+    let emailStatus = 'not_attempted';
+    let emailError = '';
     try {
       const transport = getTransporter();
-      await Promise.all([
+      const results = await Promise.all([
         transport.sendMail({
           from: `"ミテルンデス" <${FROM_EMAIL}>`,
           to: ADMIN_EMAIL,
@@ -172,14 +174,20 @@ app.post('/api/contact', async (req: Request, res: Response): Promise<void> => {
             <p style="color: #666;">ミテルンデス<br>https://miterundesu.jp</p>`
         })
       ]);
-    } catch (emailError) {
+      emailStatus = 'sent';
+      console.log('Email sent successfully:', results.map(r => r.messageId));
+    } catch (err: unknown) {
+      emailStatus = 'failed';
+      emailError = err instanceof Error ? err.message : String(err);
       console.error('Email sending error:', emailError);
     }
 
     res.status(201).json({
       success: true,
-      message: 'お問い合わせを受け付けました。2-3営業日以内にご連絡いたします。',
-      data
+      message: 'お問い合わせを受け付けました。\n確認メールをお送りしましたのでご確認ください。\n2-3営業日以内に担当者よりご連絡いたします。',
+      data,
+      emailStatus,
+      emailError: emailError || undefined
     });
   } catch (error) {
     console.error('Contact form error:', error);

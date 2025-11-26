@@ -288,15 +288,28 @@ function initContactForm(): void {
       submitButton.disabled = true;
       submitButton.textContent = '送信中...';
 
-      // TODO: Phase 3 - Add API endpoint for form submission
-      // For now, simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Call API
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          inquiryType: formData['inquiry-type'],
+          message: formData.message
+        })
+      });
 
-      // Temporary: Log to console (will be replaced with actual API call)
-      console.log('Form submitted:', formData);
+      const result = await response.json();
 
-      // Show success message
-      showFormMessage('お問い合わせを受け付けました。2-3営業日以内にご連絡いたします。', 'success');
+      if (!response.ok) {
+        throw new Error(result.error || '送信に失敗しました');
+      }
+
+      // Show success message with email notification
+      showFormMessage('お問い合わせを受け付けました。\n確認メールをお送りしましたのでご確認ください。\n2-3営業日以内に担当者よりご連絡いたします。', 'success');
 
       // Reset form
       contactForm.reset();
@@ -307,7 +320,8 @@ function initContactForm(): void {
 
     } catch (error) {
       console.error('Form submission error:', error);
-      showFormMessage('送信中にエラーが発生しました。もう一度お試しください。', 'error');
+      const errorMessage = error instanceof Error ? error.message : '送信中にエラーが発生しました。もう一度お試しください。';
+      showFormMessage(errorMessage, 'error');
 
       // Reset submit button
       const submitButton = contactForm.querySelector('button[type="submit"]') as HTMLButtonElement;
