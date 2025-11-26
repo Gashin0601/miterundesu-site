@@ -167,19 +167,38 @@ function initContactForm() {
   }
   contactForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const formData = {
-      name: document.getElementById("name").value,
-      email: document.getElementById("email").value,
-      "inquiry-type": document.getElementById("inquiry-type").value,
-      message: document.getElementById("message").value
-    };
-    if (!formData.name || !formData.email || !formData["inquiry-type"] || !formData.message) {
-      showFormMessage("\u3059\u3079\u3066\u306E\u5FC5\u9808\u9805\u76EE\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002", "error");
+    const nameEl = document.getElementById("name");
+    const emailEl = document.getElementById("email");
+    const inquiryTypeEl = document.getElementById("inquiry-type");
+    const messageEl = document.getElementById("message");
+    const name = nameEl?.value.trim() || "";
+    const email = emailEl?.value.trim() || "";
+    const inquiryType = inquiryTypeEl?.value || "";
+    const message = messageEl?.value.trim() || "";
+    if (!name) {
+      showFormMessage("\u304A\u540D\u524D\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002", "error");
+      nameEl?.focus();
+      return;
+    }
+    if (!email) {
+      showFormMessage("\u30E1\u30FC\u30EB\u30A2\u30C9\u30EC\u30B9\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002", "error");
+      emailEl?.focus();
       return;
     }
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
+    if (!emailRegex.test(email)) {
       showFormMessage("\u6709\u52B9\u306A\u30E1\u30FC\u30EB\u30A2\u30C9\u30EC\u30B9\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002", "error");
+      emailEl?.focus();
+      return;
+    }
+    if (!inquiryType) {
+      showFormMessage("\u304A\u554F\u3044\u5408\u308F\u305B\u7A2E\u985E\u3092\u9078\u629E\u3057\u3066\u304F\u3060\u3055\u3044\u3002", "error");
+      inquiryTypeEl?.focus();
+      return;
+    }
+    if (!message) {
+      showFormMessage("\u304A\u554F\u3044\u5408\u308F\u305B\u5185\u5BB9\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002", "error");
+      messageEl?.focus();
       return;
     }
     try {
@@ -193,10 +212,10 @@ function initContactForm() {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          inquiryType: formData["inquiry-type"],
-          message: formData.message
+          name,
+          email,
+          inquiryType,
+          message
         })
       });
       const result = await response.json();
@@ -228,7 +247,7 @@ function showFormMessage(message, type) {
   if (type === "success") {
     setTimeout(() => {
       formMessage.style.display = "none";
-    }, 5e3);
+    }, 8e3);
   }
 }
 function handleInitialHash() {

@@ -1,5 +1,6 @@
 /**
- * Press Apply Page - Form Handling (User ID + Password Authentication)
+ * Press Apply Page - Form Handling
+ * プレスモード申請フォーム
  */
 
 // DOM Element Selectors
@@ -17,39 +18,44 @@ function initPressApplyForm() {
   pressApplyForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    // Get form elements
+    const organizationNameEl = document.getElementById('organization-name') as HTMLInputElement | null;
+    const organizationTypeEl = document.getElementById('organization-type') as HTMLSelectElement | null;
+    const contactPersonEl = document.getElementById('contact-person') as HTMLInputElement | null;
+    const emailEl = document.getElementById('press-email') as HTMLInputElement | null;
+    const phoneEl = document.getElementById('press-phone') as HTMLInputElement | null;
+    const noteEl = document.getElementById('press-note') as HTMLTextAreaElement | null;
+
     // Get form data
-    const userId = (document.getElementById('user-id') as HTMLInputElement).value.trim();
-    const password = (document.getElementById('password') as HTMLInputElement).value;
-    const passwordConfirm = (document.getElementById('password-confirm') as HTMLInputElement).value;
-    const organizationName = (document.getElementById('organization-name') as HTMLInputElement).value.trim();
-    const organizationType = (document.getElementById('organization-type') as HTMLSelectElement).value;
-    const contactPerson = (document.getElementById('contact-person') as HTMLInputElement).value.trim();
-    const email = (document.getElementById('press-email') as HTMLInputElement).value.trim();
-    const phone = (document.getElementById('press-phone') as HTMLInputElement).value.trim();
-    const note = (document.getElementById('press-note') as HTMLTextAreaElement).value.trim();
+    const organizationName = organizationNameEl?.value.trim() || '';
+    const organizationType = organizationTypeEl?.value || '';
+    const contactPerson = contactPersonEl?.value.trim() || '';
+    const email = emailEl?.value.trim() || '';
+    const phone = phoneEl?.value.trim() || '';
+    const note = noteEl?.value.trim() || '';
 
-    // Validate required fields
-    if (!userId || !password || !passwordConfirm || !organizationName || !organizationType || !contactPerson || !email) {
-      showPressFormMessage('すべての必須項目を入力してください。', 'error');
+    // Validate required fields with specific messages
+    if (!organizationName) {
+      showPressFormMessage('組織名を入力してください。', 'error');
+      organizationNameEl?.focus();
       return;
     }
 
-    // Validate user ID format
-    const userIdRegex = /^[a-zA-Z0-9\-_]{4,20}$/;
-    if (!userIdRegex.test(userId)) {
-      showPressFormMessage('ユーザーIDは4〜20文字の半角英数字、ハイフン、アンダースコアで入力してください。', 'error');
+    if (!organizationType) {
+      showPressFormMessage('組織種別を選択してください。', 'error');
+      organizationTypeEl?.focus();
       return;
     }
 
-    // Validate password length
-    if (password.length < 8) {
-      showPressFormMessage('パスワードは8文字以上で入力してください。', 'error');
+    if (!contactPerson) {
+      showPressFormMessage('担当者名を入力してください。', 'error');
+      contactPersonEl?.focus();
       return;
     }
 
-    // Validate password match
-    if (password !== passwordConfirm) {
-      showPressFormMessage('パスワードが一致しません。', 'error');
+    if (!email) {
+      showPressFormMessage('メールアドレスを入力してください。', 'error');
+      emailEl?.focus();
       return;
     }
 
@@ -57,19 +63,18 @@ function initPressApplyForm() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       showPressFormMessage('有効なメールアドレスを入力してください。', 'error');
+      emailEl?.focus();
       return;
     }
 
     // Map form data to API format
     const formData = {
-      userId,
-      password,
       organizationName,
       organizationType,
-      contactName: contactPerson,
-      contactEmail: email,
-      contactPhone: phone || undefined,
-      notes: note || undefined
+      contactPerson,
+      email,
+      phone: phone || undefined,
+      note: note || undefined
     };
 
     try {
@@ -80,7 +85,7 @@ function initPressApplyForm() {
       submitButton.textContent = '送信中...';
 
       // Submit to API
-      const response = await fetch('/api/press-account-application', {
+      const response = await fetch('/api/press-application', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -95,7 +100,7 @@ function initPressApplyForm() {
       }
 
       // Show success message
-      showPressFormMessage(result.message || 'お申し込みありがとうございます。審査完了後、メールにてご連絡いたします。', 'success');
+      showPressFormMessage(result.message || '申請を受け付けました。\n確認メールをお送りしましたのでご確認ください。\n2〜3営業日以内に審査を行い、結果をメールにてお知らせします。', 'success');
 
       // Reset form
       pressApplyForm.reset();
@@ -129,13 +134,13 @@ function showPressFormMessage(message: string, type: 'success' | 'error') {
   // Scroll to message
   pressFormMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
-  // Auto-hide success messages after 5 seconds
+  // Auto-hide success messages after 8 seconds
   if (type === 'success') {
     setTimeout(() => {
       if (pressFormMessage) {
         pressFormMessage.style.display = 'none';
       }
-    }, 5000);
+    }, 8000);
   }
 }
 

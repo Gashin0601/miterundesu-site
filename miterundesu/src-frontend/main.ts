@@ -4,16 +4,6 @@
  */
 
 // ========================================
-// Type Definitions
-// ========================================
-interface FormData {
-  name: string;
-  email: string;
-  'inquiry-type': string;
-  message: string;
-}
-
-// ========================================
 // Prevent Browser Auto-Scroll (Run Immediately)
 // ========================================
 // Save hash before removing it to handle navigation from subpages
@@ -260,24 +250,48 @@ function initContactForm(): void {
   contactForm.addEventListener('submit', async (e: Event) => {
     e.preventDefault();
 
-    // Get form data
-    const formData: FormData = {
-      name: (document.getElementById('name') as HTMLInputElement).value,
-      email: (document.getElementById('email') as HTMLInputElement).value,
-      'inquiry-type': (document.getElementById('inquiry-type') as HTMLSelectElement).value,
-      message: (document.getElementById('message') as HTMLTextAreaElement).value
-    };
+    // Get form elements
+    const nameEl = document.getElementById('name') as HTMLInputElement | null;
+    const emailEl = document.getElementById('email') as HTMLInputElement | null;
+    const inquiryTypeEl = document.getElementById('inquiry-type') as HTMLSelectElement | null;
+    const messageEl = document.getElementById('message') as HTMLTextAreaElement | null;
 
-    // Validate form data
-    if (!formData.name || !formData.email || !formData['inquiry-type'] || !formData.message) {
-      showFormMessage('すべての必須項目を入力してください。', 'error');
+    // Get form data
+    const name = nameEl?.value.trim() || '';
+    const email = emailEl?.value.trim() || '';
+    const inquiryType = inquiryTypeEl?.value || '';
+    const message = messageEl?.value.trim() || '';
+
+    // Validate required fields with specific messages
+    if (!name) {
+      showFormMessage('お名前を入力してください。', 'error');
+      nameEl?.focus();
+      return;
+    }
+
+    if (!email) {
+      showFormMessage('メールアドレスを入力してください。', 'error');
+      emailEl?.focus();
       return;
     }
 
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
+    if (!emailRegex.test(email)) {
       showFormMessage('有効なメールアドレスを入力してください。', 'error');
+      emailEl?.focus();
+      return;
+    }
+
+    if (!inquiryType) {
+      showFormMessage('お問い合わせ種類を選択してください。', 'error');
+      inquiryTypeEl?.focus();
+      return;
+    }
+
+    if (!message) {
+      showFormMessage('お問い合わせ内容を入力してください。', 'error');
+      messageEl?.focus();
       return;
     }
 
@@ -295,10 +309,10 @@ function initContactForm(): void {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          inquiryType: formData['inquiry-type'],
-          message: formData.message
+          name,
+          email,
+          inquiryType,
+          message
         })
       });
 
@@ -346,11 +360,11 @@ function showFormMessage(message: string, type: 'success' | 'error'): void {
   // Scroll to message
   formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
-  // Auto-hide success messages after 5 seconds
+  // Auto-hide success messages after 8 seconds
   if (type === 'success') {
     setTimeout(() => {
       formMessage.style.display = 'none';
-    }, 5000);
+    }, 8000);
   }
 }
 

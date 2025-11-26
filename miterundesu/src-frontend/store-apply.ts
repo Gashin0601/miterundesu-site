@@ -1,5 +1,6 @@
 /**
  * Store Apply Page - Form Handling
+ * 店舗導入申し込みフォーム
  */
 
 // DOM Element Selectors
@@ -17,31 +18,64 @@ function initStoreApplyForm() {
   storeApplyForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Get form data
-    const formData = {
-      storeName: (document.getElementById('store-name') as HTMLInputElement).value,
-      industry: (document.getElementById('industry') as HTMLSelectElement).value,
-      posterType: (document.querySelector('input[name="poster-type"]:checked') as HTMLInputElement)?.value || '',
-      location: (document.getElementById('location') as HTMLInputElement).value,
-      email: (document.getElementById('store-email') as HTMLInputElement).value,
-      phone: (document.getElementById('store-phone') as HTMLInputElement).value,
-      note: (document.getElementById('store-note') as HTMLTextAreaElement).value
-    };
+    // Get form elements
+    const storeNameEl = document.getElementById('store-name') as HTMLInputElement | null;
+    const industryEl = document.getElementById('industry') as HTMLSelectElement | null;
+    const posterTypeEl = document.querySelector('input[name="poster-type"]:checked') as HTMLInputElement | null;
+    const locationEl = document.getElementById('location') as HTMLInputElement | null;
+    const emailEl = document.getElementById('store-email') as HTMLInputElement | null;
+    const phoneEl = document.getElementById('store-phone') as HTMLInputElement | null;
+    const noteEl = document.getElementById('store-note') as HTMLTextAreaElement | null;
 
-    // Validate required fields
-    if (!formData.storeName || !formData.industry || !formData.posterType) {
-      showStoreFormMessage('すべての必須項目を入力してください。', 'error');
+    // Get form data
+    const storeName = storeNameEl?.value.trim() || '';
+    const industry = industryEl?.value || '';
+    const posterType = posterTypeEl?.value || '';
+    const location = locationEl?.value.trim() || '';
+    const email = emailEl?.value.trim() || '';
+    const phone = phoneEl?.value.trim() || '';
+    const note = noteEl?.value.trim() || '';
+
+    // Validate required fields with specific messages
+    if (!storeName) {
+      showStoreFormMessage('店舗・施設名を入力してください。', 'error');
+      storeNameEl?.focus();
+      return;
+    }
+
+    if (!industry) {
+      showStoreFormMessage('業種を選択してください。', 'error');
+      industryEl?.focus();
+      return;
+    }
+
+    if (!posterType) {
+      showStoreFormMessage('ポスター種類を選択してください。', 'error');
+      // Focus on first radio button
+      const firstRadio = document.getElementById('poster-green') as HTMLInputElement | null;
+      firstRadio?.focus();
       return;
     }
 
     // Email validation (if provided)
-    if (formData.email) {
+    if (email) {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(formData.email)) {
+      if (!emailRegex.test(email)) {
         showStoreFormMessage('有効なメールアドレスを入力してください。', 'error');
+        emailEl?.focus();
         return;
       }
     }
+
+    const formData = {
+      storeName,
+      industry,
+      posterType,
+      location: location || undefined,
+      email: email || undefined,
+      phone: phone || undefined,
+      note: note || undefined
+    };
 
     try {
       // Show loading state
@@ -66,7 +100,7 @@ function initStoreApplyForm() {
       }
 
       // Show success message
-      showStoreFormMessage(result.message, 'success');
+      showStoreFormMessage(result.message || 'ご連絡ありがとうございます！\n確認メールをお送りしましたのでご確認ください。\n2〜3営業日以内に担当者よりご連絡させていただきます。', 'success');
 
       // Reset form
       storeApplyForm.reset();
@@ -76,7 +110,8 @@ function initStoreApplyForm() {
       submitButton.textContent = originalText;
     } catch (error) {
       console.error('Store apply form submission error:', error);
-      showStoreFormMessage('送信中にエラーが発生しました。もう一度お試しください。', 'error');
+      const errorMessage = error instanceof Error ? error.message : '送信中にエラーが発生しました。もう一度お試しください。';
+      showStoreFormMessage(errorMessage, 'error');
 
       // Reset submit button
       const submitButton = storeApplyForm.querySelector('button[type="submit"]') as HTMLButtonElement;
@@ -99,13 +134,13 @@ function showStoreFormMessage(message: string, type: 'success' | 'error') {
   // Scroll to message
   storeFormMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
-  // Auto-hide success messages after 5 seconds
+  // Auto-hide success messages after 8 seconds
   if (type === 'success') {
     setTimeout(() => {
       if (storeFormMessage) {
         storeFormMessage.style.display = 'none';
       }
-    }, 5000);
+    }, 8000);
   }
 }
 
