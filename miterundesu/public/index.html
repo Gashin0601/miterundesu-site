@@ -329,35 +329,15 @@
                 <h2 class="section-title">お問い合わせ</h2>
                 <p class="contact-description">取材・店舗・施設登録・その他ご質問などのご連絡はこちらから。</p>
 
-                <!-- フォーム準備中のお知らせ -->
-                <div class="form-notice-box">
-                    <div class="notice-icon">📧</div>
-                    <h3>フォームは現在準備中です</h3>
-                    <p>お手数ですが、以下のフォーム項目を参考に、メールにてお送りください。</p>
-
-                    <div class="email-info-box">
-                        <div class="email-row">
-                            <span class="label">送信先:</span>
-                            <a href="mailto:gashin@keio.jp" class="email-link">gashin@keio.jp</a>
-                        </div>
-                        <div class="email-row">
-                            <span class="label">件名:</span>
-                            <span class="subject-example">【お問い合わせ】お問い合わせ種類 - お名前</span>
-                        </div>
-                    </div>
-
-                    <p class="response-time">※ 2-3営業日以内にご返信いたします</p>
-                </div>
-
-                <form class="contact-form disabled-form" id="contact-form">
+                <form class="contact-form" id="contact-form">
                     <div class="form-group">
                         <label for="name">お名前 <span class="required">必須</span></label>
-                        <input type="text" id="name" name="name" required disabled>
+                        <input type="text" id="name" name="name" required>
                     </div>
 
                     <div class="form-group">
                         <label for="email">メールアドレス <span class="required">必須</span></label>
-                        <input type="email" id="email" name="email" required disabled>
+                        <input type="email" id="email" name="email" required>
                     </div>
 
                     <div class="form-group">
@@ -376,27 +356,27 @@
                     <div class="dynamic-fields press-fields" style="display: none;">
                         <div class="form-group">
                             <label for="media-name">媒体名 <span class="required">必須</span></label>
-                            <input type="text" id="media-name" name="media-name" disabled>
+                            <input type="text" id="media-name" name="media-name">
                         </div>
 
                         <div class="form-group">
                             <label for="position">役職・部署 <span class="optional">任意</span></label>
-                            <input type="text" id="position" name="position" disabled>
+                            <input type="text" id="position" name="position">
                         </div>
 
                         <div class="form-group">
                             <label for="press-phone">電話番号 <span class="optional">任意</span></label>
-                            <input type="tel" id="press-phone" name="press-phone" disabled>
+                            <input type="tel" id="press-phone" name="press-phone">
                         </div>
 
                         <div class="form-group">
                             <label for="publish-date">掲載予定日 <span class="optional">任意</span></label>
-                            <input type="date" id="publish-date" name="publish-date" disabled>
+                            <input type="date" id="publish-date" name="publish-date">
                         </div>
 
                         <div class="form-group">
                             <label for="press-duration">プレスモード利用期間 <span class="required">必須</span></label>
-                            <select id="press-duration" name="press-duration" disabled>
+                            <select id="press-duration" name="press-duration">
                                 <option value="">選択してください</option>
                                 <option value="3days">3日間</option>
                                 <option value="1week">1週間</option>
@@ -411,12 +391,12 @@
                     <div class="dynamic-fields store-fields" style="display: none;">
                         <div class="form-group">
                             <label for="store-name">店舗・施設名 <span class="required">必須</span></label>
-                            <input type="text" id="store-name" name="store-name" disabled>
+                            <input type="text" id="store-name" name="store-name">
                         </div>
 
                         <div class="form-group">
                             <label for="industry">業種 <span class="required">必須</span></label>
-                            <select id="industry" name="industry" disabled>
+                            <select id="industry" name="industry">
                                 <option value="">選択してください</option>
                                 <option value="supermarket">スーパー</option>
                                 <option value="convenience">コンビニ</option>
@@ -429,23 +409,23 @@
 
                         <div class="form-group">
                             <label for="location">所在地 <span class="optional">任意</span></label>
-                            <input type="text" id="location" name="location" placeholder="例：東京都渋谷区" disabled>
+                            <input type="text" id="location" name="location" placeholder="例：東京都渋谷区">
                         </div>
 
                         <div class="form-group">
                             <label for="store-phone">電話番号 <span class="optional">任意</span></label>
-                            <input type="tel" id="store-phone" name="store-phone" disabled>
+                            <input type="tel" id="store-phone" name="store-phone">
                         </div>
 
                         <div class="form-group radio-group">
                             <label>ポスター種類 <span class="required">必須</span></label>
                             <div class="radio-options">
                                 <div class="radio-option">
-                                    <input type="radio" id="poster-green" name="poster-type" value="green" disabled>
+                                    <input type="radio" id="poster-green" name="poster-type" value="green">
                                     <label for="poster-green">通常モード（グリーン）</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" id="poster-orange" name="poster-type" value="orange" disabled>
+                                    <input type="radio" id="poster-orange" name="poster-type" value="orange">
                                     <label for="poster-orange">シアターモード（オレンジ）</label>
                                 </div>
                             </div>
@@ -456,18 +436,18 @@
                     <div class="dynamic-fields usage-fields" style="display: none;">
                         <div class="form-group">
                             <label for="device-info">端末情報 <span class="optional">任意</span></label>
-                            <input type="text" id="device-info" name="device-info" placeholder="例：iPhone 14, iOS 17.1" disabled>
+                            <input type="text" id="device-info" name="device-info" placeholder="例：iPhone 14, iOS 17.1">
                         </div>
 
                         <div class="form-group">
                             <label for="error-message">エラーメッセージ <span class="optional">任意</span></label>
-                            <textarea id="error-message" name="error-message" rows="3" placeholder="エラーメッセージがあれば正確にご記入ください" disabled></textarea>
+                            <textarea id="error-message" name="error-message" rows="3" placeholder="エラーメッセージがあれば正確にご記入ください"></textarea>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="message">お問い合わせ内容 <span class="required">必須</span></label>
-                        <textarea id="message" name="message" rows="5" required placeholder="お問い合わせ内容をご記入ください" disabled></textarea>
+                        <textarea id="message" name="message" rows="5" required placeholder="お問い合わせ内容をご記入ください"></textarea>
                     </div>
 
                     <button type="submit" class="btn-primary">送信する</button>

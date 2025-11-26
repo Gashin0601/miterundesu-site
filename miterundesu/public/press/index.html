@@ -256,33 +256,13 @@
                         内容を確認次第、担当者よりご連絡させていただきます。
                     </p>
 
-                    <!-- フォーム準備中のお知らせ -->
-                    <div class="form-notice-box">
-                        <div class="notice-icon">📧</div>
-                        <h3>フォームは現在準備中です</h3>
-                        <p>お手数ですが、以下のフォーム項目を参考に、メールにてお送りください。</p>
-
-                        <div class="email-info-box">
-                            <div class="email-row">
-                                <span class="label">送信先:</span>
-                                <a href="mailto:gashin@keio.jp" class="email-link">gashin@keio.jp</a>
-                            </div>
-                            <div class="email-row">
-                                <span class="label">件名:</span>
-                                <span class="subject-example">【プレスモード申し込み】組織名</span>
-                            </div>
-                        </div>
-
-                        <p class="response-time">※ 2-3営業日以内にご返信いたします</p>
-                    </div>
-
-                    <form class="press-apply-form disabled-form" id="press-apply-form" aria-labelledby="form-section-title" aria-describedby="form-intro-text">
+                    <form class="press-apply-form" id="press-apply-form" aria-labelledby="form-section-title" aria-describedby="form-intro-text">
                         <div class="form-group">
                             <label for="organization-name">
                                 組織名
                                 <span class="required" aria-label="必須項目">必須</span>
                             </label>
-                            <input type="text" id="organization-name" name="organization-name" required aria-required="true" placeholder="例) 朝日新聞社 / NHK / ウェブメディア株式会社" disabled>
+                            <input type="text" id="organization-name" name="organization-name" required aria-required="true" placeholder="例) 朝日新聞社 / NHK / ウェブメディア株式会社">
                         </div>
 
                         <div class="form-group">
@@ -290,7 +270,7 @@
                                 組織種別
                                 <span class="required" aria-label="必須項目">必須</span>
                             </label>
-                            <select id="organization-type" name="organization-type" required aria-required="true" disabled>
+                            <select id="organization-type" name="organization-type" required aria-required="true">
                                 <option value="">選択してください</option>
                                 <option value="newspaper">新聞</option>
                                 <option value="tv">テレビ</option>
@@ -305,7 +285,7 @@
                                 担当者名
                                 <span class="required" aria-label="必須項目">必須</span>
                             </label>
-                            <input type="text" id="contact-person" name="contact-person" required aria-required="true" placeholder="例) 山田 太郎" disabled>
+                            <input type="text" id="contact-person" name="contact-person" required aria-required="true" placeholder="例) 山田 太郎">
                         </div>
 
                         <div class="form-group">
@@ -313,7 +293,7 @@
                                 メールアドレス
                                 <span class="required" aria-label="必須項目">必須</span>
                             </label>
-                            <input type="email" id="press-email" name="press-email" required aria-required="true" placeholder="press@example.com" aria-describedby="email-help" disabled>
+                            <input type="email" id="press-email" name="press-email" required aria-required="true" placeholder="press@example.com" aria-describedby="email-help">
                             <span class="sr-only" id="email-help">メールアドレスを入力してください。例: press@example.com</span>
                         </div>
 
@@ -322,7 +302,7 @@
                                 電話番号
                                 <span class="optional">(任意)</span>
                             </label>
-                            <input type="tel" id="press-phone" name="press-phone" placeholder="03-1234-5678" disabled>
+                            <input type="tel" id="press-phone" name="press-phone" placeholder="03-1234-5678">
                         </div>
 
                         <div class="form-group">
@@ -330,7 +310,7 @@
                                 備考
                                 <span class="optional">(任意)</span>
                             </label>
-                            <textarea id="press-note" name="press-note" rows="4" placeholder="その他ご要望やご質問などございましたらご記入ください" disabled></textarea>
+                            <textarea id="press-note" name="press-note" rows="4" placeholder="その他ご要望やご質問などございましたらご記入ください"></textarea>
                         </div>
 
                         <div class="form-notice">

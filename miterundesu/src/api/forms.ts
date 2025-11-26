@@ -181,24 +181,21 @@ router.post('/store-application', async (req: Request, res: Response): Promise<v
 
 /**
  * POST /api/press-application
- * Submit press application form
+ * Submit press application form (プレスモード申し込みページ用)
  */
 router.post('/press-application', async (req: Request, res: Response): Promise<void> => {
   try {
     const {
-      mediaName,
+      organizationName,
+      organizationType,
       contactPerson,
       email,
       phone,
-      coverageContent,
-      publicationDate,
-      requiredPeriodStart,
-      requiredPeriodEnd,
       note
     } = req.body;
 
     // Validation
-    if (!mediaName || !contactPerson || !email || !coverageContent) {
+    if (!organizationName || !organizationType || !contactPerson || !email) {
       res.status(400).json({
         error: 'すべての必須項目を入力してください。'
       });
@@ -218,15 +215,12 @@ router.post('/press-application', async (req: Request, res: Response): Promise<v
     const { data, error } = await supabase
       .from('press_applications')
       .insert([{
-        media_name: mediaName,
+        organization_name: organizationName,
+        organization_type: organizationType,
         contact_person: contactPerson,
         email,
-        phone,
-        coverage_content: coverageContent,
-        publication_date: publicationDate || null,
-        required_period_start: requiredPeriodStart || null,
-        required_period_end: requiredPeriodEnd || null,
-        note,
+        phone: phone || null,
+        note: note || null,
         status: 'pending'
       }])
       .select();
@@ -242,14 +236,11 @@ router.post('/press-application', async (req: Request, res: Response): Promise<v
     // Send notification emails
     try {
       await sendPressApplicationEmails({
-        mediaName,
+        organizationName,
+        organizationType,
         contactPerson,
         email,
         phone,
-        coverageContent,
-        publicationDate,
-        requiredPeriodStart,
-        requiredPeriodEnd,
         note
       });
     } catch (emailError) {
@@ -259,7 +250,7 @@ router.post('/press-application', async (req: Request, res: Response): Promise<v
 
     res.status(201).json({
       success: true,
-      message: '申請を受け付けました。\n2〜3営業日以内に担当者よりプレスコードをお送りします。',
+      message: '申請を受け付けました。\n2〜3営業日以内に審査を行い、承認後にIDおよびパスワードをメールにてお送りします。',
       data
     });
 
@@ -383,15 +374,12 @@ router.post('/press-account-application', async (req: Request, res: Response): P
     // Send notification emails
     try {
       await sendPressApplicationEmails({
-        mediaName: organizationName,
+        organizationName,
+        organizationType,
         contactPerson: contactName,
         email: contactEmail,
         phone: contactPhone,
-        coverageContent: `組織種別: ${organizationType}\nユーザーID: ${userId}\n備考: ${notes || 'なし'}`,
-        publicationDate: undefined,
-        requiredPeriodStart: undefined,
-        requiredPeriodEnd: undefined,
-        note: `【新システム】プレスアカウント申請\n\n承認が必要です。承認後、is_active = true に設定してください。`
+        note: `【プレスアカウント申請】\nユーザーID: ${userId}\n備考: ${notes || 'なし'}\n\n承認が必要です。承認後、is_active = true に設定してください。`
       });
     } catch (emailError) {
       console.error('Email sending error:', emailError);

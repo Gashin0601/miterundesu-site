@@ -220,27 +220,7 @@
                         ご連絡いただけますと幸いです。
                     </p>
 
-                    <!-- フォーム準備中のお知らせ -->
-                    <div class="form-notice-box">
-                        <div class="notice-icon">📧</div>
-                        <h3>フォームは現在準備中です</h3>
-                        <p>お手数ですが、以下のフォーム項目を参考に、メールにてお送りください。</p>
-
-                        <div class="email-info-box">
-                            <div class="email-row">
-                                <span class="label">送信先:</span>
-                                <a href="mailto:gashin@keio.jp" class="email-link">gashin@keio.jp</a>
-                            </div>
-                            <div class="email-row">
-                                <span class="label">件名:</span>
-                                <span class="subject-example">【導入申し込み】店舗・施設名</span>
-                            </div>
-                        </div>
-
-                        <p class="response-time">※ 2-3営業日以内にご返信いたします</p>
-                    </div>
-
-                    <form class="store-apply-form disabled-form" id="store-apply-form" aria-labelledby="form-section-title" aria-describedby="form-intro-text">
+                    <form class="store-apply-form" id="store-apply-form" aria-labelledby="form-section-title" aria-describedby="form-intro-text">
                         <div class="form-group">
                             <label for="store-name">
                                 店舗・施設名
@@ -261,7 +241,7 @@
                                 業種
                                 <span class="required" aria-label="必須項目">必須</span>
                             </label>
-                            <select id="industry" name="industry" required aria-required="true" disabled>
+                            <select id="industry" name="industry" required aria-required="true">
                                 <option value="">選択してください</option>
                                 <option value="supermarket">スーパー</option>
                                 <option value="convenience">コンビニ</option>
@@ -280,13 +260,13 @@
                             <div class="radio-options" role="radiogroup" aria-required="true">
                                 <div class="radio-option">
                                     <label>
-                                        <input type="radio" id="poster-green" name="poster-type" value="green" required disabled>
+                                        <input type="radio" id="poster-green" name="poster-type" value="green" required>
                                         <span>グリーン（通常モード）</span>
                                     </label>
                                 </div>
                                 <div class="radio-option">
                                     <label>
-                                        <input type="radio" id="poster-orange" name="poster-type" value="orange" required disabled>
+                                        <input type="radio" id="poster-orange" name="poster-type" value="orange" required>
                                         <span>オレンジ（シアターモード）</span>
                                     </label>
                                 </div>
@@ -298,7 +278,7 @@
                                 所在地
                                 <span class="optional">(任意)</span>
                             </label>
-                            <input type="text" id="location" name="location" placeholder="例) 東京都渋谷区..." disabled>
+                            <input type="text" id="location" name="location" placeholder="例) 東京都渋谷区...">
                         </div>
 
                         <div class="form-group">
@@ -321,7 +301,7 @@
                                 電話番号
                                 <span class="optional">(任意)</span>
                             </label>
-                            <input type="tel" id="store-phone" name="store-phone" placeholder="03-1234-5678" disabled>
+                            <input type="tel" id="store-phone" name="store-phone" placeholder="03-1234-5678">
                         </div>
 
                         <div class="form-group">
@@ -329,7 +309,7 @@
                                 備考
                                 <span class="optional">(任意)</span>
                             </label>
-                            <textarea disabled
+                            <textarea
                                 id="store-note"
                                 name="store-note"
                                 rows="4"
