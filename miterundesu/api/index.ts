@@ -70,36 +70,6 @@ app.get('/api/health', (_req: Request, res: Response) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-// SMTP debug endpoint
-app.get('/api/smtp-test', async (_req: Request, res: Response) => {
-  const config = {
-    SMTP_HOST: process.env.SMTP_HOST ? 'set' : 'NOT SET',
-    SMTP_PORT: process.env.SMTP_PORT ? 'set' : 'NOT SET',
-    SMTP_USER: process.env.SMTP_USER ? 'set' : 'NOT SET',
-    SMTP_PASS: process.env.SMTP_PASS ? 'set' : 'NOT SET',
-    EMAIL_FROM: process.env.EMAIL_FROM || 'NOT SET',
-    ADMIN_EMAIL: process.env.ADMIN_EMAIL || 'NOT SET'
-  };
-
-  try {
-    const transport = getTransporter();
-    await transport.verify();
-    res.json({
-      status: 'SMTP connection successful',
-      config,
-      verified: true
-    });
-  } catch (error: unknown) {
-    const errMsg = error instanceof Error ? error.message : String(error);
-    res.json({
-      status: 'SMTP connection failed',
-      config,
-      verified: false,
-      error: errMsg
-    });
-  }
-});
-
 // Contact form
 app.post('/api/contact', async (req: Request, res: Response): Promise<void> => {
   try {
