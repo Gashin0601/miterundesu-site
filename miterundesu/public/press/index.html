@@ -52,20 +52,93 @@
     <meta name="twitter:image" content="https://miterundesu.jp/og-image.png">
     <meta name="twitter:site" content="@miterundesu_jp">
 
-    <!-- JSON-LD Structured Data -->
+    <!-- hreflang - 言語・地域指定 -->
+    <link rel="alternate" hreflang="ja" href="https://miterundesu.jp/press">
+    <link rel="alternate" hreflang="x-default" href="https://miterundesu.jp/press">
+
+    <!-- JSON-LD Structured Data - BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://miterundesu.jp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "メディアの方へ",
+          "item": "https://miterundesu.jp/press"
+        }
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD Structured Data - WebPage -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "メディア・報道関係者の方へ",
-      "description": "メディア・報道関係者向けプレスモードのご案内",
+      "@id": "https://miterundesu.jp/press#webpage",
       "url": "https://miterundesu.jp/press",
-      "inLanguage": "ja",
+      "name": "メディア・報道関係者の方へ - ミテルンデス",
+      "description": "メディア・報道関係者向けプレスモードのご案内。取材・紹介に必要なスクリーンショット・画面収録機能を一時的に許可します。",
       "isPartOf": {
         "@type": "WebSite",
+        "@id": "https://miterundesu.jp/#website",
         "name": "ミテルンデス",
         "url": "https://miterundesu.jp"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://miterundesu.jp/#organization"
+      },
+      "inLanguage": "ja-JP",
+      "dateModified": "2025-12-13",
+      "mainContentOfPage": {
+        "@type": "WebPageElement",
+        "cssSelector": ".section-press-page"
       }
+    }
+    </script>
+
+    <!-- JSON-LD Structured Data - HowTo (プレスモード利用方法) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "プレスモードの利用方法",
+      "description": "ミテルンデスのプレスモードを有効化する手順",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "アカウント申請",
+          "text": "公式サイトのフォームから組織情報とご連絡先を入力して申請"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "審査・承認",
+          "text": "2-3営業日以内に審査を実施し、承認後IDとパスワードをメールでお知らせ"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "アプリでログイン",
+          "text": "アプリ内の設定画面から承認されたアカウント情報でログイン"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "プレスモード有効化",
+          "text": "ログイン後、プレスモードをオンに切り替えてスクリーンショット・画面収録が可能に"
+        }
+      ]
     }
     </script>
 

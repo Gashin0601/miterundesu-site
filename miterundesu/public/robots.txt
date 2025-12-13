@@ -1,25 +1,83 @@
 # robots.txt for miterundesu.jp
+# Last updated: 2025-12-13
 
-# Allow all search engines to crawl the site
+# ===========================================
+# 検索エンジンクローラー設定
+# ===========================================
+
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /_vercel/
 
-# Disallow admin or sensitive paths (if any in the future)
-# Disallow: /admin/
-# Disallow: /api/
-
-# Sitemap location
-Sitemap: https://miterundesu.jp/sitemap.xml
-
-# Common bots configuration
+# Googlebot
 User-agent: Googlebot
 Allow: /
 
 User-agent: Googlebot-Image
-Allow: /
+Allow: /images/
 
+# Bingbot
 User-agent: Bingbot
 Allow: /
 
+# Yahoo
 User-agent: Slurp
 Allow: /
+
+# ===========================================
+# AIクローラー設定（AIO対策）
+# ===========================================
+
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic / Claude
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Google AI (Bard/Gemini)
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Microsoft Copilot
+User-agent: Copilot
+Allow: /
+
+# Common Crawl (AI学習データソース)
+User-agent: CCBot
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# ===========================================
+# サイトマップ・追加情報
+# ===========================================
+
+Sitemap: https://miterundesu.jp/sitemap.xml
+
+# AI向け情報ファイル
+# LLMs.txt: https://miterundesu.jp/llms.txt
+
+# Host directive
+Host: https://miterundesu.jp

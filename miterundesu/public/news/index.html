@@ -50,6 +50,66 @@
     <meta name="twitter:image" content="https://miterundesu.jp/og-image.png">
     <meta name="twitter:site" content="@miterundesu_jp">
 
+    <!-- hreflang - 言語・地域指定 -->
+    <link rel="alternate" hreflang="ja" href="https://miterundesu.jp/news">
+    <link rel="alternate" hreflang="x-default" href="https://miterundesu.jp/news">
+
+    <!-- JSON-LD Structured Data - BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://miterundesu.jp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ニュース一覧",
+          "item": "https://miterundesu.jp/news"
+        }
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD Structured Data - CollectionPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "@id": "https://miterundesu.jp/news#webpage",
+      "url": "https://miterundesu.jp/news",
+      "name": "ニュース一覧 - ミテルンデス",
+      "description": "ミテルンデスの最新情報・お知らせ一覧ページです。",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://miterundesu.jp/#website",
+        "name": "ミテルンデス",
+        "url": "https://miterundesu.jp"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://miterundesu.jp/#organization"
+      },
+      "inLanguage": "ja-JP",
+      "dateModified": "2025-12-13",
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "url": "https://miterundesu.jp/news/app-release"
+          }
+        ]
+      }
+    }
+    </script>
+
     <link rel="stylesheet" href="/css/style.css">
     <style>
         /* Screen reader only content */

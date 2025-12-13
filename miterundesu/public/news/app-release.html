@@ -51,32 +51,79 @@
     <meta name="twitter:image" content="https://miterundesu.jp/og-image.png">
     <meta name="twitter:site" content="@miterundesu_jp">
 
-    <!-- JSON-LD Structured Data -->
+    <!-- hreflang - 言語・地域指定 -->
+    <link rel="alternate" hreflang="ja" href="https://miterundesu.jp/news/app-release">
+    <link rel="alternate" hreflang="x-default" href="https://miterundesu.jp/news/app-release">
+
+    <!-- JSON-LD Structured Data - BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://miterundesu.jp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ニュース一覧",
+          "item": "https://miterundesu.jp/news"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "ミテルンデスをリリースしました",
+          "item": "https://miterundesu.jp/news/app-release"
+        }
+      ]
+    }
+    </script>
+
+    <!-- JSON-LD Structured Data - NewsArticle -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "NewsArticle",
+      "@id": "https://miterundesu.jp/news/app-release#article",
       "headline": "ミテルンデスアプリをリリースしました",
-      "description": "弱視・老眼・車椅子の方に向けた見るため専用のアプリ「ミテルンデス」をリリースしました。",
+      "description": "弱視・老眼・車椅子の方に向けた見るため専用のアプリ「ミテルンデス」をリリースしました。撮影禁止の場所でも安心して使える、まったく新しいカメラアプリです。",
       "datePublished": "2025-11-21T00:00:00+09:00",
       "dateModified": "2025-11-21T00:00:00+09:00",
       "author": {
         "@type": "Organization",
-        "name": "miterundesu"
+        "@id": "https://miterundesu.jp/#organization"
       },
       "publisher": {
         "@type": "Organization",
+        "@id": "https://miterundesu.jp/#organization",
         "name": "miterundesu",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://miterundesu.jp/og-image.png"
+          "url": "https://miterundesu.jp/og-image.png",
+          "width": 1024,
+          "height": 1024
         }
       },
-      "image": "https://miterundesu.jp/og-image.png",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://miterundesu.jp/og-image.png",
+        "width": 1024,
+        "height": 1024
+      },
       "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://miterundesu.jp/news/app-release"
-      }
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://miterundesu.jp/#website"
+      },
+      "inLanguage": "ja-JP",
+      "keywords": ["ミテルンデス", "アプリリリース", "弱視", "老眼", "アクセシビリティ", "iOS"]
     }
     </script>
 

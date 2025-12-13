@@ -1,0 +1,28 @@
+/* TEAM */
+Creator: miterundesu
+Site: https://miterundesu.jp
+Twitter: @miterundesu_jp
+Instagram: @miterundesu_jp
+Location: Japan
+
+/* THANKS */
+All users who support accessibility and inclusion.
+
+/* SITE */
+Last update: 2025/12/13
+Language: Japanese
+Doctype: HTML5
+IDE: Visual Studio Code
+Standards: HTML5, CSS3, ES6+
+Components: Vanilla JavaScript
+Hosting: Vercel
+
+/* APP */
+Name: ミテルンデス (Miterundesu)
+Platform: iOS
+Category: Accessibility, Utilities
+Price: Free
+
+/* PURPOSE */
+To create a society where everyone can safely use smartphones as magnifying glasses.
+誰もが安心して「拡大鏡としてスマートフォンを使える」社会の実現。

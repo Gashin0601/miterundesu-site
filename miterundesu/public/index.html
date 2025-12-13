@@ -57,42 +57,204 @@
     <meta name="twitter:site" content="@miterundesu_jp">
     <meta name="twitter:creator" content="@miterundesu_jp">
 
-    <!-- JSON-LD Structured Data -->
+    <!-- hreflang - 言語・地域指定 -->
+    <link rel="alternate" hreflang="ja" href="https://miterundesu.jp/">
+    <link rel="alternate" hreflang="x-default" href="https://miterundesu.jp/">
+
+    <!-- JSON-LD Structured Data - Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://miterundesu.jp/#organization",
+      "name": "miterundesu",
+      "alternateName": "ミテルンデス",
+      "url": "https://miterundesu.jp",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://miterundesu.jp/og-image.png",
+        "width": 1024,
+        "height": 1024
+      },
+      "image": "https://miterundesu.jp/og-image.png",
+      "sameAs": [
+        "https://x.com/miterundesu_jp",
+        "https://www.instagram.com/miterundesu_jp/"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "url": "https://miterundesu.jp/#contact",
+        "availableLanguage": "Japanese"
+      }
+    }
+    </script>
+
+    <!-- JSON-LD Structured Data - WebSite -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://miterundesu.jp/#website",
+      "name": "ミテルンデス",
+      "alternateName": "Miterundesu",
+      "url": "https://miterundesu.jp",
+      "description": "弱視・老眼・車椅子の方に向けた見るため専用のアプリ",
+      "publisher": {
+        "@id": "https://miterundesu.jp/#organization"
+      },
+      "inLanguage": "ja-JP",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://miterundesu.jp/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- JSON-LD Structured Data - SoftwareApplication -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
+      "@id": "https://miterundesu.jp/#app",
       "name": "ミテルンデス",
+      "alternateName": "Miterundesu",
       "applicationCategory": "UtilitiesApplication",
-      "operatingSystem": "iOS",
-      "description": "弱視・老眼・車椅子の方に向けた見るため専用のアプリ。視力検査やコンサート、美術館に最適。",
+      "applicationSubCategory": "Accessibility",
+      "operatingSystem": "iOS 15.0+",
+      "description": "弱視・老眼・車椅子の方に向けた見るため専用のアプリ。撮影禁止の場所でも安心して使える拡大鏡アプリ。",
       "offers": {
         "@type": "Offer",
         "price": "0",
-        "priceCurrency": "JPY"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5.0",
-        "ratingCount": "1"
+        "priceCurrency": "JPY",
+        "availability": "https://schema.org/InStock"
       },
       "downloadUrl": "https://apps.apple.com/jp/app/%E3%83%9F%E3%83%86%E3%83%AB%E3%83%B3%E3%83%87%E3%82%B9/id6755541195",
+      "installUrl": "https://apps.apple.com/jp/app/%E3%83%9F%E3%83%86%E3%83%AB%E3%83%B3%E3%83%87%E3%82%B9/id6755541195",
       "image": "https://miterundesu.jp/og-image.png",
+      "screenshot": "https://miterundesu.jp/images/hero/miterundesu_firstview.svg",
       "publisher": {
-        "@type": "Organization",
-        "name": "miterundesu",
-        "url": "https://miterundesu.jp"
+        "@id": "https://miterundesu.jp/#organization"
+      },
+      "creator": {
+        "@id": "https://miterundesu.jp/#organization"
       },
       "inLanguage": "ja",
+      "audience": {
+        "@type": "PeopleAudience",
+        "suggestedMinAge": 4,
+        "audienceType": "People with visual impairments, elderly, wheelchair users"
+      },
+      "featureList": [
+        "拡大表示（10倍〜200倍）",
+        "一時撮影（10分後自動削除）",
+        "スクリーンショット無効化",
+        "シアターモード",
+        "プレスモード"
+      ],
       "accessibilityFeature": [
         "highContrastDisplay",
         "largePrint",
-        "zoomable"
+        "zoomable",
+        "fullTouchControl"
       ],
       "accessibilityHazard": "none",
       "accessibilityControl": [
         "fullTouchControl"
+      ],
+      "releaseNotes": "https://miterundesu.jp/news",
+      "softwareVersion": "1.0",
+      "datePublished": "2025-11-21"
+    }
+    </script>
+
+    <!-- JSON-LD Structured Data - FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "ミテルンデスとは何ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ミテルンデスは、弱視・老眼・車椅子の方向けに開発された「見るため専用」のiOSアプリです。撮影目的ではなく、拡大して見ることに特化しています。撮影した画像は10分後に自動削除され、スクリーンショットも撮れない設計になっています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "なぜスクリーンショットが撮れないのですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "「撮影目的ではない」ことを技術的に証明し、撮影禁止の場所で周囲からの誤解を防ぐためです。これにより、美術館やコンビニなど撮影禁止の場所でも安心してお使いいただけます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "撮影した画像はどこに保存されますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "端末内のアプリ専用領域に一時保存され、10分後に自動削除されます。カメラロールには保存されず、クラウドにもアップロードされません。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "無料で使えますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "はい、完全無料でご利用いただけます。アプリ内課金やサブスクリプションもありません。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "シアターモードとは何ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "映画館や美術館など、より厳しい撮影制限がある場所向けのモードです。一時撮影機能が完全に無効化され、拡大表示のみ使用できます。オレンジ色のUIで識別できます。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Android版はありますか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "現在iOS版のみ提供しています。Android版は開発中です。"
+          }
+        }
       ]
+    }
+    </script>
+
+    <!-- JSON-LD Structured Data - WebPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://miterundesu.jp/#webpage",
+      "url": "https://miterundesu.jp/",
+      "name": "ミテルンデス - 拡大して見るための、まったく新しいアプリ",
+      "description": "弱視・老眼・車椅子の方に向けた見るため専用のアプリ。視力検査やコンサート、美術館に最適。",
+      "isPartOf": {
+        "@id": "https://miterundesu.jp/#website"
+      },
+      "about": {
+        "@id": "https://miterundesu.jp/#app"
+      },
+      "publisher": {
+        "@id": "https://miterundesu.jp/#organization"
+      },
+      "inLanguage": "ja-JP",
+      "datePublished": "2025-11-21",
+      "dateModified": "2025-12-13",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://miterundesu.jp/og-image.png"
+      }
     }
     </script>
 
