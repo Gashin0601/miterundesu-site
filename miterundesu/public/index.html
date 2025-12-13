@@ -15,14 +15,18 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://miterundesu.jp/">
 
-    <!-- Favicon -->
+    <!-- Favicon - 検索エンジン対応（48x48以上推奨） -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/images/logo/miterundesu-icon.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+    <link rel="icon" type="image/svg+xml" href="/images/logo/miterundesu-icon.svg">
 
     <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" href="/images/logo/miterundesu-icon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/site.webmanifest">
@@ -329,7 +333,7 @@
                 <h2 class="section-title">お問い合わせ</h2>
                 <p class="contact-description">取材・店舗・施設登録・その他ご質問などのご連絡はこちらから。</p>
 
-                <form class="contact-form" id="contact-form">
+                <form class="contact-form" id="contact-form" novalidate>
                     <div class="form-group">
                         <label for="name">お名前 <span class="required">必須</span></label>
                         <input type="text" id="name" name="name" required>
@@ -493,5 +497,6 @@
     </footer>
 
     <script type="module" src="/js/main.js"></script>
+    <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

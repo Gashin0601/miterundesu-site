@@ -14,14 +14,18 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://miterundesu.jp/press">
 
-    <!-- Favicon -->
+    <!-- Favicon - 検索エンジン対応 -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/images/logo/miterundesu-icon.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+    <link rel="icon" type="image/svg+xml" href="/images/logo/miterundesu-icon.svg">
 
     <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" href="/images/logo/miterundesu-icon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/site.webmanifest">
@@ -189,7 +193,7 @@
 
 【特徴】
 ・ 申請後、承認されたアカウントで有効化
-・ アカウントの有効期限内のみ利用可能（承認日から1年間）
+・ アカウントの有効期限内のみ利用可能
 ・ 期限終了後は自動的に通常モードに戻ります
 ・ 取材・紹介目的に限定してご利用ください</div>
                 </div>
@@ -256,13 +260,13 @@
                         内容を確認次第、担当者よりご連絡させていただきます。
                     </p>
 
-                    <form class="press-apply-form" id="press-apply-form" aria-labelledby="form-section-title" aria-describedby="form-intro-text">
+                    <form class="press-apply-form" id="press-apply-form" aria-labelledby="form-section-title" aria-describedby="form-intro-text" novalidate>
                         <div class="form-group">
                             <label for="organization-name">
                                 組織名
                                 <span class="required" aria-label="必須項目">必須</span>
                             </label>
-                            <input type="text" id="organization-name" name="organization-name" required aria-required="true" placeholder="例) 朝日新聞社 / NHK / ウェブメディア株式会社">
+                            <input type="text" id="organization-name" name="organization-name" required aria-required="true" placeholder="例) 〇〇新聞社 / 〇〇テレビ / 〇〇メディア株式会社">
                         </div>
 
                         <div class="form-group">
@@ -314,7 +318,6 @@
                         </div>
 
                         <div class="form-notice">
-                            <p>※ アカウントの有効期限は承認日から1年間です</p>
                             <p>※ 審査完了後、メールにてご連絡いたします</p>
                         </div>
 
@@ -363,5 +366,6 @@
 
     <script type="module" src="/js/main.js"></script>
     <script type="module" src="/js/press-apply.js"></script>
+    <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
