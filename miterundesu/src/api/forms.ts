@@ -59,7 +59,7 @@ router.post('/contact', async (req: Request, res: Response): Promise<void> => {
     if (error) {
       console.error('Supabase error:', error);
       res.status(500).json({
-        error: 'データベースエラーが発生しました。'
+        error: 'データベースエラーが発生しました。お手数ですが info@miterundesu.jp まで直接ご連絡ください。'
       });
       return;
     }
@@ -86,7 +86,7 @@ router.post('/contact', async (req: Request, res: Response): Promise<void> => {
   } catch (error) {
     console.error('Contact form error:', error);
     res.status(500).json({
-      error: '送信中にエラーが発生しました。もう一度お試しください。'
+      error: '送信中にエラーが発生しました。お手数ですが info@miterundesu.jp まで直接ご連絡ください。'
     });
   }
 });
@@ -144,7 +144,7 @@ router.post('/store-application', async (req: Request, res: Response): Promise<v
     if (error) {
       console.error('Supabase error:', error);
       res.status(500).json({
-        error: 'データベースエラーが発生しました。'
+        error: 'データベースエラーが発生しました。お手数ですが info@miterundesu.jp まで直接ご連絡ください。'
       });
       return;
     }
@@ -174,7 +174,7 @@ router.post('/store-application', async (req: Request, res: Response): Promise<v
   } catch (error) {
     console.error('Store application error:', error);
     res.status(500).json({
-      error: '送信中にエラーが発生しました。もう一度お試しください。'
+      error: '送信中にエラーが発生しました。お手数ですが info@miterundesu.jp まで直接ご連絡ください。'
     });
   }
 });
@@ -228,7 +228,7 @@ router.post('/press-application', async (req: Request, res: Response): Promise<v
     if (error) {
       console.error('Supabase error:', error);
       res.status(500).json({
-        error: 'データベースエラーが発生しました。'
+        error: 'データベースエラーが発生しました。お手数ですが info@miterundesu.jp まで直接ご連絡ください。'
       });
       return;
     }
@@ -257,7 +257,7 @@ router.post('/press-application', async (req: Request, res: Response): Promise<v
   } catch (error) {
     console.error('Press application error:', error);
     res.status(500).json({
-      error: '送信中にエラーが発生しました。もう一度お試しください。'
+      error: '送信中にエラーが発生しました。お手数ですが info@miterundesu.jp まで直接ご連絡ください。'
     });
   }
 });
@@ -366,7 +366,7 @@ router.post('/press-account-application', async (req: Request, res: Response): P
     if (error) {
       console.error('Supabase error:', error);
       res.status(500).json({
-        error: 'データベースエラーが発生しました。'
+        error: 'データベースエラーが発生しました。お手数ですが info@miterundesu.jp まで直接ご連絡ください。'
       });
       return;
     }
@@ -395,7 +395,7 @@ router.post('/press-account-application', async (req: Request, res: Response): P
   } catch (error) {
     console.error('Press account creation error:', error);
     res.status(500).json({
-      error: '送信中にエラーが発生しました。もう一度お試しください。'
+      error: '送信中にエラーが発生しました。お手数ですが info@miterundesu.jp まで直接ご連絡ください。'
     });
   }
 });

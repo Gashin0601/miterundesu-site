@@ -260,7 +260,46 @@ function initContactForm(): void {
     const name = nameEl?.value.trim() || '';
     const email = emailEl?.value.trim() || '';
     const inquiryType = inquiryTypeEl?.value || '';
-    const message = messageEl?.value.trim() || '';
+    let message = messageEl?.value.trim() || '';
+
+    // 追加フィールドをmessageに含める
+    if (inquiryType === 'usage') {
+      const deviceInfo = (document.getElementById('device-info') as HTMLInputElement | null)?.value.trim() || '';
+      const errorMessage = (document.getElementById('error-message') as HTMLTextAreaElement | null)?.value.trim() || '';
+      if (deviceInfo || errorMessage) {
+        message += '\n\n--- 追加情報 ---';
+        if (deviceInfo) message += `\n端末情報: ${deviceInfo}`;
+        if (errorMessage) message += `\nエラーメッセージ: ${errorMessage}`;
+      }
+    } else if (inquiryType === 'press') {
+      const mediaName = (document.getElementById('media-name') as HTMLInputElement | null)?.value.trim() || '';
+      const position = (document.getElementById('position') as HTMLInputElement | null)?.value.trim() || '';
+      const pressPhone = (document.getElementById('press-phone') as HTMLInputElement | null)?.value.trim() || '';
+      const publishDate = (document.getElementById('publish-date') as HTMLInputElement | null)?.value || '';
+      const pressDuration = (document.getElementById('press-duration') as HTMLSelectElement | null)?.value || '';
+      if (mediaName || position || pressPhone || publishDate || pressDuration) {
+        message += '\n\n--- 取材情報 ---';
+        if (mediaName) message += `\n媒体名: ${mediaName}`;
+        if (position) message += `\n役職・部署: ${position}`;
+        if (pressPhone) message += `\n電話番号: ${pressPhone}`;
+        if (publishDate) message += `\n掲載予定日: ${publishDate}`;
+        if (pressDuration) message += `\nプレスモード利用期間: ${pressDuration}`;
+      }
+    } else if (inquiryType === 'store') {
+      const storeName = (document.getElementById('store-name') as HTMLInputElement | null)?.value.trim() || '';
+      const industry = (document.getElementById('industry') as HTMLSelectElement | null)?.value || '';
+      const location = (document.getElementById('location') as HTMLInputElement | null)?.value.trim() || '';
+      const storePhone = (document.getElementById('store-phone') as HTMLInputElement | null)?.value.trim() || '';
+      const posterType = (document.querySelector('input[name="poster-type"]:checked') as HTMLInputElement | null)?.value || '';
+      if (storeName || industry || location || storePhone || posterType) {
+        message += '\n\n--- 店舗情報 ---';
+        if (storeName) message += `\n店舗・施設名: ${storeName}`;
+        if (industry) message += `\n業種: ${industry}`;
+        if (location) message += `\n所在地: ${location}`;
+        if (storePhone) message += `\n電話番号: ${storePhone}`;
+        if (posterType) message += `\nポスター種類: ${posterType === 'green' ? 'グリーン（通常モード）' : 'オレンジ（シアターモード）'}`;
+      }
+    }
 
     // Validate required fields with specific messages
     if (!name) {

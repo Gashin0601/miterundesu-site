@@ -174,7 +174,68 @@ function initContactForm() {
     const name = nameEl?.value.trim() || "";
     const email = emailEl?.value.trim() || "";
     const inquiryType = inquiryTypeEl?.value || "";
-    const message = messageEl?.value.trim() || "";
+    let message = messageEl?.value.trim() || "";
+    if (inquiryType === "usage") {
+      const deviceInfo = document.getElementById("device-info")?.value.trim() || "";
+      const errorMessage = document.getElementById("error-message")?.value.trim() || "";
+      if (deviceInfo || errorMessage) {
+        message += "\n\n--- \u8FFD\u52A0\u60C5\u5831 ---";
+        if (deviceInfo)
+          message += `
+\u7AEF\u672B\u60C5\u5831: ${deviceInfo}`;
+        if (errorMessage)
+          message += `
+\u30A8\u30E9\u30FC\u30E1\u30C3\u30BB\u30FC\u30B8: ${errorMessage}`;
+      }
+    } else if (inquiryType === "press") {
+      const mediaName = document.getElementById("media-name")?.value.trim() || "";
+      const position = document.getElementById("position")?.value.trim() || "";
+      const pressPhone = document.getElementById("press-phone")?.value.trim() || "";
+      const publishDate = document.getElementById("publish-date")?.value || "";
+      const pressDuration = document.getElementById("press-duration")?.value || "";
+      if (mediaName || position || pressPhone || publishDate || pressDuration) {
+        message += "\n\n--- \u53D6\u6750\u60C5\u5831 ---";
+        if (mediaName)
+          message += `
+\u5A92\u4F53\u540D: ${mediaName}`;
+        if (position)
+          message += `
+\u5F79\u8077\u30FB\u90E8\u7F72: ${position}`;
+        if (pressPhone)
+          message += `
+\u96FB\u8A71\u756A\u53F7: ${pressPhone}`;
+        if (publishDate)
+          message += `
+\u63B2\u8F09\u4E88\u5B9A\u65E5: ${publishDate}`;
+        if (pressDuration)
+          message += `
+\u30D7\u30EC\u30B9\u30E2\u30FC\u30C9\u5229\u7528\u671F\u9593: ${pressDuration}`;
+      }
+    } else if (inquiryType === "store") {
+      const storeName = document.getElementById("store-name")?.value.trim() || "";
+      const industry = document.getElementById("industry")?.value || "";
+      const location = document.getElementById("location")?.value.trim() || "";
+      const storePhone = document.getElementById("store-phone")?.value.trim() || "";
+      const posterType = document.querySelector('input[name="poster-type"]:checked')?.value || "";
+      if (storeName || industry || location || storePhone || posterType) {
+        message += "\n\n--- \u5E97\u8217\u60C5\u5831 ---";
+        if (storeName)
+          message += `
+\u5E97\u8217\u30FB\u65BD\u8A2D\u540D: ${storeName}`;
+        if (industry)
+          message += `
+\u696D\u7A2E: ${industry}`;
+        if (location)
+          message += `
+\u6240\u5728\u5730: ${location}`;
+        if (storePhone)
+          message += `
+\u96FB\u8A71\u756A\u53F7: ${storePhone}`;
+        if (posterType)
+          message += `
+\u30DD\u30B9\u30BF\u30FC\u7A2E\u985E: ${posterType === "green" ? "\u30B0\u30EA\u30FC\u30F3\uFF08\u901A\u5E38\u30E2\u30FC\u30C9\uFF09" : "\u30AA\u30EC\u30F3\u30B8\uFF08\u30B7\u30A2\u30BF\u30FC\u30E2\u30FC\u30C9\uFF09"}`;
+      }
+    }
     if (!name) {
       showFormMessage("\u304A\u540D\u524D\u3092\u5165\u529B\u3057\u3066\u304F\u3060\u3055\u3044\u3002", "error");
       nameEl?.focus();
